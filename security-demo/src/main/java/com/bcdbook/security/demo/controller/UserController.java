@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -130,4 +132,19 @@ public class UserController {
     public void delete(@PathVariable String id) {
         log.info("id: {}", id);
     }
+
+    /**
+     * 获取当前在线用户
+     *
+     * @author summer
+     * @date 2019-01-21 18:04
+     * @param user 注入用户对象
+     * @return java.lang.Object
+     * @version V1.0.0-RELEASE
+     */
+    @GetMapping("/me")
+    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user) {
+        return user;
+    }
+
 }
