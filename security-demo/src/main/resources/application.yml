@@ -16,6 +16,11 @@ spring:
 
 easy-spring:
   security:
+    # 浏览器的配置
     browser:
-      loginPage: /demo-signIn.html
+      # 登录页面的配置
+      # loginPage: /demo-signIn.html
+      # 登录时的返回方式
+      signInResponseType: JSON
+
 

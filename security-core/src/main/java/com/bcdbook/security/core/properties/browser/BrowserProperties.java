@@ -1,5 +1,6 @@
 package com.bcdbook.security.core.properties.browser;
 
+import com.bcdbook.security.core.properties.SignInResponseType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,5 +20,10 @@ public class BrowserProperties {
      * 会跳到这里配置的 url 上
      */
     private String loginPage = "/easy-signIn.html";
+
+    /**
+     * 返回结果的形式, 默认为 Json
+     */
+    private SignInResponseType signInResponseType = SignInResponseType.JSON;
 
 }

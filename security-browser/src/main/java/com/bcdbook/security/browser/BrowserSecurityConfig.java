@@ -8,6 +8,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
+import javax.annotation.Resource;
 
 /**
  * 浏览器安全的配置类
@@ -22,9 +26,14 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * 注入 security 的配置文件
      */
-    @Autowired
+    @Resource
     private SecurityProperties securityProperties;
 
+    @Autowired
+    private AuthenticationSuccessHandler browserAuthenticationSuccessHandler;
+
+    @Autowired
+    private AuthenticationFailureHandler browserAuthenticationFailureHandler;
 
     /**
      * 重写父级的 security 配置, 使用自己的安全验证方案
@@ -51,8 +60,12 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 用户登录的接口, SpringSecurity 会监听这个接口, 当有 post 请求时, Security 会执行登录逻辑(不需要我们自己实现)
                 .loginProcessingUrl("/authentication/form")
 
-                // 使用 basic 的方式登录（也就是弹框登录的）v5- 的版本默认
-        // http.httpBasic()
+                // 设置登录成功的处理拦截器
+                .successHandler(browserAuthenticationSuccessHandler)
+                // 等失败的拦截器
+                .failureHandler(browserAuthenticationFailureHandler)
+
+
                 .and()
                 // 权限校验规则
                 .authorizeRequests()
