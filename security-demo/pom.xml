@@ -26,6 +26,20 @@
             <groupId>com.bcdbook.security</groupId>
             <artifactId>security-browser</artifactId>
         </dependency>
+
+        <!--引入工具 jar-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--开发工具-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
 </project>
