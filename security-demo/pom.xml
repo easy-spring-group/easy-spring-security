@@ -24,7 +24,7 @@
     <dependencies>
         <dependency>
             <groupId>com.bcdbook.security</groupId>
-            <artifactId>security-core</artifactId>
+            <artifactId>security-browser</artifactId>
         </dependency>
     </dependencies>
 

@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {
         "com.bcdbook.security.core",
+        "com.bcdbook.security.browser",
         "com.bcdbook.security.demo"
 })
 public class SecurityDemoApplication {
