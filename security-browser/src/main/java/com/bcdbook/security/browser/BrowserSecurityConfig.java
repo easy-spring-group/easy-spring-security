@@ -1,6 +1,7 @@
 package com.bcdbook.security.browser;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.validate.code.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.Resource;
 
@@ -47,14 +49,23 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 在 v5+ 中，该配置（表单登录）是默认配置
-        // basic 登录（也就是弹框登录的）v5-的版本默认
+        // basic 登录（也就是弹框登录的）v5- 的版本默认
+
+        // 创建验证码的过滤器
+        ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter();
+        // 设置验证码验证失败的处理器
+        validateCodeFilter.setAuthenticationFailureHandler(browserAuthenticationFailureHandler);
+
 
         /*
          * 使用表单的方式登录
          * 最简单的修改默认配置的方法
          * 在 v5+ 中，该配置（表单登录）是默认配置
          */
-		http.formLogin()
+		http
+                // 在 UsernamePasswordAuthenticationFilter 过滤器之前加上验证码的过滤器
+                .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+                .formLogin()
                 // 登录页
                 .loginPage("/authentication/require")
                 // 用户登录的接口, SpringSecurity 会监听这个接口, 当有 post 请求时, Security 会执行登录逻辑(不需要我们自己实现)
@@ -72,7 +83,9 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // 请求拦截时, 忽略一下路径
                 .antMatchers("/authentication/require",
-                        securityProperties.getBrowser().getLoginPage()).permitAll()
+                        "/code/image",
+                        securityProperties.getBrowser().getLoginPage())
+                    .permitAll()
 
                 // 所有的权限校验
                 .anyRequest()
