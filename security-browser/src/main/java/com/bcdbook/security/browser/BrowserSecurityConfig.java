@@ -7,13 +7,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 /**
  * 浏览器安全的配置类
@@ -30,12 +34,27 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Resource
     private SecurityProperties securityProperties;
-
+    /**
+     * 注册登录成功的处理器
+     */
     @Autowired
     private AuthenticationSuccessHandler browserAuthenticationSuccessHandler;
-
+    /**
+     * 注入登录失败的处理器
+     */
     @Autowired
     private AuthenticationFailureHandler browserAuthenticationFailureHandler;
+    /**
+     * 注入数据源
+     */
+    @Autowired
+    private DataSource dataSource;
+    /**
+     * 注入 security 的用户 service
+     */
+    @Autowired
+    private UserDetailsService userDetailsService;
+
 
     /**
      * 重写父级的 security 配置, 使用自己的安全验证方案
@@ -70,15 +89,24 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 在 UsernamePasswordAuthenticationFilter 过滤器之前加上验证码的过滤器
                 .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
-                // 登录页
-                .loginPage("/authentication/require")
-                // 用户登录的接口, SpringSecurity 会监听这个接口, 当有 post 请求时, Security 会执行登录逻辑(不需要我们自己实现)
-                .loginProcessingUrl("/authentication/form")
+                    // 登录页
+                    .loginPage("/authentication/require")
+                    // 用户登录的接口, SpringSecurity 会监听这个接口, 当有 post 请求时, Security 会执行登录逻辑(不需要我们自己实现)
+                    .loginProcessingUrl("/authentication/form")
 
-                // 设置登录成功的处理拦截器
-                .successHandler(browserAuthenticationSuccessHandler)
-                // 等失败的拦截器
-                .failureHandler(browserAuthenticationFailureHandler)
+                    // 设置登录成功的处理拦截器
+                    .successHandler(browserAuthenticationSuccessHandler)
+                    // 等失败的拦截器
+                    .failureHandler(browserAuthenticationFailureHandler)
+                    .and()
+                // 记住我的配置
+                .rememberMe()
+                    // 数据库操作实例
+                    .tokenRepository(persistentTokenRepository())
+                    // 设置有效时长
+                    .tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())
+                    // 设置用户 service
+                    .userDetailsService(userDetailsService)
 
 
                 .and()
@@ -118,6 +146,26 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         // 创建 security 推荐的加密器
         return new BCryptPasswordEncoder();
+    }
+
+    /**
+     * 设置记住我功能的数据源
+     *
+     * @author summer
+     * @date 2019-01-21 20:45
+     * @return org.springframework.security.web.authentication.rememberme.PersistentTokenRepository
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+        // 创建 jdbc 存储的实例
+        JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+        // 设置数据源
+        tokenRepository.setDataSource(dataSource);
+        // 自动创建数据库
+		// tokenRepository.setCreateTableOnStartup(true);
+		// 返回设置好的存储实例
+        return tokenRepository;
     }
 
 }

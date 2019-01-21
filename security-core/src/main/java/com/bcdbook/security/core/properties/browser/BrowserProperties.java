@@ -26,4 +26,9 @@ public class BrowserProperties {
      */
     private SignInResponseType signInResponseType = SignInResponseType.JSON;
 
+    /**
+     * 记住我功能的记住时长
+     */
+    private int rememberMeSeconds = 3600;
+
 }

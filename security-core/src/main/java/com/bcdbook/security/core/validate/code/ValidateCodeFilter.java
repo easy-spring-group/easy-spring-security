@@ -4,6 +4,7 @@ import com.bcdbook.security.core.properties.SecurityProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -77,10 +78,12 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
         String propertiesUrls = securityProperties.getCode().getImage().getUrls();
         // 把配置中的 url 以逗号进行拆分, 拆分成字符串数组
         String[] configUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(propertiesUrls, ",");
-        // 循环配置的需要拦截的地址
-        for (String configUrl : configUrls) {
-            // 加入需要拦截的地址中
-            urls.add(configUrl);
+        if (ArrayUtils.isNotEmpty(configUrls)) {
+            // 循环配置的需要拦截的地址
+            for (String configUrl : configUrls) {
+                // 加入需要拦截的地址中
+                urls.add(configUrl);
+            }
         }
         urls.add("/authentication/form");
     }
