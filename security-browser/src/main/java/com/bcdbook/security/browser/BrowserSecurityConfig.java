@@ -1,8 +1,11 @@
 package com.bcdbook.security.browser;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * 浏览器安全的配置类
@@ -44,6 +47,20 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 都需要权限校验
                 .authenticated();
 
+    }
+
+    /**
+     * 配置 security 的加密器
+     *
+     * @author summer
+     * @date 2019-01-21 16:20
+     * @return org.springframework.security.crypto.password.PasswordEncoder
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        // 创建 security 推荐的加密器
+        return new BCryptPasswordEncoder();
     }
 
 }
