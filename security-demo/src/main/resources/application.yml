@@ -23,4 +23,11 @@ easy-spring:
       # 登录时的返回方式
       signInResponseType: JSON
 
+    code:
+      image:
+        length: 2
+        width: 100
+        urls: /user/*
+
+
 

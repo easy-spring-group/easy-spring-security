@@ -1,5 +1,8 @@
 package com.bcdbook.security.core.validate.code;
 
+import com.bcdbook.security.core.properties.SecurityProperties;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,16 +18,33 @@ import org.springframework.context.annotation.Configuration;
 public class ValidateCodeBeanConfig {
 
     /**
+     * 注入 security 的配置
+     */
+    @Autowired
+    private SecurityProperties securityProperties;
+
+    /**
      * 图片验证码图片生成器
      *
      * @author summer
      * @date 2019-01-17 15:35
+     * @annotation @ConditionalOnMissingBean(name = "imageCodeGenerator")
+     * 当容器中有名字为 imageCodeGenerator 的实现时, 使用新加入的,
+     * 当容器中没有新加入的 imageCodeGenerator 实现时, 使用当前的
+     *
      * @return com.bcdbook.security.core.validate.code.ValidateCodeGenerator
      * @version V1.0.0-RELEASE
      */
 	@Bean
-	public ValidateCodeGenerator imageCodeGenerator() {
-		return new DefaultImageCodeGenerator();
-	}
+    @ConditionalOnMissingBean(name = "imageCodeGenerator")
+    public ValidateCodeGenerator imageCodeGenerator() {
+	    // 创建图片的生成器
+        ImageCodeGenerator codeGenerator = new ImageCodeGenerator();
+        // 设置安全配置
+        codeGenerator.setSecurityProperties(securityProperties);
+
+        // 返回图片生成器
+        return codeGenerator;
+    }
 
 }

@@ -36,8 +36,8 @@ public class ValidateCodeController {
      * 注入验证码的生成器
      */
 	@Autowired
-	private ValidateCodeGenerator validateCodeGenerator;
-	
+    private ValidateCodeGenerator imageCodeGenerator;
+
     /**
      * 生成图片验证的接口
      *
@@ -52,7 +52,7 @@ public class ValidateCodeController {
 	public void createCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 	    // 生成图片验证码
-		ImageCode imageCode = validateCodeGenerator.generate(new ServletWebRequest(request));
+		ImageCode imageCode = imageCodeGenerator.generate(new ServletWebRequest(request));
 		/*
 		 * 把生成的图片验证码设置到 session 中
 		 * arg1: 请求信息, sessionStrategy 会从这里拿到 session

@@ -55,6 +55,10 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter();
         // 设置验证码验证失败的处理器
         validateCodeFilter.setAuthenticationFailureHandler(browserAuthenticationFailureHandler);
+        // 设置安全配置
+        validateCodeFilter.setSecurityProperties(securityProperties);
+        // 执行添加验证码拦截地址的方法
+        validateCodeFilter.afterPropertiesSet();
 
 
         /*
