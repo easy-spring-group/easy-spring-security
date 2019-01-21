@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>security-dependencies</artifactId>
+        <groupId>com.bcdbook.security</groupId>
+        <!--suppress MavenPropertyInParent -->
+        <version>${base.version}</version>
+        <relativePath>../security-dependencies</relativePath>
+    </parent>
+
+    <artifactId>security-browser</artifactId>
+    <!--打包方式-->
+    <packaging>jar</packaging>
+
+    <!--项目名称-->
+    <name>Security Browser</name>
+    <!--项目简介-->
+    <description>Security Browser</description>
+
+
+    <dependencies>
+        <!--引入基础的 security 服务的包-->
+        <dependency>
+            <groupId>com.bcdbook.security</groupId>
+            <artifactId>security-core</artifactId>
+            <!--<version>${base.version}</version>-->
+        </dependency>
+        <!--引入集群环境下的 session 管理包-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-core</artifactId>
+        </dependency>
+
+        <!--引入工具 jar-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+</project>
