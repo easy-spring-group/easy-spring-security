@@ -3,9 +3,9 @@ package com.bcdbook.security.core.authentication;
 import com.bcdbook.security.core.properties.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.stereotype.Component;
 
 /**
  * 表单登录的配置
@@ -14,8 +14,7 @@ import org.springframework.stereotype.Component;
  * @date 2019-01-22 14:42
  * @version V1.0.0-RELEASE
  */
-@Component
-public class FormAuthenticationConfig {
+public class AbstractChannelSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 自定义的登录成功处理器
@@ -37,7 +36,7 @@ public class FormAuthenticationConfig {
      * @return void
      * @version V1.0.0-RELEASE
      */
-    public void configure(HttpSecurity http) throws Exception {
+    protected void applyPasswordAuthenticationConfig(HttpSecurity http) throws Exception {
         http.formLogin()
                 // 登录页
                 .loginPage(SecurityConstants.AUTHENTICATION_URL)
@@ -48,6 +47,5 @@ public class FormAuthenticationConfig {
                 // 等失败的拦截器
                 .failureHandler(easyAuthenticationFailureHandler);
     }
-
 }
 

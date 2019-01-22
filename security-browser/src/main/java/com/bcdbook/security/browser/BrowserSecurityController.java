@@ -1,7 +1,8 @@
 package com.bcdbook.security.browser;
 
+import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.core.properties.SecurityProperties;
-import com.bcdbook.security.support.SimpleResponse;
+import com.bcdbook.security.core.support.SimpleResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 浏览器 security 接口
+ *
+ * @author summer
+ * @date 2019-01-22 20:37
+ * @version V1.0.0-RELEASE
+ */
 @RestController
 @Slf4j
 public class BrowserSecurityController {
@@ -49,7 +57,7 @@ public class BrowserSecurityController {
      * @return com.bcdbook.security.browser.support.SimpleResponse
      * @version V1.0.0-RELEASE
      */
-    @RequestMapping("/authentication/require")
+    @RequestMapping(SecurityConstants.AUTHENTICATION_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
 

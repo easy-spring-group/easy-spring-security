@@ -11,7 +11,7 @@ public interface SecurityConstants {
     /**
      * 默认的处理验证码的 url 前缀
      */
-    String VALIDATE_CODE_URL_PREFIX = "/code";
+    String VALIDATE_CODE_URL_PREFIX = "/validate/code";
     /**
      * 当请求需要身份认证时，默认跳转的url
      */

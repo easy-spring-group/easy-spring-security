@@ -1,12 +1,10 @@
 package com.bcdbook.security.core.validate.code.impl;
 
-import com.bcdbook.security.core.validate.code.ValidateCode;
-import com.bcdbook.security.core.validate.code.ValidateCodeGenerator;
-import com.bcdbook.security.core.validate.code.ValidateCodeProcessor;
+import com.bcdbook.security.core.validate.code.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.connect.web.HttpSessionSessionStrategy;
-import org.springframework.social.connect.web.SessionStrategy;
+import org.springframework.web.bind.ServletRequestBindingException;
+import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import java.util.Map;
@@ -21,9 +19,11 @@ import java.util.Map;
 public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> implements ValidateCodeProcessor {
 
     /**
-     * 操作 session 的工具类
+     * 注入验证码的存储器
      */
-    private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
+    @Autowired
+    private ValidateCodeRepository validateCodeRepository;
+
     /**
      * 利用 Spring 的依赖查找方式处理
      * spring 看到这样一个 map 注入的时候, 会查找 value(ValidateCodeGenerator) 的实现,
@@ -55,6 +55,59 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     }
 
     /**
+     * 验证码的校验器
+     *
+     * @author summer
+     * @date 2019-01-17 14:03
+     * @param request servlet 的请求信息
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public void validate(ServletWebRequest request) {
+
+        // 获取验证码的类型
+        ValidateCodeType codeType = getValidateCodeType(request);
+
+        // 获取验证码的方法
+        C codeInSession = (C) validateCodeRepository.get(request, codeType);
+
+        String codeInRequest;
+        try {
+            // 从请求中获取
+            codeInRequest = ServletRequestUtils.getStringParameter(request.getRequest(),
+                    codeType.getParamNameOnValidate());
+        } catch (ServletRequestBindingException e) {
+            throw new ValidateCodeException("获取验证码的值失败");
+        }
+
+        // 如果前端传入的验证码的值为空
+        if (StringUtils.isBlank(codeInRequest)) {
+            throw new ValidateCodeException(codeType + "请填写验证码");
+        }
+        // 如果系统中存储的验证码为空
+        if (codeInSession == null) {
+            throw new ValidateCodeException(codeType + "验证码不存在");
+        }
+        // 如果验证码已经过期
+        if (codeInSession.isExpired()) {
+            // 删除原有的验证码
+            validateCodeRepository.remove(request, codeType);
+            // 抛出异常
+            throw new ValidateCodeException(codeType + "验证码已过期，请重新获取");
+        }
+
+        // 如果验证码不正确
+        if (!StringUtils.equals(codeInSession.getCode(), codeInRequest)) {
+            throw new ValidateCodeException(codeType + "验证码不正确");
+        }
+
+        // 如果以上均没有抛出异常, 则说明验证通过, 此处删除缓存中的验证码
+        validateCodeRepository.remove(request, codeType);
+    }
+
+    /**
      * 生成校验码的抽象实现
      *
      * @author summer
@@ -66,10 +119,18 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     @SuppressWarnings("unchecked")
     private C generate(ServletWebRequest request) {
         // 获取验证码类型
-        String type = getProcessorType(request);
-        // 根据验证码类型从 ValidateCodeGenerator 收集器中获取对应的验证码生成器
-        ValidateCodeGenerator validateCodeGenerator = validateCodeGenerators.get(type + "CodeGenerator");
-        // 执行验证码的生成
+        String type = getValidateCodeType(request).toString().toLowerCase();
+        // 获取生成器的名字
+        String generatorName = type + ValidateCodeGenerator.class.getSimpleName();
+
+        // 根据生成器的名字获取生成器对象
+        ValidateCodeGenerator validateCodeGenerator = validateCodeGenerators.get(generatorName);
+        // 如果生成器不存在
+        if (validateCodeGenerator == null) {
+            throw new ValidateCodeException("验证码生成器" + generatorName + "不存在");
+        }
+
+        // 根据上面实例化的生成器执行生成并返回生成后的验证码
         return (C) validateCodeGenerator.generate(request);
     }
 
@@ -84,9 +145,10 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
      * @version V1.0.0-RELEASE
      */
     private void save(ServletWebRequest request, C validateCode) {
-        // 把验证码存储到 session 中
-        sessionStrategy.setAttribute(request, SESSION_KEY_PREFIX + getProcessorType(request).toUpperCase(),
-                validateCode);
+        // 创建验证码对象
+        ValidateCode code = new ValidateCode(validateCode.getCode(), validateCode.getExpireTime());
+        // 使用存储器, 存储验证码
+        validateCodeRepository.save(request, code, getValidateCodeType(request));
     }
 
     /**
@@ -107,14 +169,17 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
      * 请求时会传入时什么类型(图片/短信)的验证码
      *
      * @author summer
-     * @date 2019-01-22 13:26
-     * @param request 请求及响应信息
-     * @return java.lang.String
+     * @date 2019-01-17 14:05
+     * @param request Servlet 请求信息
+     * @return com.bcdbook.security.code.ValidateCodeType
      * @version V1.0.0-RELEASE
      */
-    private String getProcessorType(ServletWebRequest request) {
-        // 从请求地址中截取后半段的信息, 作为请求类型返回
-        return StringUtils.substringAfter(request.getRequest().getRequestURI(), "/code/");
+    private ValidateCodeType getValidateCodeType(ServletWebRequest request) {
+        /*
+         * 根据实例化的类名, 截取类名的前缀
+         * 并根据前缀去匹配 ValidateCodeType 获取验证码类型的枚举, 并返回
+         */
+        String type = StringUtils.substringBefore(getClass().getSimpleName(), "CodeProcessor");
+        return ValidateCodeType.valueOf(type.toUpperCase());
     }
-
 }

@@ -1,21 +1,18 @@
 package com.bcdbook.security.browser;
 
-import com.bcdbook.security.core.authentication.FormAuthenticationConfig;
+import com.bcdbook.security.core.authentication.AbstractChannelSecurityConfig;
 import com.bcdbook.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.core.properties.SecurityProperties;
 import com.bcdbook.security.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 /**
@@ -26,23 +23,13 @@ import javax.sql.DataSource;
  * @version V1.0.0-RELEASE
  */
 @Configuration
-public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
+public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 
     /**
      * 注入 security 的配置文件
      */
-    @Resource
+    @Autowired
     private SecurityProperties securityProperties;
-    /**
-     * 注册登录成功的处理器
-     */
-    @Autowired
-    private AuthenticationSuccessHandler easyAuthenticationSuccessHandler;
-    /**
-     * 注入登录失败的处理器
-     */
-    @Autowired
-    private AuthenticationFailureHandler easyAuthenticationFailureHandler;
     /**
      * 注入数据源
      */
@@ -55,11 +42,11 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    /**
-     * 注入表单验证的配置类
-     */
-    @Autowired
-    private FormAuthenticationConfig formAuthenticationConfig;
+//    /**
+//     * 注入表单验证的配置类
+//     */
+//    @Autowired
+//    private FormAuthenticationConfig formAuthenticationConfig;
 
     /**
      * 注入验证码主类的配置类
@@ -86,17 +73,8 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         // 在 v5+ 中，该配置（表单登录）是默认配置
         // basic 登录（也就是弹框登录的）v5- 的版本默认
 
-//        // 创建验证码的过滤器
-//        ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter();
-//        // 设置验证码验证失败的处理器
-//        validateCodeFilter.setAuthenticationFailureHandler(easyAuthenticationFailureHandler);
-//        // 设置安全配置
-//        validateCodeFilter.setSecurityProperties(securityProperties);
-//        // 执行添加验证码拦截地址的方法
-//        validateCodeFilter.afterPropertiesSet();
-
         // 表单登录的配置
-        formAuthenticationConfig.configure(http);
+        applyPasswordAuthenticationConfig(http);
 
         /*
          * 使用表单的方式登录
@@ -118,24 +96,23 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                     .tokenValiditySeconds(securityProperties.getBrowser().getRememberMeSeconds())
                     // 设置用户 service
                     .userDetailsService(userDetailsService)
-
-
-                .and()
+                    .and()
                 // 权限校验规则
                 .authorizeRequests()
 
-                // 请求拦截时, 忽略一下路径
-                .antMatchers("/authentication/require",
-                        "/code/*",
-                        securityProperties.getBrowser().getLoginPage())
-                    .permitAll()
-
-                // 所有的权限校验
-                .anyRequest()
-                // 都需要权限校验
-                .authenticated()
-
-                .and()
+                    // 请求拦截时, 忽略一下路径
+                    .antMatchers(
+                        SecurityConstants.AUTHENTICATION_URL,
+                        SecurityConstants.SIGN_IN_PROCESSING_URL_MOBILE,
+                        securityProperties.getBrowser().getLoginPage(),
+                        // 验证码接口,
+                        SecurityConstants.VALIDATE_CODE_URL_PREFIX + "/*")
+                        .permitAll()
+                    // 所有的权限校验
+                    .anyRequest()
+                    // 都需要权限校验
+                    .authenticated()
+                    .and()
                 /*
                  * 忽略对伪造身份的拦截,
                  * v5+ 如果不忽略这个, 不会报错, 同时自定义的登录页面登录总是无效

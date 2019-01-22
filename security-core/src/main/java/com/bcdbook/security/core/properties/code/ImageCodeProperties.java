@@ -13,10 +13,11 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class ImageCodeProperties extends SmsCodeProperties {
-
-	/**
-	 * 图片宽
-	 */
+	
+	public ImageCodeProperties() {
+		setLength(4);
+	}
+	 
 	private int width = 67;
 	/**
 	 * 图片高

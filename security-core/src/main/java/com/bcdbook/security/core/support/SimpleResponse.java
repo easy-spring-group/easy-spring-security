@@ -1,4 +1,4 @@
-package com.bcdbook.security.support;
+package com.bcdbook.security.core.support;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

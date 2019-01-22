@@ -1,10 +1,11 @@
 package com.bcdbook.security.browser.authentication;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.support.SimpleResponse;
 import com.bcdbook.security.core.properties.SignInResponseType;
-import com.bcdbook.security.support.SimpleResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
@@ -36,7 +37,7 @@ public class EasyAuthenticationFailureHandler extends SimpleUrlAuthenticationFai
     /**
      * 注入 security 的配置
      */
-    @Resource
+    @Autowired
     private SecurityProperties securityProperties;
 
 

@@ -2,14 +2,14 @@ package com.bcdbook.security.browser.authentication;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
 import com.bcdbook.security.core.properties.SignInResponseType;
-import com.bcdbook.security.support.SimpleResponse;
+import com.bcdbook.security.core.support.SimpleResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,13 +29,13 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
     /**
      * 注入 jackson 的 mapper 工具
      */
-    @Resource
+    @Autowired
     private ObjectMapper objectMapper;
 
     /**
      * 注入 security 的配置
      */
-    @Resource
+    @Autowired
     private SecurityProperties securityProperties;
 
 //	private RequestCache requestCache = new HttpSessionRequestCache();

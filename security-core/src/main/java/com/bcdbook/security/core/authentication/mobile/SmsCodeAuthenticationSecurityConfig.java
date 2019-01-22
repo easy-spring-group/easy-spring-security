@@ -58,14 +58,9 @@ public class SmsCodeAuthenticationSecurityConfig extends
 		// 设置失败处理器
 		smsCodeAuthenticationFilter.setAuthenticationFailureHandler(easyAuthenticationFailureHandler);
 
-//		String key = UUID.randomUUID().toString();
-//		smsCodeAuthenticationFilter.setRememberMeServices(new PersistentTokenBasedRememberMeServices(key,
-//                userDetailsService,
-//                persistentTokenRepository));
-
-        // 创建短信验证码的提供者
+        // 创建短信验证码的处理器
 		SmsCodeAuthenticationProvider smsCodeAuthenticationProvider = new SmsCodeAuthenticationProvider();
-		// 为提供者设置用户 service
+		// 为处理器设置用户 service
 		smsCodeAuthenticationProvider.setUserDetailsService(userDetailsService);
 
 		// 把短信验证码的校验器设置到用户名密码的校验器之后

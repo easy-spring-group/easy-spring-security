@@ -38,7 +38,7 @@ public class ImageCodeGenerator implements ValidateCodeGenerator {
      * @author summer
      * @date 2019-01-16 23:49
      * @param request 请求对象
-     * @return com.bcdbook.security.core.validate.code.image.ImageCode
+     * @return com.bcdbook.security.code.image.ImageCode
      * @version V1.0.0-RELEASE
      */
 	@Override

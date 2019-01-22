@@ -12,17 +12,25 @@ import org.springframework.web.context.request.ServletWebRequest;
 public interface ValidateCodeProcessor {
 
     /**
-     * 验证码放入session时的前缀
-     */
-    String SESSION_KEY_PREFIX = "SESSION_KEY_FOR_CODE_";
-
-    /**
-     * 创建校验码
-     * 用于封装请求和相应
+     * 创建验证码的方法
      *
-     * @param request
-     * @throws Exception
+     * @author summer
+     * @date 2019-01-17 13:41
+     * @param request servlet 请求信息
+     * @throws Exception 验证码发送过程中可能出现的异常
+     * @return void
+     * @version V1.0.0-RELEASE
      */
     void create(ServletWebRequest request) throws Exception;
 
+    /**
+     * 验证码的校验器
+     *
+     * @author summer
+     * @date 2019-01-17 14:03
+     * @param servletWebRequest servlet 的请求信息
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    void validate(ServletWebRequest servletWebRequest);
 }
