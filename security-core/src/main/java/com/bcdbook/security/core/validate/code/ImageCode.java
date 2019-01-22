@@ -2,6 +2,7 @@ package com.bcdbook.security.core.validate.code;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.awt.image.BufferedImage;
@@ -17,32 +18,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ImageCode {
+@EqualsAndHashCode(callSuper = true)
+public class ImageCode extends ValidateCode {
 
     /**
      * 验证码图片
      */
 	private BufferedImage image;
-    /**
-     * 验证码的值
-     */
-	private String code;
-    /**
-     * 过期时间(有效时间至XXX)
-     */
-	private LocalDateTime expireTime;
-
-    /**
-     * 校验验证码是否已经过期
-     *
-     * @author summer
-     * @date 2019-01-17 14:52
-     * @return boolean
-     * @version V1.0.0-RELEASE
-     */
-	public boolean isExpired() {
-		return LocalDateTime.now().isAfter(expireTime);
-	}
 
     /**
      * 根据有效时长生成的图片验证码对象
@@ -55,8 +37,23 @@ public class ImageCode {
      * @version V1.0.0-RELEASE
      */
     public ImageCode(BufferedImage image, String code, int expire){
-        this.code = code;
-        this.expireTime = LocalDateTime.now().plusSeconds(expire);
+        super(code, expire);
+        this.image = image;
+    }
+
+    /**
+     * 全参构造
+     *
+     * @author summer
+     * @date 2019-01-22 11:18
+     * @param image 验证码图片
+     * @param code 验证码
+     * @param expireTime 过期实现
+     * @return
+     * @version V1.0.0-RELEASE
+     */
+    public ImageCode(BufferedImage image, String code, LocalDateTime expireTime) {
+        super(code, expireTime);
         this.image = image;
     }
 }

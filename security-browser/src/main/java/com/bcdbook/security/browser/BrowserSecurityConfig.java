@@ -51,8 +51,10 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
     /**
      * 注入 security 的用户 service
+     * 因为此处的实现是在调用方进行实现的, 所以会报无实现的风险
      */
     @Autowired
+    @SuppressWarnings("all")
     private UserDetailsService userDetailsService;
 
 
@@ -115,7 +117,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // 请求拦截时, 忽略一下路径
                 .antMatchers("/authentication/require",
-                        "/code/image",
+                        "/code/*",
                         securityProperties.getBrowser().getLoginPage())
                     .permitAll()
 

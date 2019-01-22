@@ -17,9 +17,9 @@ public interface ValidateCodeGenerator {
      * @author summer
      * @date 2019-01-16 23:49
      * @param request 请求对象
-     * @return com.bcdbook.security.core.validate.code.image.ImageCode
+     * @return com.bcdbook.security.core.validate.code.ValidateCode
      * @version V1.0.0-RELEASE
      */
-	ImageCode generate(ServletWebRequest request);
+	ValidateCode generate(ServletWebRequest request);
 
 }

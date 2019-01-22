@@ -1,6 +1,8 @@
 package com.bcdbook.security.core.validate.code;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.validate.code.sms.DefaultSmsCodeSender;
+import com.bcdbook.security.core.validate.code.sms.SmsCodeSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -46,5 +48,22 @@ public class ValidateCodeBeanConfig {
         // 返回图片生成器
         return codeGenerator;
     }
+
+    /**
+     * 短信验证码的发送器
+     * 当使用者有 SmsCodeSender 的实现的时候用调用者的实现,
+     * 如果没有, 则使用默认的 {@link DefaultSmsCodeSender}
+     *
+     * @author summer
+     * @date 2019-01-22 11:29
+     * @return com.bcdbook.security.core.validate.code.sms.SmsCodeSender
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    @ConditionalOnMissingBean(SmsCodeSender.class)
+    public SmsCodeSender smsCodeSender() {
+        return new DefaultSmsCodeSender();
+    }
+
 
 }

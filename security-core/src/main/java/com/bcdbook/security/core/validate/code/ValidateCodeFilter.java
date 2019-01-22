@@ -147,7 +147,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
 	    // 获取 session 中的校验码
 		ImageCode codeInSession = (ImageCode) sessionStrategy.getAttribute(request,
-				ValidateCodeController.SESSION_KEY);
+				ValidateCodeController.SESSION_KEY_FOR_CODE_IMAGE);
 
 		// 从请求中获取传入的验证码
 		String codeInRequest = ServletRequestUtils.getStringParameter(request.getRequest(), "imageCode");
@@ -161,7 +161,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 		}
 
 		if(codeInSession.isExpired()){
-			sessionStrategy.removeAttribute(request, ValidateCodeController.SESSION_KEY);
+			sessionStrategy.removeAttribute(request, ValidateCodeController.SESSION_KEY_FOR_CODE_IMAGE);
 			throw new ValidateCodeException("验证码已过期");
 		}
 		
@@ -170,7 +170,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 		}
 
 		// 清除缓存中的验证码
-		sessionStrategy.removeAttribute(request, ValidateCodeController.SESSION_KEY);
+		sessionStrategy.removeAttribute(request, ValidateCodeController.SESSION_KEY_FOR_CODE_IMAGE);
 	}
 
 }

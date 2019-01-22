@@ -1,6 +1,7 @@
 package com.bcdbook.security.core.properties.code;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 图片验证码配置项
@@ -10,7 +11,8 @@ import lombok.Data;
  * @version V1.0.0-RELEASE
  */
 @Data
-public class ImageCodeProperties {
+@EqualsAndHashCode(callSuper = true)
+public class ImageCodeProperties extends SmsCodeProperties {
 
 	/**
 	 * 图片宽
@@ -20,17 +22,4 @@ public class ImageCodeProperties {
 	 * 图片高
 	 */
 	private int height = 23;
-    /**
-     * 验证码长度
-     */
-    private int length = 4;
-    /**
-     * 有效时长 (单位是: 秒)
-     */
-    private int expire = 60;
-    /**
-     * 需要拦截的地址
-     */
-    private String urls;
-
 }
