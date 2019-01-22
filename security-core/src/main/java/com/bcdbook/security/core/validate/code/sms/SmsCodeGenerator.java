@@ -1,6 +1,8 @@
-package com.bcdbook.security.core.validate.code;
+package com.bcdbook.security.core.validate.code.sms;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.validate.code.ValidateCode;
+import com.bcdbook.security.core.validate.code.ValidateCodeGenerator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang.RandomStringUtils;

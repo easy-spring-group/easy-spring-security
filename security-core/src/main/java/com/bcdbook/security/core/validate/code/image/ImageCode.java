@@ -1,5 +1,6 @@
-package com.bcdbook.security.core.validate.code;
+package com.bcdbook.security.core.validate.code.image;
 
+import com.bcdbook.security.core.validate.code.ValidateCode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

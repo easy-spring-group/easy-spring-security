@@ -1,6 +1,7 @@
-package com.bcdbook.security.core.validate.code;
+package com.bcdbook.security.core.validate.code.image;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.validate.code.ValidateCodeGenerator;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.bind.ServletRequestUtils;

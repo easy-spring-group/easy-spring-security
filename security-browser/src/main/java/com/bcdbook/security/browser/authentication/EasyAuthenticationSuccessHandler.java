@@ -22,9 +22,9 @@ import java.io.IOException;
  * @date 2019-01-17 12:02
  * @version V1.0.0-RELEASE
  */
-@Component("browserAuthenticationSuccessHandler")
+@Component("easyAuthenticationSuccessHandler")
 @Slf4j
-public class BrowserAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
     /**
      * 注入 jackson 的 mapper 工具

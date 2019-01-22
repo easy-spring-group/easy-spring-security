@@ -1,6 +1,7 @@
 package com.bcdbook.security.core.validate.code;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.validate.code.image.ImageCodeGenerator;
 import com.bcdbook.security.core.validate.code.sms.DefaultSmsCodeSender;
 import com.bcdbook.security.core.validate.code.sms.SmsCodeSender;
 import org.springframework.beans.factory.annotation.Autowired;

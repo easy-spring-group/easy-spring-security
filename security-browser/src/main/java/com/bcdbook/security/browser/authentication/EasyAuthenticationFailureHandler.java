@@ -23,9 +23,9 @@ import java.io.IOException;
  * @date 2019-01-21 17:16
  * @version V1.0.0-RELEASE
  */
-@Component("browserAuthenticationFailureHandler")
+@Component("easyAuthenticationFailureHandler")
 @Slf4j
-public class BrowserAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+public class EasyAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     /**
      * 注入 jackson 的 mapper 工具

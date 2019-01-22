@@ -1,6 +1,6 @@
 package com.bcdbook.security.demo.code;
 
-import com.bcdbook.security.core.validate.code.ImageCode;
+import com.bcdbook.security.core.validate.code.image.ImageCode;
 import com.bcdbook.security.core.validate.code.ValidateCodeGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -22,7 +22,7 @@ public class DemoImageCodeGenerator implements ValidateCodeGenerator {
      * @author summer
      * @date 2019-01-21 19:31
      * @param request Servlet 请求对象
-     * @return com.bcdbook.security.core.validate.code.ImageCode
+     * @return com.bcdbook.security.core.validate.code.image.ImageCode
      * @version V1.0.0-RELEASE
      */
     @Override

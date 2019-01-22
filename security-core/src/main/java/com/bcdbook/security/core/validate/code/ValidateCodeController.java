@@ -1,5 +1,6 @@
 package com.bcdbook.security.core.validate.code;
 
+import com.bcdbook.security.core.validate.code.image.ImageCode;
 import com.bcdbook.security.core.validate.code.sms.SmsCodeSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;

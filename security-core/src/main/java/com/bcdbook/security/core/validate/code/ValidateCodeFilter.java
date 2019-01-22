@@ -1,15 +1,18 @@
 package com.bcdbook.security.core.validate.code;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.validate.code.image.ImageCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
+import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
@@ -33,6 +36,7 @@ import java.util.Set;
  * @date 2019-01-21 18:29
  * @version V1.0.0-RELEASE
  */
+@Component("validateCodeFilter")
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -41,7 +45,13 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
     /**
      * 权限校验失败的处理器
      */
+    @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler;
+    /**
+     * 安全配置
+     */
+    @Autowired
+    private SecurityProperties securityProperties;
 
     /**
      * session 操作的工具
@@ -53,10 +63,6 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
      */
     private Set<String> urls = new HashSet<>();
 
-    /**
-     * 安全配置
-     */
-    private SecurityProperties securityProperties;
     /**
      * 请求路径匹配器
      */
