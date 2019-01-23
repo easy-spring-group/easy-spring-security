@@ -16,23 +16,23 @@ public interface SecurityConstants {
      * @date 2019-01-23 14:33
      * @version V1.0.0-RELEASE
      */
-    interface Signin {
+    interface SignIn {
         /**
          * 当请求需要身份认证时，默认跳转的url
          */
-        String AUTHENTICATION_URL = "/authentication/require";
+        String DEFAULT_AUTHENTICATION_URL = "/authentication/require";
         /**
          * 默认的用户名密码登录请求处理url
          */
-        String SIGNIN_PROCESSING_URL_FORM = "/authentication/form";
+        String DEFAULT_SIGN_IN_PROCESSING_URL_FORM = "/authentication/form";
         /**
          * 默认的手机验证码登录请求处理url
          */
-        String SIGNIN_PROCESSING_URL_MOBILE = "/authentication/mobile";
+        String DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE = "/authentication/mobile";
         /**
          * 默认登录页面
          */
-        String SIGNIN_PAGE_URL = "/easy-signIn.html";
+        String DEFAULT_SIGN_IN_PAGE_URL = "/easy-signIn.html";
     }
 
     /**
@@ -46,7 +46,7 @@ public interface SecurityConstants {
         /**
          * 默认的处理验证码的 url 前缀
          */
-        String VALIDATE_CODE_URL_PREFIX = "/validate/code";
+        String DEFAULT_VALIDATE_CODE_URL_PREFIX = "/validate/code";
         /**
          * 验证图片验证码时，http请求中默认的携带图片验证码信息的参数的名称
          */
@@ -63,6 +63,18 @@ public interface SecurityConstants {
          * 发送短信验证码时设定的模板的参数名称
          */
         String PARAMETER_NAME_TEMPLATE = "template";
+        /**
+         * 验证码的默认存储器
+         */
+        String DEFAULT_REPOSITORY = "session";
+        /**
+         * 验证码的有效时长(单位是秒)
+         */
+        long DEFAULT_EXPIRE = 300;
+        /**
+         * 默认的使用 Redis 存储验证码时在 head 中传参的 key
+         */
+        String DEFAULT_HEADER_DEVICE_ID = "deviceId";
     }
 
     /**

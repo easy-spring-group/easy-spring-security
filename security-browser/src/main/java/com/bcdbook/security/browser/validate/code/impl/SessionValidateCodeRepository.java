@@ -3,20 +3,23 @@ package com.bcdbook.security.browser.validate.code.impl;
 import com.bcdbook.security.core.validate.code.ValidateCode;
 import com.bcdbook.security.core.validate.code.ValidateCodeRepository;
 import com.bcdbook.security.core.validate.code.ValidateCodeType;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 
 /**
- * 基于session的验证码存取器
+ * 基于 session 的验证码存取器
+ * 当没有其存取器存在的时候, 使用该存取器
  *
- * @author zhailiang
- *
+ * @author summer
+ * @date 2019-01-23 15:24
+ * @version V1.0.0-RELEASE
  */
 @Component
+@ConditionalOnProperty(prefix = "easy-spring.security.code", name = "repository", havingValue = "session")
 public class SessionValidateCodeRepository implements ValidateCodeRepository {
-
 	/**
 	 * 验证码放入 session 时的前缀
 	 */

@@ -41,7 +41,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
      * @version V1.0.0-RELEASE
      */
     public SmsCodeAuthenticationFilter() {
-        super(new AntPathRequestMatcher(SecurityConstants.Signin.SIGNIN_PROCESSING_URL_MOBILE, RequestMethod.POST.name()));
+        super(new AntPathRequestMatcher(SecurityConstants.SignIn.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE, RequestMethod.POST.name()));
     }
 
     /**

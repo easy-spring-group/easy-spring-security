@@ -102,11 +102,11 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 
                     // 请求拦截时, 忽略一下路径
                     .antMatchers(
-                        SecurityConstants.Signin.AUTHENTICATION_URL,
-                        SecurityConstants.Signin.SIGNIN_PROCESSING_URL_MOBILE,
+                        SecurityConstants.SignIn.DEFAULT_AUTHENTICATION_URL,
+                        SecurityConstants.SignIn.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE,
                         securityProperties.getBrowser().getLoginPage(),
                         // 验证码接口,
-                        SecurityConstants.Validate.VALIDATE_CODE_URL_PREFIX + "/*")
+                        SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*")
                         .permitAll()
                     // 所有的权限校验
                     .anyRequest()

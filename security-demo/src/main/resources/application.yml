@@ -1,9 +1,22 @@
 server:
   port: 8080
 spring:
+
   profiles:
     active: summer
 
+  redis:
+    host: ${easy-spring.redis.server-host}
+    port: ${easy-spring.redis.port}
+    password: ${easy-spring.redis.passowrd}
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+    timeout: 3000ms
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://${easy-spring.mysql.server-host}:${easy-spring.mysql.port}/${easy-spring.mysql.database}?useUnicode=yes&characterEncode=utf-8&useSSL=false
@@ -31,5 +44,5 @@ easy-spring:
           url: /user/1
           method: GET
           validateCodeType: SMS
-
+      repository: session
 

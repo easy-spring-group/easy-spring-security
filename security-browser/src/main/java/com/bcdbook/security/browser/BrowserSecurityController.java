@@ -1,6 +1,6 @@
 package com.bcdbook.security.browser;
 
-import com.bcdbook.security.core.EasyAuthenticationException;
+import com.bcdbook.security.browser.support.SimpleResponse;
 import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.core.properties.SecurityProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -57,9 +57,9 @@ public class BrowserSecurityController {
      * @return com.bcdbook.security.browser.support.SimpleResponse
      * @version V1.0.0-RELEASE
      */
-    @RequestMapping(SecurityConstants.Signin.AUTHENTICATION_URL)
+    @RequestMapping(SecurityConstants.SignIn.DEFAULT_AUTHENTICATION_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-    public void requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // 获取请求的缓存
         SavedRequest savedRequest = requestCache.getRequest(request, response);
@@ -80,9 +80,11 @@ public class BrowserSecurityController {
         boolean endsWithHtml = StringUtils.endsWithIgnoreCase(targetUrl, ".html");
         // 如果都不是
         if (!isHtml && !endsWithHtml) {
-            throw new EasyAuthenticationException("访问的服务需要身份认证，请引导用户到登录页");
+            return new SimpleResponse("用户未登录, 请引导用户到登录界面");
         }
         redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
+
+        return new SimpleResponse("用户未登录, 请引导用户到登录界面");
     }
 
     /**

@@ -22,6 +22,8 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 public class ImageCode extends ValidateCode {
 
+    private static final long serialVersionUID = -8707549135300454578L;
+
     /**
      * 验证码图片
      */

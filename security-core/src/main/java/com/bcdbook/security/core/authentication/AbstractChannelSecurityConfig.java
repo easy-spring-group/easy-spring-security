@@ -39,9 +39,9 @@ public class AbstractChannelSecurityConfig extends WebSecurityConfigurerAdapter 
     protected void applyPasswordAuthenticationConfig(HttpSecurity http) throws Exception {
         http.formLogin()
                 // 登录页
-                .loginPage(SecurityConstants.Signin.AUTHENTICATION_URL)
+                .loginPage(SecurityConstants.SignIn.DEFAULT_AUTHENTICATION_URL)
                 // 用户登录的接口, SpringSecurity 会监听这个接口, 当有 post 请求时, Security 会执行登录逻辑(不需要我们自己实现)
-                .loginProcessingUrl(SecurityConstants.Signin.SIGNIN_PROCESSING_URL_FORM)
+                .loginProcessingUrl(SecurityConstants.SignIn.DEFAULT_SIGN_IN_PROCESSING_URL_FORM)
                 // 设置登录成功的处理拦截器
                 .successHandler(easyAuthenticationSuccessHandler)
                 // 等失败的拦截器

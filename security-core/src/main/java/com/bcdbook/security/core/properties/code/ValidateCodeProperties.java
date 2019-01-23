@@ -1,5 +1,6 @@
 package com.bcdbook.security.core.properties.code;
 
+import com.bcdbook.security.core.properties.SecurityConstants;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,5 +23,12 @@ public class ValidateCodeProperties {
      * 短信验证码的配置
      */
     private SmsCodeProperties sms = new SmsCodeProperties();
-
+    /**
+     * 验证码的存储器(默认为 session)
+     */
+    private String repository = SecurityConstants.Validate.DEFAULT_REPOSITORY;
+    /**
+     * 验证码在 Redis 中存储的有效时长
+     */
+    private long expire = SecurityConstants.Validate.DEFAULT_EXPIRE;;
 }
