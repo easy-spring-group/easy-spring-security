@@ -6,7 +6,7 @@
 
     <!--父级项目信息-->
     <parent>
-        <artifactId>spring-security-demo</artifactId>
+        <artifactId>spring-security-build</artifactId>
         <groupId>com.bcdbook.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>

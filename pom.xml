@@ -8,7 +8,7 @@
     <!--项目组名称-->
     <groupId>com.bcdbook.security</groupId>
     <!--项目标识-->
-    <artifactId>spring-security-demo</artifactId>
+    <artifactId>spring-security-build</artifactId>
     <!--项目版本-->
     <version>${base.version}</version>
     <!--jar 包管理方式-->
