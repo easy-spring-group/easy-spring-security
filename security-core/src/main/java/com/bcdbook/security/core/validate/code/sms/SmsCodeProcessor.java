@@ -39,11 +39,22 @@ public class SmsCodeProcessor extends AbstractValidateCodeProcessor<ValidateCode
 	protected void send(ServletWebRequest request, ValidateCode validateCode)
             throws ServletRequestBindingException {
 
+	    /*
+	     * 获取手机号
+	     */
 	    // 获取发送短信验证码 或 验证短信验证码时，传递手机号的参数的名称
 		String paramName = SecurityConstants.Validate.PARAMETER_NAME_MOBILE;
 		// 从请求中, 根据约定好的手机号参数名, 获取手机号
 		String mobile = ServletRequestUtils.getRequiredStringParameter(request.getRequest(), paramName);
+
+		/*
+		 * 获取模板
+		 */
+		// 获取发送短信验证码 或 验证短信验证码时，传递模板的参数的名称
+		String templateName = SecurityConstants.Validate.PARAMETER_NAME_TEMPLATE;
+        // 从请求中, 根据约定好的模板参数名, 获取模板
+        String templateCode = ServletRequestUtils.getRequiredStringParameter(request.getRequest(), templateName);
 		// 执行发送操作
-		smsCodeSender.send(mobile, validateCode.getCode());
+		smsCodeSender.send(mobile, validateCode.getCode(), templateCode);
 	}
 }

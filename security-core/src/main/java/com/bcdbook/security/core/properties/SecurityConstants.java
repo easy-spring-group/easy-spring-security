@@ -59,6 +59,10 @@ public interface SecurityConstants {
          * 发送短信验证码 或 验证短信验证码时，传递手机号的参数的名称
          */
         String PARAMETER_NAME_MOBILE = "mobile";
+        /**
+         * 发送短信验证码时设定的模板的参数名称
+         */
+        String PARAMETER_NAME_TEMPLATE = "template";
     }
 
     /**
