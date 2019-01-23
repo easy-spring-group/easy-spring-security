@@ -37,7 +37,7 @@ public class ValidateCodeController {
      * @return void
      * @version V1.0.0-RELEASE
      */
-    @GetMapping(SecurityConstants.VALIDATE_CODE_URL_PREFIX + "/{type}")
+    @GetMapping(SecurityConstants.Validate.VALIDATE_CODE_URL_PREFIX + "/{type}")
     public void createCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type)
             throws Exception {
 

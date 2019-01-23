@@ -89,7 +89,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
         }
         // 创建短信验证码的登录请求, 并设置到拦截器中
         ValidateCodeFilterUrlProperties smsSigninUrl = new ValidateCodeFilterUrlProperties(
-                SecurityConstants.SIGN_IN_PROCESSING_URL_MOBILE,
+                SecurityConstants.Signin.SIGNIN_PROCESSING_URL_MOBILE,
                 RequestMethod.POST,
                 ValidateCodeType.SMS);
         filterUrlList.add(smsSigninUrl);

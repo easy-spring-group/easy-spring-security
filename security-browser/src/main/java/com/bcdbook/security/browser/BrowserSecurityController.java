@@ -57,7 +57,7 @@ public class BrowserSecurityController {
      * @return com.bcdbook.security.browser.support.SimpleResponse
      * @version V1.0.0-RELEASE
      */
-    @RequestMapping(SecurityConstants.AUTHENTICATION_URL)
+    @RequestMapping(SecurityConstants.Signin.AUTHENTICATION_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public void requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
 

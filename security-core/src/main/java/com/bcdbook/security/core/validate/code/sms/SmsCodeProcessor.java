@@ -40,7 +40,7 @@ public class SmsCodeProcessor extends AbstractValidateCodeProcessor<ValidateCode
             throws ServletRequestBindingException {
 
 	    // 获取发送短信验证码 或 验证短信验证码时，传递手机号的参数的名称
-		String paramName = SecurityConstants.PARAMETER_NAME_MOBILE;
+		String paramName = SecurityConstants.Validate.PARAMETER_NAME_MOBILE;
 		// 从请求中, 根据约定好的手机号参数名, 获取手机号
 		String mobile = ServletRequestUtils.getRequiredStringParameter(request.getRequest(), paramName);
 		// 执行发送操作

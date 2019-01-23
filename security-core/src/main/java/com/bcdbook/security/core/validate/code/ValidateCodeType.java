@@ -17,7 +17,7 @@ public enum ValidateCodeType {
 	SMS {
 		@Override
 		public String getParamNameOnValidate() {
-			return SecurityConstants.PARAMETER_NAME_CODE_SMS;
+			return SecurityConstants.Validate.PARAMETER_NAME_CODE_SMS;
 		}
 	},
 	/**
@@ -26,7 +26,7 @@ public enum ValidateCodeType {
 	IMAGE {
 		@Override
 		public String getParamNameOnValidate() {
-			return SecurityConstants.PARAMETER_NAME_CODE_IMAGE;
+			return SecurityConstants.Validate.PARAMETER_NAME_CODE_IMAGE;
 		}
 	};
 

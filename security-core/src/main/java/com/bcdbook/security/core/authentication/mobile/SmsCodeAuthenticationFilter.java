@@ -25,7 +25,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
     /**
      * 手机号登录时, 传入的手机号的参数名称
      */
-    private String mobileParameter = SecurityConstants.PARAMETER_NAME_MOBILE;
+    private String mobileParameter = SecurityConstants.Validate.PARAMETER_NAME_MOBILE;
     /**
      * 是否只允许 post 请求
      */
@@ -41,7 +41,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
      * @version V1.0.0-RELEASE
      */
     public SmsCodeAuthenticationFilter() {
-        super(new AntPathRequestMatcher(SecurityConstants.SIGN_IN_PROCESSING_URL_MOBILE, RequestMethod.POST.name()));
+        super(new AntPathRequestMatcher(SecurityConstants.Signin.SIGNIN_PROCESSING_URL_MOBILE, RequestMethod.POST.name()));
     }
 
     /**
