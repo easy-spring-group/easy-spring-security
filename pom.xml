@@ -22,6 +22,7 @@
         <module>security-browser</module>
         <module>security-app</module>
         <module>security-demo</module>
+        <module>spring-social</module>
     </modules>
 
     <!--项目名称-->

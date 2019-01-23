@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>security-dependencies</artifactId>
+        <groupId>com.bcdbook.security</groupId>
+        <!--suppress MavenPropertyInParent -->
+        <version>${base.version}</version>
+        <relativePath>../security-dependencies</relativePath>
+    </parent>
+
+    <artifactId>spring-social</artifactId>
+    <!--打包方式-->
+    <packaging>pom</packaging>
+
+    <!--项目名称-->
+    <name>Spring Social</name>
+    <!--项目简介-->
+    <description>Spring Social</description>
+    <!--项目连接地址-->
+    <url>https://easyspring.bcdbook.com/</url>
+
+    <modules>
+        <module>spring-social-core</module>
+        <module>spring-social-qq</module>
+        <module>spring-social-wechat</module>
+    </modules>
+</project>
