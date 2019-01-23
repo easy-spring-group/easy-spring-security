@@ -1,7 +1,6 @@
 package com.bcdbook.security.browser.authentication;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
-import com.bcdbook.security.core.support.SimpleResponse;
 import com.bcdbook.security.core.properties.SignInResponseType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -65,7 +64,7 @@ public class EasyAuthenticationFailureHandler extends SimpleUrlAuthenticationFai
             // 设置返回类型和编码
             response.setContentType("application/json;charset=UTF-8");
             // 返回信息
-            response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(exception.getMessage())));
+            response.getWriter().write(objectMapper.writeValueAsString(exception.getMessage()));
         }else{
             // 如果不是 json 则直接调用父类的返回(页面跳转)
             super.onAuthenticationFailure(request, response, exception);

@@ -41,4 +41,8 @@ public interface SecurityConstants {
      */
     String PARAMETER_NAME_MOBILE = "mobile";
 
+    interface ErrorCode {
+        Integer NO_AUTHENTICATION = 6000;
+    }
+
 }

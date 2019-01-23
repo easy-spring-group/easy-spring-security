@@ -1,8 +1,8 @@
 package com.bcdbook.security.browser;
 
+import com.bcdbook.security.core.EasyAuthenticationException;
 import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.core.properties.SecurityProperties;
-import com.bcdbook.security.core.support.SimpleResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,26 +59,50 @@ public class BrowserSecurityController {
      */
     @RequestMapping(SecurityConstants.AUTHENTICATION_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-    public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        // 获取情趣的缓存
+        // 获取请求的缓存
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 
+        // 定于引发跳转的请求地址
+        String targetUrl = "";
+        // 如果缓存的跳转请求不为空
         if (savedRequest != null) {
             // 从请求的缓存中获取其上一个请求
-            String targetUrl = savedRequest.getRedirectUrl();
-
-            log.info("引发跳转的请求是:"+targetUrl);
-
-            // 如果忽略大小写的情况下是以 .html 结尾, 则跳转到登录页面
-            // TODO: 2019-01-21 此处想要解决是通过页面访问还是通过 json 请求的方式访问, 此方法过于简单粗暴, 后期优化
-            if(StringUtils.endsWithIgnoreCase(targetUrl, ".html")){
-                redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
-            }
+            targetUrl = savedRequest.getRedirectUrl();
         }
 
-        // 如果不是, 则返回 json 格式的简单错误信息
-        return new SimpleResponse("访问的服务需要身份认证，请引导用户到登录页");
+        log.info("引发跳转的请求是:"+targetUrl);
+
+        // 检查是否是 html 请求
+        boolean isHtml = isHtml(request);
+        // 检查是否以 .html 结尾
+        boolean endsWithHtml = StringUtils.endsWithIgnoreCase(targetUrl, ".html");
+        // 如果都不是
+        if (!isHtml && !endsWithHtml) {
+            throw new EasyAuthenticationException("访问的服务需要身份认证，请引导用户到登录页");
+        }
+        redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
     }
 
+    /**
+     * 校验当前请求是否是 ajax 请求
+     *
+     * @author summer
+     * @date 2019-01-07 17:34
+     * @param request 请求对象
+     * @return boolean
+     * @version V1.0.0-RELEASE
+     */
+    private static boolean isHtml(HttpServletRequest request){
+        // 传入参数校验
+        if (request == null) {
+            return false;
+        }
+
+        // 从请求头中获取 内容类型
+        String accept = request.getHeader("Accept");
+        // 如果请求内容不为空, 并且包含 json 则说明是 ajax 请求
+        return !StringUtils.isEmpty(accept) && accept.contains("text/html");
+    }
 }

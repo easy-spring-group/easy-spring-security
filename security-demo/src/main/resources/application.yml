@@ -27,7 +27,9 @@ easy-spring:
       image:
         length: 2
         width: 100
-        urls: /user/*
-
+        urls[0]:
+          url: /user/1
+          method: GET
+          validateCodeType: SMS
 
 

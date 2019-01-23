@@ -2,13 +2,14 @@ package com.bcdbook.security.core.validate.code;
 
 import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.properties.code.ValidateCodeFilterUrlProperties;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -18,9 +19,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 验证码的过滤器
@@ -52,7 +52,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
     /**
      * 存放所有需要校验验证码的 url
      */
-    private Map<String, ValidateCodeType> urlMap = new HashMap<>();
+    private List<ValidateCodeFilterUrlProperties> filterUrlList = new ArrayList<>();
     /**
      * 验证请求 url 与配置的 url 是否匹配的工具类
      */
@@ -60,7 +60,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
     /**
      * 初始化要拦截的 url 配置信息
-     * 在父级的 bean 初始化完成后, 进行设置的动心
+     * 在父级的 bean 初始化完成后, 进行设置的动作
      *
      * @author summer
      * @date 2019-01-17 15:41
@@ -73,38 +73,26 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
         super.afterPropertiesSet();
 
         /*
-         * 设置需要突破验证码的接口
+         * 设置需要图片验证码的接口
          */
-        // 设置 form 登录接口需要突破验证码
-        //urlMap.put(SecurityConstants.SIGN_IN_PROCESSING_URL_FORM, ValidateCodeType.IMAGE);
-        // 循环设置需要图片验证码的地址
-        addUrlToMap(securityProperties.getCode().getImage().getUrls(), ValidateCodeType.IMAGE);
-
-        // 设置手机验证码登录的请求需要短信验证
-        urlMap.put(SecurityConstants.SIGN_IN_PROCESSING_URL_MOBILE, ValidateCodeType.SMS);
-        // 循环设置需要短信验证码的地址
-        addUrlToMap(securityProperties.getCode().getSms().getUrls(), ValidateCodeType.SMS);
-    }
-
-    /**
-     * 将系统中配置的需要校验验证码的 URL 根据校验的类型放入 map
-     *
-     * @author summer
-     * @date 2019-01-17 15:45
-     * @param urlString 需要验证码校验的 url (以逗号隔开的字符串)
-     * @param type 需要的验证类型
-     * @return void
-     * @version V1.0.0-RELEASE
-     */
-    protected void addUrlToMap(String urlString, ValidateCodeType type) {
-        // 如果传入的需要拦截的地址不为空则进入循环添加
-        if (StringUtils.isNotBlank(urlString)) {
-            // 以逗号为分隔符, 分割出需要拦截的地址
-            String[] urls = StringUtils.splitByWholeSeparatorPreserveAllTokens(urlString, ",");
-            for (String url : urls) {
-                urlMap.put(url, type);
-            }
+        List<ValidateCodeFilterUrlProperties> imageCodeFilterUrls = securityProperties.getCode().getImage().getUrls();
+        if (!CollectionUtils.isEmpty(imageCodeFilterUrls)) {
+            filterUrlList.addAll(imageCodeFilterUrls);
         }
+
+        /*
+         * 设置需要短信验证码的接口
+         */
+        List<ValidateCodeFilterUrlProperties> smsCodeFilterUrls = securityProperties.getCode().getSms().getUrls();
+        if (CollectionUtils.isEmpty(smsCodeFilterUrls)) {
+            filterUrlList.addAll(smsCodeFilterUrls);
+        }
+        // 创建短信验证码的登录请求, 并设置到拦截器中
+        ValidateCodeFilterUrlProperties smsSigninUrl = new ValidateCodeFilterUrlProperties(
+                SecurityConstants.SIGN_IN_PROCESSING_URL_MOBILE,
+                RequestMethod.POST,
+                ValidateCodeType.SMS);
+        filterUrlList.add(smsSigninUrl);
     }
 
     /**
@@ -136,7 +124,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
         // 如果验证码的类型不为空
         // 输入日志
-        log.info("校验请求(" + request.getRequestURI() + ")中的验证码,验证码类型" + type);
+        log.info("校验请求: {}, 验证码类型: {}", request.getRequestURI(), type);
 
         try {
             // 获取验证码的处理器并执行验证码的验证
@@ -166,23 +154,24 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
      */
     private ValidateCodeType getValidateCodeType(HttpServletRequest request) {
         // 定义需要校验的类型
-        ValidateCodeType result = null;
+        ValidateCodeType validateCodeType = null;
 
-        // 忽略大小写匹配, 如果请求的方法是如果不是 get 请求
-        if (!StringUtils.equalsIgnoreCase(request.getMethod(), RequestMethod.GET.name())) {
-            // 获取需要拦截的请求的 key (也就是需要拦截的地址)
-            Set<String> urls = urlMap.keySet();
-            // 循环匹配
-            // TODO: 2019-01-21 此处只能拦截请求地址, 而不能区分请求方式, 需要优化
-            for (String url : urls) {
-                // 如果当前的地址和需要验证码校验的地址匹配(使用 pathMatcher 匹配器匹配)
-                if (pathMatcher.match(url, request.getRequestURI())) {
-                    result = urlMap.get(url);
+        boolean urlMatch = false;
+        boolean methodMatch = false;
+        for (ValidateCodeFilterUrlProperties filterUrlProperties : filterUrlList) {
+            if (filterUrlProperties != null) {
+                urlMatch = pathMatcher.match(filterUrlProperties.getUrl(), request.getRequestURI());
+                methodMatch = request.getMethod().equalsIgnoreCase(filterUrlProperties.getMethod().name());
+                if (urlMatch && methodMatch) {
+                    validateCodeType = filterUrlProperties.getValidateCodeType();
                 }
             }
+
+            urlMatch = false;
+            methodMatch = false;
         }
 
         // 返回需要校验的验证码类型
-        return result;
+        return validateCodeType;
     }
 }

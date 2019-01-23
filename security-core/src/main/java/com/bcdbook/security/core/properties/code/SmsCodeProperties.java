@@ -2,6 +2,9 @@ package com.bcdbook.security.core.properties.code;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 短信验证码的配置
  *
@@ -22,5 +25,5 @@ public class SmsCodeProperties {
     /**
      * 需要拦截的地址
      */
-    private String urls;
+    private List<ValidateCodeFilterUrlProperties> urls = new ArrayList<>();
 }

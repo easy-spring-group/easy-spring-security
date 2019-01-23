@@ -2,7 +2,6 @@ package com.bcdbook.security.browser.authentication;
 
 import com.bcdbook.security.core.properties.SecurityProperties;
 import com.bcdbook.security.core.properties.SignInResponseType;
-import com.bcdbook.security.core.support.SimpleResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +37,6 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
     @Autowired
     private SecurityProperties securityProperties;
 
-//	private RequestCache requestCache = new HttpSessionRequestCache();
-
     /**
      * 登录成功后的处理逻辑
      *
@@ -63,10 +60,8 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
 		if (SignInResponseType.JSON.equals(securityProperties.getBrowser().getSignInResponseType())) {
 		    // 设置返回类型及编码
 			response.setContentType("application/json;charset=UTF-8");
-			// 获取登录用户的类名
-			String type = authentication.getClass().getSimpleName();
 			// 发送到前端
-			response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(type)));
+			response.getWriter().write(objectMapper.writeValueAsString(authentication));
 		} else {
 //			// 如果设置了 easy-spring.security.browser.singInSuccessUrl ，总是跳到设置的地址上
 //			// 如果没设置，则尝试跳转到登录之前访问的地址上，如果登录前访问地址为空，则跳到网站根路径上
