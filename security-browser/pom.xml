@@ -35,6 +35,12 @@
             <artifactId>spring-session-core</artifactId>
         </dependency>
 
+        <!--加入 qq 的第三方登录配置-->
+        <dependency>
+            <groupId>com.bcdbook.security</groupId>
+            <artifactId>spring-social-qq</artifactId>
+        </dependency>
+
         <!--引入工具 jar-->
         <dependency>
             <groupId>org.projectlombok</groupId>

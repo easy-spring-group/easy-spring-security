@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 80
 spring:
 
   profiles:
@@ -46,3 +46,16 @@ easy-spring:
           validateCodeType: SMS
       repository: session
 
+    # 第三方登录的相关配置
+    social:
+      # qq 的配置
+      qq:
+        # 项目 id
+        app-id: ${easy-spring.qq.app-id}
+        # 项目密码
+        app-secret: ${easy-spring.qq.app-secret}
+        # 服务提供商的识别码
+        providerId: callback.do
+
+      # 配置第三方登录拦截的请求地址前缀
+      filter-processes-url: /qqLogin

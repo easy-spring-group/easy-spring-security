@@ -67,6 +67,23 @@
             <artifactId>spring-social-web</artifactId>
         </dependency>
 
+        <!--工具包-->
+        <!--基础操作-->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <!--集合操作-->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+        <!--反射操作-->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+
         <!--开发工具-->
         <dependency>
             <groupId>org.projectlombok</groupId>

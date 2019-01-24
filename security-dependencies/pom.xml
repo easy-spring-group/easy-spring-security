@@ -166,6 +166,18 @@
                 <artifactId>security-app</artifactId>
                 <version>${base.version}</version>
             </dependency>
+            <!--spring social 的基础核心-->
+            <dependency>
+                <groupId>com.bcdbook.security</groupId>
+                <artifactId>spring-social-core</artifactId>
+                <version>${base.version}</version>
+            </dependency>
+            <!--QQ 登录的相关 jar-->
+            <dependency>
+                <groupId>com.bcdbook.security</groupId>
+                <artifactId>spring-social-qq</artifactId>
+                <version>${base.version}</version>
+            </dependency>
 
 
             <!--<dependency>-->

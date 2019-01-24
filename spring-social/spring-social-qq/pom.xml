@@ -21,4 +21,17 @@
     <!--项目连接地址-->
     <url>https://easyspring.bcdbook.com/</url>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>com.bcdbook.security</groupId>
+            <artifactId>spring-social-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 </project>

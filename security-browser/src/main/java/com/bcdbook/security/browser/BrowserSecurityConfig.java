@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 import javax.sql.DataSource;
 
@@ -47,6 +48,12 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 //     */
 //    @Autowired
 //    private FormAuthenticationConfig formAuthenticationConfig;
+
+    /**
+     * 注入 social 登录的配置
+     */
+    @Autowired
+    private SpringSocialConfigurer easySpringSocialConfigurer;
 
     /**
      * 注入验证码主类的配置类
@@ -87,6 +94,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                     .and()
                 // 短信验证码的配置
                 .apply(smsCodeAuthenticationSecurityConfig)
+                    .and()
+                // social 登录的配置
+                .apply(easySpringSocialConfigurer)
                     .and()
                 // 记住我的配置
                 .rememberMe()
