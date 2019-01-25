@@ -51,6 +51,7 @@ public class UserController {
         //注册用户
         //不管是注册用户还是绑定用户，都会拿到一个用户唯一标识。
         String userId = user.getUsername();
+        // 这里的 userId 会设置成 UserConnection 的主键
         providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
 
     }

@@ -10,6 +10,7 @@ import org.springframework.social.UserIdSource;
 import org.springframework.social.config.annotation.EnableSocial;
 import org.springframework.social.config.annotation.SocialConfigurerAdapter;
 import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import org.springframework.social.connect.web.ProviderSignInUtils;
@@ -43,6 +44,11 @@ public class SocialConfig extends SocialConfigurerAdapter {
      */
     @Autowired
     private SocialProperties socialProperties;
+    /**
+     * 注入自动注册的实现
+     */
+    @Autowired(required = false)
+    private ConnectionSignUp connectionSignUp;
 
     /**
      * 获取社交登录存储的存储器
@@ -67,6 +73,10 @@ public class SocialConfig extends SocialConfigurerAdapter {
          */
         JdbcUsersConnectionRepository repository = 
                 new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator, Encryptors.noOpText());
+        // 当自动注册的实现不为空的时候, 设置自动注册的注册器
+        if (connectionSignUp != null) {
+            repository.setConnectionSignUp(connectionSignUp);
+        }
 
         // 设置数据库表的前缀
         // TODO: 2019-01-24 需要抽取成常量 
