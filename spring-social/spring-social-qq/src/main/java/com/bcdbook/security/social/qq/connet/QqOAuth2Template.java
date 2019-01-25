@@ -2,8 +2,6 @@ package com.bcdbook.security.social.qq.connet;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.social.oauth2.OAuth2Template;
@@ -37,7 +35,7 @@ public class QqOAuth2Template extends OAuth2Template {
      */
     public QqOAuth2Template(String clientId, String clientSecret, String authorizeUrl, String accessTokenUrl) {
         super(clientId, clientSecret, authorizeUrl, accessTokenUrl);
-        // 只有设置 UseParametersForClientAuthentication = true 以后, 请求发送时才会带上 clientId 和 clientSecret
+// 只有设置 UseParametersForClientAuthentication = true 以后, 请求发送时才会带上 clientId 和 clientSecret
         setUseParametersForClientAuthentication(true);
     }
 

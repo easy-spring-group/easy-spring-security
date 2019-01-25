@@ -21,6 +21,10 @@ public class SocialProperties {
      */
     private QqProperties qq = new QqProperties();
     /**
+     * 微信的配置类
+     */
+    private WeChatProperties weChat = new WeChatProperties();
+    /**
      * 过滤器拦截的路径
      */
     private String filterProcessesUrl = SocialConstant.DEFAULT_FILTER_PROCESSES_URL;

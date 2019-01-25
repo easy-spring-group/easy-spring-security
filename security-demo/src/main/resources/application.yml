@@ -55,7 +55,15 @@ easy-spring:
         # 项目密码
         app-secret: ${easy-spring.qq.app-secret}
         # 服务提供商的识别码
-        providerId: callback.do
+        provider-id: callback.do
+      # 微信的配置
+      we-chat:
+        # 项目 id
+        app-id: ${easy-spring.we-chat.app-id}
+        # 项目密码
+        app-secret: ${easy-spring.we-chat.app-secret}
+        # 服务提供商的识别码
+        provider-id: weixin
       # social 授权后, 若找不到用户, 跳转的路径
       sign-up-url: /demo-signUp.html
       # 配置第三方登录拦截的请求地址前缀

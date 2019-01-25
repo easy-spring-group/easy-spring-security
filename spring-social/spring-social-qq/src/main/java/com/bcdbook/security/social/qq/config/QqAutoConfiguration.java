@@ -28,7 +28,7 @@ import org.springframework.social.connect.UsersConnectionRepository;
  */
 @Configuration
 @ConditionalOnProperty(prefix = "easy-spring.security.social.qq", name = "app-id")
-public class QqAutoConfig extends SocialConfigurerAdapter {
+public class QqAutoConfiguration extends SocialConfigurerAdapter {
 
     /**
      * 注入 social 的相关配置

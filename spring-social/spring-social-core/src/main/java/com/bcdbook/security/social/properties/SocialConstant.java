@@ -13,6 +13,10 @@ public interface SocialConstant {
      */
     String DEFAULT_PROVIDER_ID_QQ = "qq";
     /**
+     * 默认的微信的服务商 id
+     */
+    String DEFAULT_PROVIDER_ID_WE_CHAT = "weChat";
+    /**
      * 默认的第三方权限校验的过滤地址
      */
     String DEFAULT_FILTER_PROCESSES_URL = "/auth";

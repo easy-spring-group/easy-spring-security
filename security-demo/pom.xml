@@ -32,6 +32,11 @@
             <groupId>com.bcdbook.security</groupId>
             <artifactId>spring-social-qq</artifactId>
         </dependency>
+        <!--引入通过微信登录的自定义 jar-->
+        <dependency>
+            <groupId>com.bcdbook.security</groupId>
+            <artifactId>spring-social-wechat</artifactId>
+        </dependency>
 
         <!--引入工具 jar-->
         <dependency>

@@ -178,6 +178,12 @@
                 <artifactId>spring-social-qq</artifactId>
                 <version>${base.version}</version>
             </dependency>
+            <!--微信登录的相关 jar-->
+            <dependency>
+                <groupId>com.bcdbook.security</groupId>
+                <artifactId>spring-social-wechat</artifactId>
+                <version>${base.version}</version>
+            </dependency>
 
 
             <!--<dependency>-->

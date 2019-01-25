@@ -38,6 +38,7 @@ public class EasySpringSocialConfigurer extends SpringSocialConfigurer {
      * @return T
      * @version V1.0.0-RELEASE
      */
+    @SuppressWarnings("unchecked")
     @Override
     protected <T> T postProcess(T object) {
         // 调用父级的方法, 生成 social 权限的过滤器
