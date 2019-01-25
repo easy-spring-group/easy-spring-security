@@ -24,5 +24,8 @@ public class SocialProperties {
      * 过滤器拦截的路径
      */
     private String filterProcessesUrl = SocialConstant.DEFAULT_FILTER_PROCESSES_URL;
-
+    /**
+     * 默认的注册地址
+     */
+    private String signUpUrl = SocialConstant.DEFAULT_SIGN_UP_URL;
 }

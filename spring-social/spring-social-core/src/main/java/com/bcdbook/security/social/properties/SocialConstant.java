@@ -16,4 +16,8 @@ public interface SocialConstant {
      * 默认的第三方权限校验的过滤地址
      */
     String DEFAULT_FILTER_PROCESSES_URL = "/auth";
+    /**
+     * 默认的注册页面
+     */
+    String DEFAULT_SIGN_UP_URL = "/resources/easy-signUp.html";
 }

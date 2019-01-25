@@ -12,6 +12,7 @@ import org.springframework.social.config.annotation.SocialConfigurerAdapter;
 import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
+import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
 import org.springframework.social.security.SpringSocialConfigurer;
 
@@ -55,6 +56,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
      */
     @Override
     public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
+
         /*
          * 创建 jdbc 的存储器
          * dataSource: 数据源
@@ -68,7 +70,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
 
         // 设置数据库表的前缀
         // TODO: 2019-01-24 需要抽取成常量 
-        repository.setTablePrefix("easy_spring_");
+        repository.setTablePrefix("EasySpring_");
 
         // 返回封装好的存储器
         return repository;
@@ -88,6 +90,8 @@ public class SocialConfig extends SocialConfigurerAdapter {
         String filterProcessUrl = socialProperties.getFilterProcessesUrl();
         // 创建自定义的 social 配置, 并修改过滤地址
         EasySpringSocialConfigurer configurer = new EasySpringSocialConfigurer(filterProcessUrl);
+        // 当授权后找不到用户的时候, 跳转的地址
+        configurer.signupUrl(socialProperties.getSignUpUrl());
         return configurer;
     }
 
@@ -102,6 +106,24 @@ public class SocialConfig extends SocialConfigurerAdapter {
     @Override
     public UserIdSource getUserIdSource() {
         return new AuthenticationNameUserIdSource();
+    }
+
+    /**
+     * Spring social 的工具类
+     * 1. 注册过程中拿到 spring social 的信息
+     * 2. 注册完成后, 如何把业务系统的 id 传递给 spring social
+     *
+     * @author summer
+     * @date 2019-01-25 15:12
+     * @param connectionFactoryLocator 连接工厂的调度器, 用于选择连接工厂
+     * @return org.springframework.social.connect.web.ProviderSignInUtils
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    public ProviderSignInUtils providerSignInUtils(ConnectionFactoryLocator connectionFactoryLocator) {
+        return new ProviderSignInUtils(connectionFactoryLocator,
+                getUsersConnectionRepository(connectionFactoryLocator)) {
+        };
     }
 
 }

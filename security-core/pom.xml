@@ -22,6 +22,12 @@
     <description>Security Core</description>
 
     <dependencies>
+        <!--TODO 暂时引用, 使用 social 的相关配置, 后期需要去除-->
+        <dependency>
+            <groupId>com.bcdbook.security</groupId>
+            <artifactId>spring-social-core</artifactId>
+        </dependency>
+
         <!--spring web 基础包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -5,6 +5,7 @@ import com.bcdbook.security.core.authentication.mobile.SmsCodeAuthenticationSecu
 import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.core.properties.SecurityProperties;
 import com.bcdbook.security.core.validate.code.ValidateCodeSecurityConfig;
+import com.bcdbook.security.social.properties.SocialProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,12 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
      */
     @Autowired
     private SecurityProperties securityProperties;
+    /**
+     * 注入 social 的基础参数配置
+     * TODO 暂时引用, 使用 social 的相关配置, 后期需要去除
+     */
+    @Autowired
+    private SocialProperties socialProperties;
     /**
      * 注入数据源
      */
@@ -112,9 +119,17 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 
                     // 请求拦截时, 忽略一下路径
                     .antMatchers(
+                        // 未授权的时候的跳转的页面
                         SecurityConstants.SignIn.DEFAULT_AUTHENTICATION_URL,
+                        // 手机验证码登录的接口
                         SecurityConstants.SignIn.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE,
+                        // 普通登录页面
                         securityProperties.getBrowser().getLoginPage(),
+                        // 授权完成后若没有用户信息, 所要跳转的页面
+                        // TODO 后期需要去除
+                        socialProperties.getSignUpUrl(),
+                        // TODO  后期需要抽离
+                        "/user/regist",
                         // 验证码接口,
                         SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*")
                         .permitAll()

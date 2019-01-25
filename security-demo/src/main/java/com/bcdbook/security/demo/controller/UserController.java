@@ -6,11 +6,15 @@ import com.fasterxml.jackson.annotation.JsonView;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.ServletWebRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,30 @@ import java.util.List;
 @RequestMapping("/user")
 @Slf4j
 public class UserController {
+
+    /**
+     * 注入 social 登录的工具类
+     */
+    @Autowired
+    private ProviderSignInUtils providerSignInUtils;
+
+    /**
+     * 注册的示例页面
+     *
+     * @author summer
+     * @date 2019-01-25 14:38
+     * @param user 用户对象
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @PostMapping("/regist")
+    public void regist(User user, HttpServletRequest request) {
+        //注册用户
+        //不管是注册用户还是绑定用户，都会拿到一个用户唯一标识。
+        String userId = user.getUsername();
+        providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+
+    }
 
     /**
      * 根据查询条件查询用户集合的方法
