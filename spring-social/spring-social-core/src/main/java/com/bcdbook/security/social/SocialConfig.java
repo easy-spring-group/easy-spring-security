@@ -10,9 +10,11 @@ import org.springframework.social.UserIdSource;
 import org.springframework.social.config.annotation.EnableSocial;
 import org.springframework.social.config.annotation.SocialConfigurerAdapter;
 import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
+import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
 import org.springframework.social.security.SpringSocialConfigurer;
@@ -136,4 +138,22 @@ public class SocialConfig extends SocialConfigurerAdapter {
         };
     }
 
+    /**
+     * 配置连接状态的 controller
+     * 必须要添加一个处理器
+     * 后补：这个是提供查询社交账户信息服务，绑定服务，等
+     *
+     * @author summer
+     * @date 2019-01-25 19:33
+     * @param connectionFactoryLocator 连接工厂加载器
+     * @param connectionRepository 连接存储器
+     * @return org.springframework.social.connect.web.ConnectController
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    public ConnectController connectController(
+            ConnectionFactoryLocator connectionFactoryLocator,
+            ConnectionRepository connectionRepository) {
+        return new ConnectController(connectionFactoryLocator, connectionRepository);
+    }
 }

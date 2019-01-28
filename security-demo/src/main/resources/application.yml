@@ -5,6 +5,9 @@ spring:
   profiles:
     active: summer
 
+  aop:
+    proxy-target-class: false
+
   redis:
     host: ${easy-spring.redis.server-host}
     port: ${easy-spring.redis.port}

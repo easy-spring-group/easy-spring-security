@@ -23,6 +23,10 @@
     <url>https://easyspring.bcdbook.com/</url>
 
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.security.oauth.boot</groupId>-->
+            <!--<artifactId>spring-security-oauth2-autoconfigure</artifactId>-->
+        <!--</dependency>-->
         <!--引入权限基础的 jar-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
