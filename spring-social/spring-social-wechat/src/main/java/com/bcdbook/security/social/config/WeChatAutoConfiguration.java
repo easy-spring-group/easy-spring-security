@@ -83,9 +83,21 @@ public class WeChatAutoConfiguration extends SocialConfigurerAdapter {
         return null;
     }
 
-    @Bean({"connect/wechatConnect", "connect/wechatConnected"})
-    @ConditionalOnMissingBean(name = "wechatConnectedView")
+    /**
+     * 把微信的绑定和解绑视图注入到 spring 容器中
+     * 用于封装返回的视图信息
+     * 用户可以通过注入 wechatConnectedView 的 bean 来替换掉默认的视图
+     * TODO 此处 bean 的名字后期需要调整
+     *
+     * @author summer
+     * @date 2019-01-28 15:43
+     * @return org.springframework.web.servlet.View
+     * @version V1.0.0-RELEASE
+     */
+    @Bean({"connect/weixinConnect", "connect/weixinConnected"})
+    @ConditionalOnMissingBean(name = "weixinConnectedView")
     public View wechatConnectedView() {
+        // 返回通用的的绑定视图
         return new EasyConnectView();
     }
 
