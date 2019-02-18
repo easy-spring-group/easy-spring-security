@@ -33,6 +33,10 @@ public interface SecurityConstants {
          * 默认登录页面
          */
         String DEFAULT_SIGN_IN_PAGE_URL = "/easy-signIn.html";
+        /**
+         * session 登录失效的跳转地址
+         */
+        String DEFAULT_SESSION_INVALID_URL = "/session/invalid";
     }
 
     /**

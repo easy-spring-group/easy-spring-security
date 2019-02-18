@@ -1,7 +1,12 @@
 server:
   port: 80
+  servlet:
+    # 设置 session 的超时时间, 时间的单位是秒, 最少要设置成 60 (1 分钟)
+    # 默认时长为 30 分钟
+    session:
+      timeout: 300s
+    # 设置 session 的最大有效数量
 spring:
-
   profiles:
     active: summer
 

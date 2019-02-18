@@ -172,7 +172,8 @@ public class UserController {
      * @version V1.0.0-RELEASE
      */
     @GetMapping("/me")
-    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user) {
+    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user, HttpServletRequest request) {
+        log.info(String.valueOf(request.getSession().getMaxInactiveInterval()));
         return user;
     }
 

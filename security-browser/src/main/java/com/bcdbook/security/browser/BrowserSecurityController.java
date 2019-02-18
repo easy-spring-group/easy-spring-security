@@ -12,6 +12,7 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -86,6 +87,26 @@ public class BrowserSecurityController {
 
         return new SimpleResponse("用户未登录, 请引导用户到登录界面");
     }
+
+    /**
+     * session 失效后跳转的地址
+     *
+     * @author summer
+     * @date 2019-02-18 18:29
+     * @param concurrency 是否是并发问题
+     * @return com.bcdbook.security.browser.support.SimpleResponse
+     * @version V1.0.0-RELEASE
+     */
+    @GetMapping(SecurityConstants.SignIn.DEFAULT_SESSION_INVALID_URL)
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public SimpleResponse sessionInvalid(boolean concurrency) {
+        String message = "session失效";
+        if(concurrency) {
+            message = message + ",有可能是并发登录导致的";
+        }
+        return new SimpleResponse(message);
+    }
+
 
     /**
      * 校验当前请求是否是 ajax 请求

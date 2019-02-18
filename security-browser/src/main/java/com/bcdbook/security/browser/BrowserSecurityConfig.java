@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.session.InvalidSessionStrategy;
+import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 import org.springframework.social.security.SpringSocialConfigurer;
 
 import javax.sql.DataSource;
@@ -55,6 +57,18 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
 //     */
 //    @Autowired
 //    private FormAuthenticationConfig formAuthenticationConfig;
+
+    /**
+     * session 过期的处理策略
+     */
+    @Autowired
+    private SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
+    /**
+     * session 失效的处理策略
+     */
+    @Autowired
+    private InvalidSessionStrategy invalidSessionStrategy;
+
 
     /**
      * 注入 social 登录的配置
@@ -114,6 +128,18 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                     // 设置用户 service
                     .userDetailsService(userDetailsService)
                     .and()
+                // 当浏览器 session 过期后, 控制 session 跳转
+                .sessionManagement()
+                    // session 失效的处理策略
+                    .invalidSessionStrategy(invalidSessionStrategy)
+                    // 配置最大的 session 数量, 如果配置成 1, 则只允许 1 个用户在线
+                    .maximumSessions(securityProperties.getBrowser().getSession().getMaximumSessions())
+                    // session 的登录策略, 当设置成 true 的时候, 则会阻止后来的登录行为
+                    .maxSessionsPreventsLogin(securityProperties.getBrowser().getSession().isMaxSessionsPreventsLogin())
+                    // session 过期的处理策略
+                    .expiredSessionStrategy(sessionInformationExpiredStrategy)
+                    .and()
+                    .and()
                 // 权限校验规则
                 .authorizeRequests()
 
@@ -130,6 +156,8 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                         socialProperties.getSignUpUrl(),
                         // TODO  后期需要抽离
                         "/user/regist",
+                        // session 失效后跳转的地址
+                        SecurityConstants.SignIn.DEFAULT_SESSION_INVALID_URL,
                         // 验证码接口,
                         SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*")
                         .permitAll()
