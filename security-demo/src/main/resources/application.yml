@@ -3,8 +3,9 @@ server:
   servlet:
     # 设置 session 的超时时间, 时间的单位是秒, 最少要设置成 60 (1 分钟)
     # 默认时长为 30 分钟
+    # 注意: 此值修改后, 需要清除浏览器缓存并重新登录才回生效, 被坑了很久
     session:
-      timeout: 300s
+      timeout: 60s
     # 设置 session 的最大有效数量
 spring:
   profiles:
