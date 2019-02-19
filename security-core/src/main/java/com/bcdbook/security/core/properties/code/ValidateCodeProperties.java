@@ -4,6 +4,9 @@ import com.bcdbook.security.core.properties.SecurityConstants;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 验证码配置
  *
@@ -23,6 +26,11 @@ public class ValidateCodeProperties {
      * 短信验证码的配置
      */
     private SmsCodeProperties sms = new SmsCodeProperties();
+    /**
+     * 需要验证码验证的集合
+     * 需要拦截的地址及拦截类型
+     */
+    private List<ValidateCodeFilterUrlProperties> filterUrls = new ArrayList<>();
     /**
      * 验证码的存储器(默认为 session)
      */

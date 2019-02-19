@@ -2,9 +2,6 @@ package com.bcdbook.security.core.properties.code;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 短信验证码的配置
  *
@@ -22,8 +19,5 @@ public class SmsCodeProperties {
      * 有效时长 (单位是: 秒)
      */
     private int expire = 60;
-    /**
-     * 需要拦截的地址
-     */
-    private List<ValidateCodeFilterUrlProperties> urls = new ArrayList<>();
+
 }

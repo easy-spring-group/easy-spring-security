@@ -38,7 +38,7 @@ public class ValidateCodeController {
      * @version V1.0.0-RELEASE
      */
     @GetMapping(SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/{type}")
-    public void createCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type)
+    public boolean createCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type)
             throws Exception {
 
         validateCodeProcessorHolder
@@ -46,5 +46,7 @@ public class ValidateCodeController {
                 .findValidateCodeProcessor(type)
                 // 创建验证码
                 .create(new ServletWebRequest(request, response));
+
+        return true;
     }
 }

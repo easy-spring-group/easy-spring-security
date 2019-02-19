@@ -57,16 +57,32 @@ easy-spring:
       # 退出登录的地址
       sign-out-url: /signOut
 
-
+    # 验证码的配置
     code:
+      # 图片验证码
       image:
-        length: 2
+        # 验证码长度
+        length: 1
+        # 验证码图片的宽度
         width: 100
-        urls[0]:
-          url: /user/1
-          method: GET
-          validateCodeType: SMS
+      # 验证码的存储器
       repository: session
+      # 需要验证码的地址(过滤的地址)
+      filterUrls[0]:
+        # 请求地址
+        url: /user/1
+        # 请求方式
+        method: GET
+        # 需要的验证码类型 SMS/IMAGE
+        validateCodeType: SMS
+      # 需要验证码的地址(过滤的地址)
+      filterUrls[1]:
+        # 请求地址
+        url: /authentication/form
+        # 请求方式
+        method: POST
+        # 需要的验证码类型 SMS/IMAGE
+        validateCodeType: IMAGE
 
     # 第三方登录的相关配置
     social:

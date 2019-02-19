@@ -73,20 +73,14 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
         super.afterPropertiesSet();
 
         /*
-         * 设置需要图片验证码的接口
+         * 设置需要拦截的接口(需要验证码, 可能是图片验证码也可能是短信验证码)
          */
-        List<ValidateCodeFilterUrlProperties> imageCodeFilterUrls = securityProperties.getCode().getImage().getUrls();
-        if (!CollectionUtils.isEmpty(imageCodeFilterUrls)) {
-            filterUrlList.addAll(imageCodeFilterUrls);
+        List<ValidateCodeFilterUrlProperties> validateCodeFilterUrlPropertiesList =
+                securityProperties.getCode().getFilterUrls();
+        if (!CollectionUtils.isEmpty(validateCodeFilterUrlPropertiesList)) {
+            filterUrlList.addAll(validateCodeFilterUrlPropertiesList);
         }
 
-        /*
-         * 设置需要短信验证码的接口
-         */
-        List<ValidateCodeFilterUrlProperties> smsCodeFilterUrls = securityProperties.getCode().getSms().getUrls();
-        if (CollectionUtils.isEmpty(smsCodeFilterUrls)) {
-            filterUrlList.addAll(smsCodeFilterUrls);
-        }
         // 创建短信验证码的登录请求, 并设置到拦截器中
         ValidateCodeFilterUrlProperties smsSigninUrl = new ValidateCodeFilterUrlProperties(
                 SecurityConstants.SignIn.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE,
