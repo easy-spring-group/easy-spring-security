@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.session.InvalidSessionStrategy;
@@ -51,6 +52,12 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
      */
     @Autowired
     private UserDetailsService userDetailsService;
+    /**
+     * 注入退出成功后的处理器
+     */
+    @Autowired
+    private LogoutSuccessHandler logoutSuccessHandler;
+
 
 //    /**
 //     * 注入表单验证的配置类
@@ -140,6 +147,15 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                     .expiredSessionStrategy(sessionInformationExpiredStrategy)
                     .and()
                     .and()
+                // 退出登录的配置
+                .logout()
+                    // 定义退出的请求地址
+                    .logoutUrl(securityProperties.getBrowser().getSignOutUrl())
+                    // 配置退出登录成功后的处理器
+                    .logoutSuccessHandler(logoutSuccessHandler)
+                    // 定义删除的 cookie
+                    .deleteCookies(securityProperties.getBrowser().getSignOut().getDeleteCookies())
+                    .and()
                 // 权限校验规则
                 .authorizeRequests()
 
@@ -157,7 +173,9 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                         // TODO  后期需要抽离
                         "/user/regist",
                         // session 失效后跳转的地址
-                        SecurityConstants.SignIn.DEFAULT_SESSION_INVALID_URL,
+                        securityProperties.getBrowser().getSession().getSessionInvalidUrl(),
+                        // 退出登录成功后跳转的地址
+                        securityProperties.getBrowser().getSignOut().getSignOutSuccessUrl(),
                         // 验证码接口,
                         SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*")
                         .permitAll()

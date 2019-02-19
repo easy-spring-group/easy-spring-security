@@ -21,6 +21,14 @@ public class BrowserProperties {
      * 会跳到这里配置的 url 上
      */
     private String loginPage = SecurityConstants.SignIn.DEFAULT_SIGN_IN_PAGE_URL;
+    /**
+     * 退出登录时, 请求的地址
+     */
+    private String signOutUrl = "/signOut";
+    /**
+     * 退出登录时的相关配置
+     */
+    private SignOutProperties signOut;
 
     /**
      * 返回结果的形式, 默认为 Json

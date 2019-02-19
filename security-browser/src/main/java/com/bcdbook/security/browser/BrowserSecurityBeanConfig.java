@@ -1,5 +1,6 @@
 package com.bcdbook.security.browser;
 
+import com.bcdbook.security.browser.logout.EasySignOutSuccessHandler;
 import com.bcdbook.security.browser.session.EasyExpiredSessionStrategy;
 import com.bcdbook.security.browser.session.EasyInvalidSessionStrategy;
 import com.bcdbook.security.core.properties.SecurityProperties;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.session.InvalidSessionStrategy;
 import org.springframework.security.web.session.SessionInformationExpiredStrategy;
 
@@ -55,5 +57,20 @@ public class BrowserSecurityBeanConfig {
     public SessionInformationExpiredStrategy sessionInformationExpiredStrategy(){
         return new EasyExpiredSessionStrategy(securityProperties.getBrowser().getSession().getSessionInvalidUrl());
     }
+
+    /**
+     * 退出登录成功后的处理器 配置
+     *
+     * @author summer
+     * @date 2019-02-19 13:07
+     * @return org.springframework.security.web.authentication.logout.LogoutSuccessHandler
+     * @version V1.0.0-RELEASE
+     */
+    @Bean
+    @ConditionalOnMissingBean(LogoutSuccessHandler.class)
+    public LogoutSuccessHandler logoutSuccessHandler(){
+        return new EasySignOutSuccessHandler(securityProperties.getBrowser().getSignOut().getSignOutSuccessUrl());
+    }
+
 
 }

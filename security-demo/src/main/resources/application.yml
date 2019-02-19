@@ -45,7 +45,17 @@ easy-spring:
       # 登录页面的配置
       # loginPage: /demo-signIn.html
       # 登录时的返回方式
-      signInResponseType: JSON
+      sign-in-response-type: JSON
+      # 退出登录的配置
+      sign-out:
+        # 退出登录成功后, 跳转的地址
+        sign-out-success-url: /demo-sign-out.html
+        # 删除的 cookie
+        delete-cookies[0]: JSESSIONID
+        delete-cookies[1]: SESSION
+      # 退出登录的地址
+      sign-out-url: /signOut
+
 
     code:
       image:
