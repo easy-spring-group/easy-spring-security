@@ -10,7 +10,9 @@ server:
 spring:
   profiles:
     active: summer
-
+  session:
+    # 定义 session 的存储器, 定义后, Spring 就会自动使用对应的存储器存储 session
+    store-type: redis
   aop:
     proxy-target-class: false
 

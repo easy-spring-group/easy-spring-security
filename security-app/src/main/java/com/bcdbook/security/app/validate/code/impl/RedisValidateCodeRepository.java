@@ -31,7 +31,7 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
      * 验证码在 Redis 中存储的结构
      * 结构解释: validate:code:{TYPE}:{DEVICEId}
      */
-    private static final String REDIS_KEY_TEMPLATE = "Validate:code:%s:%s";
+    private static final String REDIS_KEY_TEMPLATE = "validate:code:%s:%s";
 
     /**
      * 注入 Redis 的模板
