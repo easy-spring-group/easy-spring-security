@@ -1,9 +1,9 @@
 package com.bcdbook.security.browser.session;
 
 import com.bcdbook.security.browser.support.SimpleResponse;
+import com.bcdbook.security.core.utils.RequestUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -78,14 +78,14 @@ public class AbstractSessionStrategy {
             request.getSession();
         }
 
-        // 获取源地址
-        String sourceUrl = request.getRequestURI();
         // 定义目标地址为 session 失败后处理的地址
         String targetUrl;
 
-        // 如果请求地址是以 .html 结尾的, 则需要封装目标地址为 .html 的形式
-        // TODO: 2019-02-18 需要优化
-        if (StringUtils.endsWithIgnoreCase(sourceUrl, ".html")) {
+        // 校验请求是否是 html 请求
+        boolean isHtml = RequestUtils.isHtml(request);
+
+        // 如果请求地址是 html 请求
+        if (isHtml) {
             targetUrl = destinationUrl;
             log.info("session失效,跳转到"+targetUrl);
             redirectStrategy.sendRedirect(request, response, targetUrl);

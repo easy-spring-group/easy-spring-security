@@ -18,7 +18,7 @@ public class SignOutProperties {
      * 返回的数据类型
      * 默认是自动类型
      */
-    private SignOutSuccessResultTypeEnum resultType = SignOutSuccessResultTypeEnum.AUTO;
+    private SignOutSuccessResultTypeEnum resultType;
     /**
      * 退出成功后跳转的地址
      */

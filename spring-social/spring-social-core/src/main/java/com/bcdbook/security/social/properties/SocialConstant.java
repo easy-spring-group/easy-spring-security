@@ -24,4 +24,9 @@ public interface SocialConstant {
      * 默认的注册页面
      */
     String DEFAULT_SIGN_UP_URL = "/resources/easy-signUp.html";
+
+    /**
+     * 默认的 第三方账户数据库表的前缀
+     */
+    String DEFAULT_CONNECT_TABLE_PREFIX = "EasySpring_";
 }

@@ -2,6 +2,7 @@ package com.bcdbook.security.browser.logout;
 
 import com.bcdbook.security.browser.support.SimpleResponse;
 import com.bcdbook.security.core.properties.browser.enums.SignOutSuccessResultTypeEnum;
+import com.bcdbook.security.core.utils.RequestUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -71,21 +72,30 @@ public class EasySignOutSuccessHandler implements LogoutSuccessHandler {
 
         log.info("退出成功");
 
-        if (resultType == null) {
-            resultType = SignOutSuccessResultTypeEnum.AUTO;
+        // 定义当前处理的返回数据类型
+        SignOutSuccessResultTypeEnum selfResultType = resultType;
+
+        // 如果配置的返回数据类型为空, 获取返回数据类型为 AUTO
+        if (selfResultType == null || selfResultType.equals(SignOutSuccessResultTypeEnum.AUTO)) {
+            // 获取请求方式
+            boolean isHtml = RequestUtils.isHtml(request);
+            // 如果是 html 请求
+            if (isHtml) {
+                // 设置返回的数据类型为 html
+                selfResultType = SignOutSuccessResultTypeEnum.HTML;
+            // 如果不是 html 请求, 则设置返回的数据类型为 json
+            } else {
+                selfResultType = SignOutSuccessResultTypeEnum.JSON;
+            }
         }
 
         // 如果返回的数据类型是 html, 则直接跳转到退出成功的页面
-        if (resultType.equals(SignOutSuccessResultTypeEnum.HTML)) {
+        if (selfResultType.equals(SignOutSuccessResultTypeEnum.HTML)) {
             response.sendRedirect(signOutSuccessUrl);
         // 如果返回数据类型是 json, 则封装 json 并返回
-        } else if (resultType.equals(SignOutSuccessResultTypeEnum.JSON)) {
+        } else if (selfResultType.equals(SignOutSuccessResultTypeEnum.JSON)) {
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse("退出成功")));
-        } else {
-            // TODO: 2019-02-19 暂时使用 json 的返回, 后期需要根据请求形式进行调整
-            response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse("退出成功-AUTO")));
         }
     }
 

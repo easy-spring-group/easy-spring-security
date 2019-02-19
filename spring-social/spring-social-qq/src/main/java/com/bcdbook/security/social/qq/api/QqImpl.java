@@ -66,7 +66,6 @@ public class QqImpl extends AbstractOAuth2ApiBinding implements Qq {
 
         log.info("QQ get openId result: {}", result);
 
-        // TODO: 2019-01-24 此处需要优化
         this.openId = StringUtils.substringBetween(result, "\"openid\":\"", "\"}");
     }
 

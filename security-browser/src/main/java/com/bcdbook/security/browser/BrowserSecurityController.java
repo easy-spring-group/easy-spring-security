@@ -3,6 +3,7 @@ package com.bcdbook.security.browser;
 import com.bcdbook.security.browser.support.SimpleResponse;
 import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.core.properties.SecurityProperties;
+import com.bcdbook.security.core.utils.RequestUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,7 +76,7 @@ public class BrowserSecurityController {
         log.info("引发跳转的请求是:"+targetUrl);
 
         // 检查是否是 html 请求
-        boolean isHtml = isHtml(request);
+        boolean isHtml = RequestUtils.isHtml(request);
         // 检查是否以 .html 结尾
         boolean endsWithHtml = StringUtils.endsWithIgnoreCase(targetUrl, ".html");
         // 如果都不是
@@ -85,27 +86,5 @@ public class BrowserSecurityController {
         redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
 
         return new SimpleResponse("用户未登录, 请引导用户到登录界面");
-    }
-
-
-    /**
-     * 校验当前请求是否是 ajax 请求
-     *
-     * @author summer
-     * @date 2019-01-07 17:34
-     * @param request 请求对象
-     * @return boolean
-     * @version V1.0.0-RELEASE
-     */
-    private static boolean isHtml(HttpServletRequest request){
-        // 传入参数校验
-        if (request == null) {
-            return false;
-        }
-
-        // 从请求头中获取 内容类型
-        String accept = request.getHeader("Accept");
-        // 如果请求内容不为空, 并且包含 json 则说明是 ajax 请求
-        return !StringUtils.isEmpty(accept) && accept.contains("text/html");
     }
 }

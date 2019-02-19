@@ -1,5 +1,6 @@
 package com.bcdbook.security.social;
 
+import com.bcdbook.security.social.properties.SocialConstant;
 import com.bcdbook.security.social.properties.SocialProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -81,8 +82,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
         }
 
         // 设置数据库表的前缀
-        // TODO: 2019-01-24 需要抽取成常量 
-        repository.setTablePrefix("EasySpring_");
+        repository.setTablePrefix(SocialConstant.DEFAULT_CONNECT_TABLE_PREFIX);
 
         // 返回封装好的存储器
         return repository;
