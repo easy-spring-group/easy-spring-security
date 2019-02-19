@@ -1,5 +1,6 @@
 package com.bcdbook.security.core.properties.browser;
 
+import com.bcdbook.security.core.properties.browser.enums.SignOutSuccessResultTypeEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,9 +15,14 @@ import lombok.NoArgsConstructor;
 @Data
 public class SignOutProperties {
     /**
+     * 返回的数据类型
+     * 默认是自动类型
+     */
+    private SignOutSuccessResultTypeEnum resultType = SignOutSuccessResultTypeEnum.AUTO;
+    /**
      * 退出成功后跳转的地址
      */
-    private String signOutSuccessUrl;
+    private String signOutSuccessUrl = "/easy-sign-out.html";
     /**
      * 退出成功后需要清除的 cookie
      */

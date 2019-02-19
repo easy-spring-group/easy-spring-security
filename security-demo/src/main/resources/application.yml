@@ -48,8 +48,9 @@ easy-spring:
       sign-in-response-type: JSON
       # 退出登录的配置
       sign-out:
+        result-type: JSON
         # 退出登录成功后, 跳转的地址
-        sign-out-success-url: /demo-sign-out.html
+        # sign-out-success-url: /demo-sign-out.html
         # 删除的 cookie
         delete-cookies[0]: JSESSIONID
         delete-cookies[1]: SESSION

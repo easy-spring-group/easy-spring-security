@@ -69,7 +69,8 @@ public class BrowserSecurityBeanConfig {
     @Bean
     @ConditionalOnMissingBean(LogoutSuccessHandler.class)
     public LogoutSuccessHandler logoutSuccessHandler(){
-        return new EasySignOutSuccessHandler(securityProperties.getBrowser().getSignOut().getSignOutSuccessUrl());
+        return new EasySignOutSuccessHandler(securityProperties.getBrowser().getSignOut().getSignOutSuccessUrl(),
+                securityProperties.getBrowser().getSignOut().getResultType());
     }
 
 

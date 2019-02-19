@@ -1,9 +1,9 @@
 package com.bcdbook.security.browser.logout;
 
 import com.bcdbook.security.browser.support.SimpleResponse;
+import com.bcdbook.security.core.properties.browser.enums.SignOutSuccessResultTypeEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
@@ -21,7 +21,10 @@ import java.io.IOException;
 @Slf4j
 public class EasySignOutSuccessHandler implements LogoutSuccessHandler {
 
-
+    /**
+     * 退出成功后返回的数据类型
+     */
+    private SignOutSuccessResultTypeEnum resultType;
     /**
      * 退出登录成功后的跳转地址
      */
@@ -38,10 +41,12 @@ public class EasySignOutSuccessHandler implements LogoutSuccessHandler {
      * @author summer
      * @date 2019-02-19 13:10
      * @param signOutSuccessUrl 退出登录成功后的跳转地址
+     * @param resultType 退出成功后返回的数据类型
      * @version V1.0.0-RELEASE
      */
-    public EasySignOutSuccessHandler(String signOutSuccessUrl) {
+    public EasySignOutSuccessHandler(String signOutSuccessUrl, SignOutSuccessResultTypeEnum resultType) {
         this.signOutSuccessUrl = signOutSuccessUrl;
+        this.resultType = resultType;
     }
 
     /**
@@ -66,13 +71,21 @@ public class EasySignOutSuccessHandler implements LogoutSuccessHandler {
 
         log.info("退出成功");
 
-        // 如果退出登录成功后的跳转地址为空, 则直接封装 json 信息返回
-        if (StringUtils.isBlank(signOutSuccessUrl)) {
+        if (resultType == null) {
+            resultType = SignOutSuccessResultTypeEnum.AUTO;
+        }
+
+        // 如果返回的数据类型是 html, 则直接跳转到退出成功的页面
+        if (resultType.equals(SignOutSuccessResultTypeEnum.HTML)) {
+            response.sendRedirect(signOutSuccessUrl);
+        // 如果返回数据类型是 json, 则封装 json 并返回
+        } else if (resultType.equals(SignOutSuccessResultTypeEnum.JSON)) {
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse("退出成功")));
         } else {
-            // 如果配置了地址, 则跳转到配置的地址
-            response.sendRedirect(signOutSuccessUrl);
+            // TODO: 2019-02-19 暂时使用 json 的返回, 后期需要根据请求形式进行调整
+            response.setContentType("application/json;charset=UTF-8");
+            response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse("退出成功-AUTO")));
         }
     }
 
