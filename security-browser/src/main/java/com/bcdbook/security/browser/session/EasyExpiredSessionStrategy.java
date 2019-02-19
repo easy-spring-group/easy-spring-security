@@ -47,18 +47,16 @@ public class EasyExpiredSessionStrategy
     }
 
     /**
-     * 处理重定向地址的方法
-     * @see com.bcdbook.security.browser.session.AbstractSessionStrategy#processRedirectUrl(java.lang.String)
+     * 判断是否是并发引起的 session 失效问题
+     * @see com.bcdbook.security.browser.session.AbstractSessionStrategy#isConcurrency()
      *
      * @author summer
-     * @date 2019-02-18 20:32
-     * @param targetUrl 重定向的地址
-     * @return java.lang.String
+     * @date 2019-02-19 10:23
+     * @return boolean
      * @version V1.0.0-RELEASE
      */
     @Override
-    protected String processRedirectUrl(String targetUrl) {
-        return targetUrl+"?concurrency=true";
+    protected boolean isConcurrency() {
+        return true;
     }
-
 }

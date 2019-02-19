@@ -1,7 +1,10 @@
 package com.bcdbook.security.browser.session;
 
+import com.bcdbook.security.browser.support.SimpleResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.util.UrlUtils;
@@ -33,6 +36,12 @@ public class AbstractSessionStrategy {
      * 跳转前是否创建新的session
      */
     private boolean createNewSession = true;
+
+    /**
+     * 定义 json 的工具类
+     */
+    private ObjectMapper objectMapper = new ObjectMapper();
+
 
     /**
      * 构造方法
@@ -72,34 +81,56 @@ public class AbstractSessionStrategy {
         // 获取源地址
         String sourceUrl = request.getRequestURI();
         // 定义目标地址为 session 失败后处理的地址
-        String targetUrl = destinationUrl;
+        String targetUrl;
 
         // 如果请求地址是以 .html 结尾的, 则需要封装目标地址为 .html 的形式
         // TODO: 2019-02-18 需要优化
         if (StringUtils.endsWithIgnoreCase(sourceUrl, ".html")) {
-            targetUrl = destinationUrl + ".html";
+            targetUrl = destinationUrl;
+            log.info("session失效,跳转到"+targetUrl);
+            redirectStrategy.sendRedirect(request, response, targetUrl);
+
+        } else {
+            // 获取返回信息
+            Object result = buildResponseContent(request);
+            // 设置状态码
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            // 设置返回类型
+            response.setContentType("application/json;charset=UTF-8");
+            // 执行输出
+            response.getWriter().write(objectMapper.writeValueAsString(result));
+
         }
-
-        log.info("session失效,跳转到" + targetUrl);
-
-        // 封装重定向地址
-        targetUrl = processRedirectUrl(targetUrl);
-
-        // 执行地址的重定向
-        redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
     /**
-     * 封装重定向地址的方法
+     * 封装 session 过期的返回信息
      *
      * @author summer
-     * @date 2019-02-18 20:41
-     * @param targetUrl 原始目标地址
-     * @return java.lang.String
+     * @date 2019-02-19 10:30
+     * @param request 请求信息
+     * @return java.lang.Object
      * @version V1.0.0-RELEASE
      */
-    protected String processRedirectUrl(String targetUrl) {
-        return targetUrl;
+    protected Object buildResponseContent(HttpServletRequest request) {
+        String message = "session已失效";
+        if(isConcurrency()){
+            message = message + "，有可能是并发登录导致的";
+        }
+        return new SimpleResponse(message);
+    }
+
+
+    /**
+     * 判断是否是并发引起的 session 失效问题
+     *
+     * @author summer
+     * @date 2019-02-19 10:23
+     * @return boolean
+     * @version V1.0.0-RELEASE
+     */
+    protected boolean isConcurrency() {
+        return false;
     }
 
     /**
