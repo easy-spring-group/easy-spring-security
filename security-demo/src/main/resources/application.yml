@@ -69,9 +69,12 @@ easy-spring:
         length: 1
         # 验证码图片的宽度
         width: 100
+      # 短信验证码
+      sms:
+        expire: 300
       # 验证码的存储器
-      # 使用 APP 框架时, 必须设置存储器为 Redis
-      repository: redis
+      # 使用 APP 框架时, 必须设置存储器为 REDIS
+      repository: REDIS
       # 需要验证码的地址(过滤的地址)
       filterUrls[0]:
         # 请求地址

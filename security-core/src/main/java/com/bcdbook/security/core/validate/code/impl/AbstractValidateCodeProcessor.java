@@ -79,7 +79,7 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
             codeInRequest = ServletRequestUtils.getStringParameter(request.getRequest(),
                     codeType.getParamNameOnValidate());
         } catch (ServletRequestBindingException e) {
-            throw new ValidateCodeException("获取验证码的值失败");
+            throw new ValidateCodeException("获取验证码的值失败, 可能是 deviceId 不存在的问题");
         }
 
         // 如果前端传入的验证码的值为空

@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @version V1.0.0-RELEASE
  */
 @Component
-@ConditionalOnProperty(prefix = "easy-spring.security.code", name = "repository", havingValue = "redis")
+@ConditionalOnProperty(prefix = "easy-spring.security.code", name = "repository", havingValue = "REDIS")
 public class RedisValidateCodeRepository implements ValidateCodeRepository {
     /**
      * 验证码在 Redis 中存储的结构
@@ -112,12 +112,15 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
      * @version V1.0.0-RELEASE
      */
     private String buildKey(ServletWebRequest request, ValidateCodeType validateCodeType) {
-        // 获取传入的验证码的 设备 id
-        String deviceId = request.getHeader(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID);
-        // 如果设备 id 为空, 则抛出异常
+
+        // 从请求中获取 deviceId
+        String deviceId = (String) request.getAttribute(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID_KEY,
+                SecurityConstants.Validate.DEFAULT_DEVICE_ID_EXPIRE);
+        // 对 deviceId 进行校验
         if (StringUtils.isBlank(deviceId)) {
-            throw new ValidateCodeException("请在请求头中携带deviceId参数");
+            throw new ValidateCodeException("获取 deviceId 失败");
         }
+
         // 返回格式化好的 Redis 的 key
         return String.format(REDIS_KEY_TEMPLATE, validateCodeType, deviceId);
     }

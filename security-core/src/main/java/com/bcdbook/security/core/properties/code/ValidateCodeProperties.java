@@ -1,6 +1,7 @@
 package com.bcdbook.security.core.properties.code;
 
 import com.bcdbook.security.core.properties.SecurityConstants;
+import com.bcdbook.security.core.properties.code.enums.ValidateCodeRepositoryTypeEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -34,9 +35,9 @@ public class ValidateCodeProperties {
     /**
      * 验证码的存储器(默认为 session)
      */
-    private String repository = SecurityConstants.Validate.DEFAULT_REPOSITORY;
+    private ValidateCodeRepositoryTypeEnum repository = ValidateCodeRepositoryTypeEnum.SESSION;
     /**
      * 验证码在 Redis 中存储的有效时长
      */
-    private long expire = SecurityConstants.Validate.DEFAULT_EXPIRE;;
+    private long expire = SecurityConstants.Validate.DEFAULT_EXPIRE;
 }

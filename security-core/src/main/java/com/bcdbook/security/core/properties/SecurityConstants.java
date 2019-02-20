@@ -68,17 +68,17 @@ public interface SecurityConstants {
          */
         String PARAMETER_NAME_TEMPLATE = "template";
         /**
-         * 验证码的默认存储器
-         */
-        String DEFAULT_REPOSITORY = "session";
-        /**
          * 验证码的有效时长(单位是秒)
          */
         long DEFAULT_EXPIRE = 300;
         /**
          * 默认的使用 Redis 存储验证码时在 head 中传参的 key
          */
-        String DEFAULT_HEADER_DEVICE_ID = "deviceId";
+        String DEFAULT_HEADER_DEVICE_ID_KEY = "deviceId";
+        /**
+         * deviceId 的有效时长
+         */
+        int DEFAULT_DEVICE_ID_EXPIRE = 300;
     }
 
     /**

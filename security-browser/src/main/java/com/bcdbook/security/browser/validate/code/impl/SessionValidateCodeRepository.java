@@ -18,7 +18,7 @@ import org.springframework.web.context.request.ServletWebRequest;
  * @version V1.0.0-RELEASE
  */
 @Component
-@ConditionalOnProperty(prefix = "easy-spring.security.code", name = "repository", havingValue = "session")
+@ConditionalOnProperty(prefix = "easy-spring.security.code", name = "repository", havingValue = "SESSION")
 public class SessionValidateCodeRepository implements ValidateCodeRepository {
 	/**
 	 * 验证码放入 session 时的前缀
