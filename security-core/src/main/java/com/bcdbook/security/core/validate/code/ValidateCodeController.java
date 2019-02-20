@@ -45,6 +45,8 @@ public class ValidateCodeController {
                 // 获取验证码的处理器
                 .findValidateCodeProcessor(type)
                 // 创建验证码
+                // TODO: 2019-02-19 此处需要根据存储器的不同, 对 request 做处理,
+                //  如果存储器是 Redis, 则需要生成 deviceId, 并返回给前端
                 .create(new ServletWebRequest(request, response));
 
         return true;

@@ -27,6 +27,13 @@
             <groupId>com.bcdbook.security</groupId>
             <artifactId>security-core</artifactId>
         </dependency>
+
+        <!--引入 lombok 工具包-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 </project>

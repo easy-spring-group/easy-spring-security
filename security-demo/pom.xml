@@ -22,9 +22,13 @@
     <description>Security Demo</description>
 
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.bcdbook.security</groupId>-->
+            <!--<artifactId>security-browser</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.bcdbook.security</groupId>
-            <artifactId>security-browser</artifactId>
+            <artifactId>security-app</artifactId>
         </dependency>
 
         <!--引入通过 qq 登录的自定义 jar-->

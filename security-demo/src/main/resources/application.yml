@@ -36,7 +36,11 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-
+security:
+  oauth2:
+    client:
+      client-id: easy-spring
+      client-secret: easy-spring-secret
 
 easy-spring:
   security:
@@ -66,7 +70,8 @@ easy-spring:
         # 验证码图片的宽度
         width: 100
       # 验证码的存储器
-      repository: session
+      # 使用 APP 框架时, 必须设置存储器为 Redis
+      repository: redis
       # 需要验证码的地址(过滤的地址)
       filterUrls[0]:
         # 请求地址
