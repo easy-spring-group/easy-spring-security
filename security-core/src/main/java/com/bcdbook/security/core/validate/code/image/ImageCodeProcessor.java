@@ -1,5 +1,6 @@
 package com.bcdbook.security.core.validate.code.image;
 
+import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.core.validate.code.impl.AbstractValidateCodeProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -37,6 +38,16 @@ public class ImageCodeProcessor extends AbstractValidateCodeProcessor<ImageCode>
         if (servletResponse == null) {
             throw new RuntimeException("发送图片验证码时, response 对象为空");
         }
+
+        /*
+         * 设置 deviceId
+         */
+        // 获取 deviceId
+        String deviceId = (String) request.getAttribute(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID_KEY,
+                SecurityConstants.Validate.DEFAULT_DEVICE_ID_EXPIRE);
+
+        // 设置 DEVICE_ID 到 Request 中
+        servletResponse.setHeader(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID_KEY, deviceId);
 
         //禁止图像缓存。
         servletResponse.setHeader("Pragma", "no-cache");
