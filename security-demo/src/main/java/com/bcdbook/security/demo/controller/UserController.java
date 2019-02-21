@@ -1,5 +1,6 @@
 package com.bcdbook.security.demo.controller;
 
+import com.bcdbook.security.app.social.AppSignUpUtils;
 import com.bcdbook.security.demo.dto.User;
 import com.bcdbook.security.demo.dto.UserQueryCondition;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -40,9 +41,8 @@ public class UserController {
     /**
      * 注入 APP 登录的工具类
      */
-//    @Autowired
-//    private AppSignUpUtils appSignUpUtils;
-
+    @Autowired
+    private AppSignUpUtils appSignUpUtils;
     /**
      * 注册的示例页面
      *
@@ -59,19 +59,33 @@ public class UserController {
         String userId = user.getUsername();
 
         /*
-         * 浏览器环境下的社交登录注册页面方法
-         */
-        // 这里的 userId 会设置成 UserConnection 的主键
-         providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
-
-        /*
          * APP 环境下, 社交登录执行注册的方法
          */
         // 执行注册的后处理信息
-//        appSignUpUtils.doPostSignUp(new ServletWebRequest(request), userId);
-
-
+        appSignUpUtils.doPostSignUp(new ServletWebRequest(request), userId);
     }
+
+//    /**
+//     * 注册的示例页面
+//     *
+//     * @author summer
+//     * @date 2019-01-25 14:38
+//     * @param user 用户对象
+//     * @return void
+//     * @version V1.0.0-RELEASE
+//     */
+//    @PostMapping("/regist")
+//    public void regist(User user, HttpServletRequest request) {
+//        //注册用户
+//        //不管是注册用户还是绑定用户，都会拿到一个用户唯一标识。
+//        String userId = user.getUsername();
+//
+//        /*
+//         * 浏览器环境下的社交登录注册页面方法
+//         */
+//        // 这里的 userId 会设置成 UserConnection 的主键
+//         providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+//    }
 
     /**
      * 根据查询条件查询用户集合的方法

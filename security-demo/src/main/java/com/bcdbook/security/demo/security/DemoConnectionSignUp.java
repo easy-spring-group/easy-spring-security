@@ -2,7 +2,6 @@ package com.bcdbook.security.demo.security;
 
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;
-import org.springframework.stereotype.Component;
 
 /**
  * 通过第三方自动注册的实现
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @date 2019-01-25 15:47
  * @version V1.0.0-RELEASE
  */
-@Component
+//@Component
 public class DemoConnectionSignUp implements ConnectionSignUp {
 
     /**

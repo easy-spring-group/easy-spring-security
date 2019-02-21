@@ -120,8 +120,4 @@ public class AppSignUpUtils {
         return String.format(RedisKeyPrefixConstants.SOCIAL_CONNECT_DATA_TEMPLATE, deviceId);
     }
 
-    public static void main(String[] args) {
-        System.out.println(String.format(RedisKeyPrefixConstants.SOCIAL_CONNECT_DATA_TEMPLATE, "123"));
-    }
-
 }

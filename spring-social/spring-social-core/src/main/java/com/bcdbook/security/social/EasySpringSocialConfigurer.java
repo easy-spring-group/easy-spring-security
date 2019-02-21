@@ -20,6 +20,10 @@ public class EasySpringSocialConfigurer extends SpringSocialConfigurer {
      * 社交登录时过滤的地址
      */
     private String filterProcessesUrl;
+    /**
+     * 社交登录的后处理器
+     */
+    private SocialAuthenticationFilterPostProcessor socialAuthenticationFilterPostProcessor;
 
     /**
      * 全参构造方法
@@ -49,6 +53,10 @@ public class EasySpringSocialConfigurer extends SpringSocialConfigurer {
         SocialAuthenticationFilter filter = (SocialAuthenticationFilter) super.postProcess(object);
         // 设置成自己的过滤地址
         filter.setFilterProcessesUrl(filterProcessesUrl);
+        // 设置社交登录的后处理器
+        if (socialAuthenticationFilterPostProcessor != null) {
+            socialAuthenticationFilterPostProcessor.process(filter);
+        }
 
         return (T) filter;
     }
