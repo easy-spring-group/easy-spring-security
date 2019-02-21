@@ -1,5 +1,6 @@
 package com.bcdbook.security.app.validate.code.impl;
 
+import com.bcdbook.security.app.properties.RedisKeyPrefixConstants;
 import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.core.properties.SecurityProperties;
 import com.bcdbook.security.core.validate.code.ValidateCode;
@@ -27,11 +28,6 @@ import java.util.concurrent.TimeUnit;
 @Component
 @ConditionalOnProperty(prefix = "easy-spring.security.code", name = "repository", havingValue = "REDIS")
 public class RedisValidateCodeRepository implements ValidateCodeRepository {
-    /**
-     * 验证码在 Redis 中存储的结构
-     * 结构解释: validate:code:{TYPE}:{DEVICEId}
-     */
-    private static final String REDIS_KEY_TEMPLATE = "validate:code:%s:%s";
 
     /**
      * 注入 Redis 的模板
@@ -122,6 +118,6 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
         }
 
         // 返回格式化好的 Redis 的 key
-        return String.format(REDIS_KEY_TEMPLATE, validateCodeType, deviceId);
+        return String.format(RedisKeyPrefixConstants.VALIDATE_CODE_TEMPLATE, validateCodeType, deviceId);
     }
 }

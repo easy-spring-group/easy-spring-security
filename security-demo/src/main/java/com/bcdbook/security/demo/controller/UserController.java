@@ -38,6 +38,12 @@ public class UserController {
     private ProviderSignInUtils providerSignInUtils;
 
     /**
+     * 注入 APP 登录的工具类
+     */
+//    @Autowired
+//    private AppSignUpUtils appSignUpUtils;
+
+    /**
      * 注册的示例页面
      *
      * @author summer
@@ -51,8 +57,19 @@ public class UserController {
         //注册用户
         //不管是注册用户还是绑定用户，都会拿到一个用户唯一标识。
         String userId = user.getUsername();
+
+        /*
+         * 浏览器环境下的社交登录注册页面方法
+         */
         // 这里的 userId 会设置成 UserConnection 的主键
-        providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+         providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+
+        /*
+         * APP 环境下, 社交登录执行注册的方法
+         */
+        // 执行注册的后处理信息
+//        appSignUpUtils.doPostSignUp(new ServletWebRequest(request), userId);
+
 
     }
 

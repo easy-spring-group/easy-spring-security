@@ -98,7 +98,9 @@ public class EasyResourceServerConfig extends ResourceServerConfigurerAdapter {
                         // 忽略 openId 登录的地址
                         SecurityConstants.Social.DEFAULT_LOGIN_PROCESSING_URL_OPENID,
                         // 忽略验证码获取及验证的地址
-                        SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*")
+                        SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*",
+                        // TODO 需要抽取
+                        "/user/regist", "/social/signUp")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

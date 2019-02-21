@@ -52,11 +52,6 @@ public class SocialConfig extends SocialConfigurerAdapter {
      */
     @Autowired(required = false)
     private ConnectionSignUp connectionSignUp;
-    /**
-     * 社交登录的后处理器
-     */
-    @Autowired(required = false)
-    private SocialAuthenticationFilterPostProcessor socialAuthenticationFilterPostProcessor;
 
 
     /**
@@ -110,8 +105,6 @@ public class SocialConfig extends SocialConfigurerAdapter {
         EasySpringSocialConfigurer configurer = new EasySpringSocialConfigurer(filterProcessUrl);
         // 当授权后找不到用户的时候, 跳转的地址
         configurer.signupUrl(socialProperties.getSignUpUrl());
-        // 设置社交登录的后处理器
-        configurer.setSocialAuthenticationFilterPostProcessor(socialAuthenticationFilterPostProcessor);
 
         return configurer;
     }
