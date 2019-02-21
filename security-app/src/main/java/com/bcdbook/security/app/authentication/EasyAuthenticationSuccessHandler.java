@@ -42,9 +42,13 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
     @Autowired
     private ClientDetailsService clientDetailsService;
 
+    /**
+     * 认证器的 Token 服务器类
+     */
     @Autowired
     private AuthorizationServerTokenServices authorizationServerTokenServices;
 
+    // TODO: 2019-02-21 Base64 编码的字符串, 测试时临时使用
     public static void main(String[] args) {
         String ab = "easy-spring:easy-spring-secret";
         byte[] encodeBase64 = Base64.encodeBase64(ab.getBytes());

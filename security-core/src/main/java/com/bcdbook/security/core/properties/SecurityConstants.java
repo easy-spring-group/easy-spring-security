@@ -82,6 +82,29 @@ public interface SecurityConstants {
     }
 
     /**
+     * 社交登录的常量配置
+     *
+     * @author summer
+     * @date 2019-02-20 20:42
+     * @version V1.0.0-RELEASE
+     */
+    interface Social {
+        /**
+         * 默认的 OPENID 登录请求处理 url
+         */
+        String DEFAULT_LOGIN_PROCESSING_URL_OPENID = "/authentication/openid";
+        /**
+         * openid 参数名
+         */
+        String DEFAULT_PARAMETER_NAME_OPENID_NAME = "openId";
+        /**
+         * providerId 参数名
+         */
+        String DEFAULT_PARAMETER_NAME_PROVIDER_ID_NAME = "providerId";
+
+    }
+
+    /**
      * 安全校验的错误码常量
      *
      * @author summer

@@ -164,7 +164,7 @@ public class WeChatOAuth2Template extends OAuth2Template {
      *
      * @author summer
      * @date 2019-01-25 17:28
-     * @param parameters
+     * @param parameters OAuth2 认证的参数
      * @return java.lang.String
      * @version V1.0.0-RELEASE
      */

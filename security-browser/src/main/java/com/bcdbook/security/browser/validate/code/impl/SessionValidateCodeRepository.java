@@ -3,7 +3,6 @@ package com.bcdbook.security.browser.validate.code.impl;
 import com.bcdbook.security.core.validate.code.ValidateCode;
 import com.bcdbook.security.core.validate.code.ValidateCodeRepository;
 import com.bcdbook.security.core.validate.code.ValidateCodeType;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,6 @@ import org.springframework.web.context.request.ServletWebRequest;
  * @version V1.0.0-RELEASE
  */
 @Component
-@ConditionalOnProperty(prefix = "easy-spring.security.code", name = "repository", havingValue = "SESSION")
 public class SessionValidateCodeRepository implements ValidateCodeRepository {
 	/**
 	 * 验证码放入 session 时的前缀
