@@ -107,7 +107,7 @@ public class TokenStoreConfig {
          * @version V1.0.0-RELEASE
          */
         @Bean
-        @ConditionalOnMissingBean(TokenEnhancer.class)
+        @ConditionalOnMissingBean (name = "jwtTokenEnhancer")
         public TokenEnhancer jwtTokenEnhancer(){
             return new EasyJwtTokenEnhancer();
         }
