@@ -1,15 +1,17 @@
 package com.bcdbook.security.demo.controller;
 
 import com.bcdbook.security.app.social.AppSignUpUtils;
+import com.bcdbook.security.core.properties.SecurityProperties;
 import com.bcdbook.security.demo.dto.User;
 import com.bcdbook.security.demo.dto.UserQueryCondition;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
 import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +46,10 @@ public class UserController {
      */
     @Autowired
     private AppSignUpUtils appSignUpUtils;
+
+    @Autowired
+    private SecurityProperties securityProperties;
+
     /**
      * 注册的示例页面
      *
@@ -196,15 +203,38 @@ public class UserController {
     /**
      * 获取当前在线用户
      *
+     * 注意: 当存储器是 jwt 的时候, security 中的 AuthenticationPrincipal 就不再是一个对象了, 而是一个经过 jwt 增强的字符串
+     *
      * @author summer
      * @date 2019-01-21 18:04
      * @param user 注入用户对象
      * @return java.lang.Object
      * @version V1.0.0-RELEASE
      */
+//    @GetMapping("/me")
+//    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user, HttpServletRequest request) {
+//        log.info(String.valueOf(request.getSession().getMaxInactiveInterval()));
+//        return user;
+//    }
+
     @GetMapping("/me")
-    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user, HttpServletRequest request) {
-        log.info(String.valueOf(request.getSession().getMaxInactiveInterval()));
+    public Object getCurrentUser(Authentication user, HttpServletRequest request)
+            throws ExpiredJwtException, UnsupportedJwtException,
+            MalformedJwtException, SignatureException,
+            IllegalArgumentException, UnsupportedEncodingException {
+
+        String token = StringUtils.substringAfter(request.getHeader("Authorization"), "bearer ");
+
+        // 从 token 中解析出 jwt 方式存储的增强信息
+        Claims claims = Jwts.parser()
+                .setSigningKey(securityProperties.getOauth2().getJwtSigningKey().getBytes("UTF-8"))
+                .parseClaimsJws(token)
+                .getBody();
+
+        String company = (String) claims.get("company");
+
+        log.info("jwt token company: {}", company);
+
         return user;
     }
 

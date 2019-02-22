@@ -13,6 +13,11 @@ import lombok.Data;
 public class OAuth2Properties {
 
     /**
+     * jwt 的秘签的 key
+     */
+    private String jwtSigningKey = "easy-spring";
+
+    /**
      * OAuth2 支持的认证客户的配置
      */
     private OAuth2ClientProperties[] clients = {};

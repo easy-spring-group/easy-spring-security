@@ -88,6 +88,10 @@ easy-spring:
 
     # oauth2 认证的配置
     oauth2:
+      # token 存储器
+      # token-store: redis
+      # 加密签名
+      jwt-signing-key: test-key
       # 允许的认证客户
       clients[0]:
         # 客户 id

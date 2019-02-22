@@ -16,9 +16,14 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 实现认证服务器的配置类
@@ -62,6 +67,17 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
     @Autowired
     private TokenStore tokenStore;
     /**
+     * 注入 jwt 的转换器
+     */
+    @Autowired(required = false)
+    private JwtAccessTokenConverter jwtAccessTokenConverter;
+    /**
+     * 注入 jwt 的增强器
+     */
+    @Autowired(required = false)
+    private TokenEnhancer jwtTokenEnhancer;
+
+    /**
      * 注入 security 的配置
      */
     @Autowired
@@ -85,6 +101,27 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
                 .authenticationManager(this.authenticationManager)
                 // 设置用户的 service
                 .userDetailsService(userDetailsService);
+
+        /*
+         * 设置 jwt 的相关信息
+         */
+        // 如果 jwt 的连接器和增强器均不为空
+        if(jwtAccessTokenConverter != null && jwtTokenEnhancer != null){
+            // 创建 token 的转换器集合
+            List<TokenEnhancer> enhancers = new ArrayList<>();
+            // 添加增强器
+            enhancers.add(jwtTokenEnhancer);
+            // 添加转换器
+            enhancers.add(jwtAccessTokenConverter);
+
+            // 创建 token 的增强器链
+            TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
+            enhancerChain.setTokenEnhancers(enhancers);
+            // 把我们的 token 增强器添加到配置中
+            endpoints.tokenEnhancer(enhancerChain)
+                    .accessTokenConverter(jwtAccessTokenConverter);
+        }
+
     }
 
 
@@ -127,7 +164,7 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
                         .scopes(client.getScopes());
             }
 
-            log.info("OAuth2 的授权信息", Arrays.toString(clientsInCustom));
+            log.info("OAuth2 的授权信息: {}", Arrays.toString(clientsInCustom));
         }
     }
 
