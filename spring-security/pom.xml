@@ -12,28 +12,21 @@
         <relativePath>../security-dependencies</relativePath>
     </parent>
 
-    <artifactId>security-app</artifactId>
+    <artifactId>spring-security</artifactId>
     <!--打包方式-->
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <!--项目名称-->
-    <name>Security App</name>
+    <name>Spring Security</name>
     <!--项目简介-->
-    <description>Security App</description>
+    <description>Spring Security</description>
+    <!--项目连接地址-->
+    <url>https://easyspring.bcdbook.com/</url>
 
-    <dependencies>
-        <!--引入基础的 security 服务的包-->
-        <dependency>
-            <groupId>com.bcdbook.security</groupId>
-            <artifactId>security-core</artifactId>
-        </dependency>
-
-        <!--引入 lombok 工具包-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>security-core</module>
+        <module>security-browser</module>
+        <module>security-app</module>
+    </modules>
 
 </project>

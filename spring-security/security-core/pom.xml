@@ -5,11 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>security-dependencies</artifactId>
+        <artifactId>spring-security</artifactId>
         <groupId>com.bcdbook.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
-        <relativePath>../security-dependencies</relativePath>
     </parent>
 
     <artifactId>security-core</artifactId>

@@ -9,7 +9,7 @@
         <groupId>com.bcdbook.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
-        <relativePath>../security-dependencies</relativePath>
+        <relativePath>../../security-dependencies</relativePath>
     </parent>
 
     <artifactId>security-demo</artifactId>
