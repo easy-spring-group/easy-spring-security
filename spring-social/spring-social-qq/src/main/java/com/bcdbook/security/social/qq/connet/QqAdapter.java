@@ -51,7 +51,7 @@ public class QqAdapter implements ApiAdapter<Qq> {
         // 设置用户名称, 此处设置为昵称
         values.setDisplayName(userInfo.getNickname());
         // 设置头像
-        values.setImageUrl(userInfo.getFigureurl_qq_1());
+        values.setImageUrl(userInfo.getFigureUrlQq1());
         // 设置主页(例如:微博中有个人主页的概念)
         values.setProfileUrl(null);
         // 设置 open id(服务商的用户 id)

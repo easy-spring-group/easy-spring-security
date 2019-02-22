@@ -101,7 +101,6 @@ public class AppSignUpUtils {
 
     /**
      * 获取用于存储 社交登录认证信息 的 key
-     * TODO 此处应该需要生成 deviceId
      *
      * @author summer
      * @date 2019-02-21 15:34
@@ -110,8 +109,9 @@ public class AppSignUpUtils {
      * @version V1.0.0-RELEASE
      */
     private String getKey(WebRequest request) {
-        // 获取 deviceId
-        String deviceId = request.getHeader(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID_KEY);
+        // 从请求中获取 deviceId
+        String deviceId = (String) request.getAttribute(SecurityConstants.Social.DEFAULT_HEADER_DEVICE_ID_KEY,
+                SecurityConstants.Social.DEFAULT_DEVICE_ID_EXPIRE);
         // 验证 deviceId
         if (StringUtils.isBlank(deviceId)) {
             throw new AppSecretException("设备id参数不能为空");

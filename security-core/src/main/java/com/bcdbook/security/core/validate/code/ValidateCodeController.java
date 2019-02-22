@@ -94,6 +94,9 @@ public class ValidateCodeController {
             servletWebRequest.setAttribute(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID_KEY,
                     deviceId,
                     SecurityConstants.Validate.DEFAULT_DEVICE_ID_EXPIRE);
+            // 设置到 response 中
+            servletWebRequest.getResponse().setHeader(SecurityConstants.Social.DEFAULT_HEADER_DEVICE_ID_KEY,
+                    deviceId);
         }
 
         // 返回生成的 deviceId

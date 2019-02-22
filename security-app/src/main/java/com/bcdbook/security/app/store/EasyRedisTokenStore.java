@@ -15,7 +15,9 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 import java.util.*;
 
 /**
- * TODO
+ * Token 使用 Redis 做存储器时, 会报方法找不到的错误, 粗腰自己实现 tokenStore 才行
+ * 通过各种资料得出, 可能是 spring 版本升级中带来的 bug
+ * 此类待优化,
  *
  * @author summer
  * @date 2019-02-22 13:32

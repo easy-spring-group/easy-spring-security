@@ -3,7 +3,6 @@ package com.bcdbook.security.app.authentication;
 import com.bcdbook.security.core.utils.RequestUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,12 +47,6 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
     @Autowired
     private AuthorizationServerTokenServices authorizationServerTokenServices;
 
-    // TODO: 2019-02-21 Base64 编码的字符串, 测试时临时使用
-    public static void main(String[] args) {
-        String ab = "easy-spring:easy-spring-secret";
-        byte[] encodeBase64 = Base64.encodeBase64(ab.getBytes());
-        System.out.println(new String(encodeBase64));
-    }
     /**
      * 登录成功后的处理逻辑
      *

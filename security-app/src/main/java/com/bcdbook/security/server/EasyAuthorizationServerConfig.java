@@ -127,7 +127,6 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
 
     /**
      * 配置支持的认证服务信息
-     * TODO 后期需要优化此配置
      *
      * @author summer
      * @date 2019-02-20 18:17

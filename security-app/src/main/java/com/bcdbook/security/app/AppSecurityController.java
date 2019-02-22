@@ -1,7 +1,9 @@
 package com.bcdbook.security.app;
 
 import com.bcdbook.security.app.social.AppSignUpUtils;
+import com.bcdbook.security.core.properties.SecurityConstants;
 import com.bcdbook.security.social.support.SocialUserInfo;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.social.connect.Connection;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * APP 社交登录的控制器
@@ -39,7 +42,7 @@ public class AppSecurityController {
     /**
      * APP 环境下, 社交登录的注册方法
      * 若服务提供商通过了认证, 但是本地却没有注册, 则会直接跳到此路径下
-     * TODO 此处不能直接返回用户详情信息, openId 是不能直接返回的数据, 同时需要生成 deviceId
+     * 此方法直接返回用户详情信息, 同时生成 deviceId 并放到 header 中
      *
      * @author summer
      * @date 2019-02-21 17:01
@@ -49,7 +52,7 @@ public class AppSecurityController {
      */
     @GetMapping("/social/signUp")
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public SocialUserInfo getSocialUserInfo(HttpServletRequest request) {
+    public SocialUserInfo getSocialUserInfo(HttpServletRequest request, HttpServletResponse response) {
         /*
          * 封装社交登录的用户详情信息
          */
@@ -65,10 +68,43 @@ public class AppSecurityController {
         // 设置头像
         userInfo.setHeadImage(connection.getImageUrl());
 
+        // 创建 servletWebRequest 对象
+        ServletWebRequest servletWebRequest = new ServletWebRequest(request, response);
+        // 生成 deviceId 并设置到 servletWebRequest
+        buildServletWebRequest(servletWebRequest);
+
         // 保存用户的认证信息到 Redis 中
-        appSignUpUtils.saveConnectionData(new ServletWebRequest(request), connection.createData());
+        appSignUpUtils.saveConnectionData(servletWebRequest, connection.createData());
 
         return userInfo;
+    }
+
+    /**
+     * 对 servletWebRequest 进行处理,
+     * 生成 deviceId 并设置到 servletWebRequest
+     *
+     * @author summer
+     * @date 2019-02-20 19:28
+     * @param servletWebRequest 请求和返回信息
+     * @return java.lang.String
+     * @version V1.0.0-RELEASE
+     */
+    private String buildServletWebRequest(ServletWebRequest servletWebRequest) {
+        // 定义 deviceId
+        String deviceId = "";
+
+        // 生成新的 deviceId
+        deviceId = RandomStringUtils.randomNumeric(20);
+        // 设置到 servletWebRequest 中
+        servletWebRequest.setAttribute(SecurityConstants.Social.DEFAULT_HEADER_DEVICE_ID_KEY,
+                deviceId,
+                SecurityConstants.Social.DEFAULT_DEVICE_ID_EXPIRE);
+        // 设置到 response 中
+        servletWebRequest.getResponse().setHeader(SecurityConstants.Social.DEFAULT_HEADER_DEVICE_ID_KEY,
+                deviceId);
+
+        // 返回生成的 deviceId
+        return deviceId;
     }
 
 }

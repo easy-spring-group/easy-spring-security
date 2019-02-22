@@ -101,6 +101,14 @@ public interface SecurityConstants {
          * providerId 参数名
          */
         String DEFAULT_PARAMETER_NAME_PROVIDER_ID_NAME = "providerId";
+        /**
+         * 默认的使用 Redis 存储第三方认证信息时在 head 中传参的 key
+         */
+        String DEFAULT_HEADER_DEVICE_ID_KEY = "deviceId";
+        /**
+         * deviceId 的有效时长
+         */
+        int DEFAULT_DEVICE_ID_EXPIRE = 300;
 
     }
 
