@@ -20,6 +20,7 @@
         <module>security-dependencies</module>
         <module>spring-social</module>
         <module>spring-security</module>
+        <module>spring-security-sso</module>
     </modules>
 
     <!--项目名称-->
