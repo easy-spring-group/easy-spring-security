@@ -36,11 +36,6 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-security:
-  oauth2:
-    client:
-      client-id: easy-spring
-      client-secret: easy-spring-secret
 
 easy-spring:
   security:
@@ -56,8 +51,7 @@ easy-spring:
         # 退出登录成功后, 跳转的地址
         # sign-out-success-url: /demo-sign-out.html
         # 删除的 cookie
-        delete-cookies[0]: JSESSIONID
-        delete-cookies[1]: SESSION
+        delete-cookies: ["JSESSIONID", "SESSION"]
       # 退出登录的地址
       sign-out-url: /signOut
 
@@ -90,8 +84,46 @@ easy-spring:
         # 请求方式
         method: POST
         # 需要的验证码类型 SMS/IMAGE
-        validateCodeType: IMAGE
+        validate-code-type: IMAGE
 
+    # oauth2 认证的配置
+    oauth2:
+      # 允许的认证客户
+      clients[0]:
+        # 客户 id
+        client-id: easy-spring
+        # 客户密码
+        client-secret: easy-spring-secret
+        # 支持的认证类型
+        authorized-grant-types: ["refresh_token", "password"]
+        # accessToken 的有效时长
+        access-tokenvalidate-seconds: 3600
+        # refreshToken 的有效时长
+        # refresh-token-validity-seconds: 604800
+        # 回调路径
+        redirect-uris:
+          - "http://example.com"
+          - "localhost:8080"
+        # 允许的授权范围
+        scopes: ["all", "read", "write"]
+      # 允许的认证客户
+      clients[1]:
+        # 客户 id
+        client-id: easy-spring-2
+        # 客户密码
+        client-secret: easy-spring-secret-2
+        # 支持的认证类型
+        authorized-grant-types: ["refresh_token", "password"]
+        # accessToken 的有效时长
+        access-tokenvalidate-seconds: 3600
+        # refreshToken 的有效时长
+        # refresh-token-validity-seconds: 604800
+        # 回调路径
+        redirect-uris:
+          - "http://example.com"
+          - "localhost:8080"
+        # 允许的授权范围
+        scopes: ["all", "read", "write"]
     # 第三方登录的相关配置
     social:
       # qq 的配置

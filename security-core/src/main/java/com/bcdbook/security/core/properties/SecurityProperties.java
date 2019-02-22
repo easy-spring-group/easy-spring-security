@@ -2,6 +2,7 @@ package com.bcdbook.security.core.properties;
 
 import com.bcdbook.security.core.properties.browser.BrowserProperties;
 import com.bcdbook.security.core.properties.code.ValidateCodeProperties;
+import com.bcdbook.security.core.properties.oauth.OAuth2Properties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -26,6 +27,10 @@ public class SecurityProperties {
      * 验证码配置
      */
     private ValidateCodeProperties code = new ValidateCodeProperties();
+    /**
+     * OAuth2 的配置
+     */
+    private OAuth2Properties oauth2 = new OAuth2Properties();
 
 }
 

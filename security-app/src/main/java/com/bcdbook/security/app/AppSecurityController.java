@@ -38,6 +38,8 @@ public class AppSecurityController {
 
     /**
      * APP 环境下, 社交登录的注册方法
+     * 若服务提供商通过了认证, 但是本地却没有注册, 则会直接跳到此路径下
+     * TODO 此处不能直接返回用户详情信息, openId 是不能直接返回的数据, 同时需要生成 deviceId
      *
      * @author summer
      * @date 2019-02-21 17:01

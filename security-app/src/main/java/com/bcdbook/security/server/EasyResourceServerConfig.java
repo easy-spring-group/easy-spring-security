@@ -1,4 +1,4 @@
-package com.bcdbook.security.app;
+package com.bcdbook.security.server;
 
 import com.bcdbook.security.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
 import com.bcdbook.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
@@ -100,7 +100,7 @@ public class EasyResourceServerConfig extends ResourceServerConfigurerAdapter {
                         // 忽略验证码获取及验证的地址
                         SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*",
                         // TODO 需要抽取
-                        "/user/regist", "/social/signUp")
+                        "/user/regist", "/social/signUp", "/oauth/token")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
