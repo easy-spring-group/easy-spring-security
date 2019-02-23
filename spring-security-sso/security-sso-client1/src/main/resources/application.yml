@@ -1,0 +1,25 @@
+security:
+  oauth2:
+    client:
+      # 认证者 id
+      client-id: spring1
+      # 认证者密码
+      client-secret: spring-security1
+      # 认证地址
+      user-authorization-uri: http://127.0.0.1:8080/server/oauth/authorize
+      # 获取 accessToken 的地址
+      access-token-uri: http://127.0.0.1:8080/server/oauth/token
+    resource:
+      jwt:
+        # 获取 jwt key 的地址
+        key-uri: http://127.0.0.1:8080/server/oauth/token_key
+#      user-info-uri: http://127.0.0.1:8080/server/user
+#      token-info-uri: http://127.0.0.1:8080/server/oauth/check_token
+#      preferTokenInfo: false
+
+server:
+  # 端口号
+  port: 8081
+  servlet:
+    # 项目路径
+    context-path: /client1
