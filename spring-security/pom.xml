@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>security-dependencies</artifactId>
-        <groupId>com.bcdbook.security</groupId>
+        <groupId>io.easyspring.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../security-dependencies</relativePath>
@@ -21,7 +21,7 @@
     <!--项目简介-->
     <description>Spring Security</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://www.easyspring.io/</url>
 
     <modules>
         <module>security-core</module>

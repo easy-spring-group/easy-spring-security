@@ -6,7 +6,7 @@
 
     <!--父项目的基本信息-->
     <!--项目组名称-->
-    <groupId>com.bcdbook.security</groupId>
+    <groupId>io.easyspring.security</groupId>
     <!--项目标识-->
     <artifactId>spring-security-build</artifactId>
     <!--项目版本-->

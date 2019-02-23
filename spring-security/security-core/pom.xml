@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>spring-security</artifactId>
-        <groupId>com.bcdbook.security</groupId>
+        <groupId>io.easyspring.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
@@ -23,7 +23,7 @@
     <dependencies>
         <!--TODO 暂时引用, 使用 social 的相关配置, 后期需要去除-->
         <dependency>
-            <groupId>com.bcdbook.security</groupId>
+            <groupId>io.easyspring.security</groupId>
             <artifactId>spring-social-core</artifactId>
         </dependency>
 

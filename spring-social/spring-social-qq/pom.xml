@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>spring-social</artifactId>
-        <groupId>com.bcdbook.security</groupId>
+        <groupId>io.easyspring.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
@@ -19,12 +19,12 @@
     <!--项目简介-->
     <description>Spring Social QQ</description>
     <!--项目连接地址-->
-    <url>https://easyspring.bcdbook.com/</url>
+    <url>https://www.easyspring.io/</url>
 
 
     <dependencies>
         <dependency>
-            <groupId>com.bcdbook.security</groupId>
+            <groupId>io.easyspring.security</groupId>
             <artifactId>spring-social-core</artifactId>
         </dependency>
 

@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>security-dependencies</artifactId>
-        <groupId>com.bcdbook.security</groupId>
+        <groupId>io.easyspring.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
         <relativePath>../../security-dependencies</relativePath>
@@ -23,22 +23,22 @@
 
     <dependencies>
         <!--<dependency>-->
-            <!--<groupId>com.bcdbook.security</groupId>-->
+            <!--<groupId>io.easyspring.security</groupId>-->
             <!--<artifactId>security-browser</artifactId>-->
         <!--</dependency>-->
         <dependency>
-            <groupId>com.bcdbook.security</groupId>
+            <groupId>io.easyspring.security</groupId>
             <artifactId>security-app</artifactId>
         </dependency>
 
         <!--引入通过 qq 登录的自定义 jar-->
         <dependency>
-            <groupId>com.bcdbook.security</groupId>
+            <groupId>io.easyspring.security</groupId>
             <artifactId>spring-social-qq</artifactId>
         </dependency>
         <!--引入通过微信登录的自定义 jar-->
         <dependency>
-            <groupId>com.bcdbook.security</groupId>
+            <groupId>io.easyspring.security</groupId>
             <artifactId>spring-social-wechat</artifactId>
         </dependency>
 

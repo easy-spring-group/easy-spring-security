@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>spring-security</artifactId>
-        <groupId>com.bcdbook.security</groupId>
+        <groupId>io.easyspring.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
@@ -23,7 +23,7 @@
     <dependencies>
         <!--引入基础的 security 服务的包-->
         <dependency>
-            <groupId>com.bcdbook.security</groupId>
+            <groupId>io.easyspring.security</groupId>
             <artifactId>security-core</artifactId>
         </dependency>
 
