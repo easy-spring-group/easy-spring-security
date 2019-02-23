@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class SecurityClient1SsoApplication {
 
     /**
-     * TODO
+     * 获取当前在线用户
      *
      * @author summer
      * @date 2019-02-23 20:04
-     * @param user
+     * @param user 在线用户的认证信息
      * @return org.springframework.security.core.Authentication
      * @version V1.0.0-RELEASE
      */
@@ -34,6 +34,15 @@ public class SecurityClient1SsoApplication {
         return user;
     }
 
+    /**
+     * 主启动类
+     *
+     * @author summer
+     * @date 2019-02-23 20:20
+     * @param args 启动参数
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
     public static void main(String[] args) {
         SpringApplication.run(SecurityClient1SsoApplication.class, args);
     }
