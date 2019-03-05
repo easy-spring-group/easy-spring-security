@@ -1,8 +1,8 @@
 package io.easyspring.security.browser;
 
+import io.easyspring.security.authorize.AuthorizeConfigManager;
 import io.easyspring.security.core.authentication.AbstractChannelSecurityConfig;
 import io.easyspring.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
-import io.easyspring.security.core.authorize.AuthorizeConfigManager;
 import io.easyspring.security.core.properties.SecurityProperties;
 import io.easyspring.security.core.validate.code.ValidateCodeSecurityConfig;
 import io.easyspring.security.social.properties.SocialProperties;

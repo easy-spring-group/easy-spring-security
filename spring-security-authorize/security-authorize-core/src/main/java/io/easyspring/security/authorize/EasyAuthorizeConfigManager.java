@@ -1,4 +1,4 @@
-package io.easyspring.security.core.authorize;
+package io.easyspring.security.authorize;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,11 +35,10 @@ public class EasyAuthorizeConfigManager implements AuthorizeConfigManager {
      */
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
+        // 循环处理所有的 provider, 让 config 加入后来配置的 config 数据
         for (AuthorizeConfigProvider authorizeConfigProvider : authorizeConfigProviders) {
             authorizeConfigProvider.config(config);
         }
-        // 除了上述的请求以外, 其他所有的请求都需要登录权限
-		config.anyRequest().authenticated();
     }
 
 }

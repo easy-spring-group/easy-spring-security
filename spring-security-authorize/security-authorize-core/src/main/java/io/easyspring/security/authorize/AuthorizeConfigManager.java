@@ -1,26 +1,26 @@
-package io.easyspring.security.core.authorize;
+package io.easyspring.security.authorize;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 
 /**
- * 自定义权限控制接口, 用于配置默认忽略的路径
+ * 默认的权限控制操作接口
  *
  * @author summer
- * @date 2019-03-05 16:17
+ * @date 2019-03-05 16:23
  * @version V1.0.0-RELEASE
  */
-public interface AuthorizeConfigProvider {
+public interface AuthorizeConfigManager {
 
     /**
-     * 配置忽略的权限校验接口
+     * 把所有的权限控制器, 都加上对应的配置
      *
-     * @see HttpSecurity#authorizeRequests()
-     * @param config 权限校验配置对象
+     * @param config 配置信息
      * @return void
      * @author summer
-     * @date 2019-03-05 16:17
+     * @date 2019-03-05 16:25
      * @version V1.0.0-RELEASE
      */
     void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config);
+
 }

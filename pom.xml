@@ -21,6 +21,7 @@
         <module>spring-social</module>
         <module>spring-security</module>
         <module>spring-security-sso</module>
+        <module>spring-security-authorize</module>
     </modules>
 
     <!--项目名称-->

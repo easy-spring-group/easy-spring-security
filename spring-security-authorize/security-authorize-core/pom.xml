@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>spring-security-authorize</artifactId>
+        <groupId>io.easyspring.security</groupId>
+        <!--suppress MavenPropertyInParent -->
+        <version>${base.version}</version>
+    </parent>
+
+    <artifactId>security-authorize-core</artifactId>
+
+    <!--打包方式-->
+    <packaging>jar</packaging>
+    <!--项目名称-->
+    <name>Spring Security Authorize Core</name>
+    <!--项目简介-->
+    <description>Spring Security Authorize Core</description>
+    <!--项目连接地址-->
+    <url>https://www.easyspring.io/</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

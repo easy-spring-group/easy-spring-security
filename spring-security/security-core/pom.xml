@@ -27,6 +27,12 @@
             <artifactId>spring-social-core</artifactId>
         </dependency>
 
+        <!--引入权限配置的核心包-->
+        <dependency>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>security-authorize-core</artifactId>
+        </dependency>
+
         <!--spring web 基础包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

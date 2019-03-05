@@ -1,6 +1,7 @@
 package io.easyspring.security.core.authorize;
 
 
+import io.easyspring.security.authorize.AuthorizeConfigProvider;
 import io.easyspring.security.core.properties.SecurityConstants;
 import io.easyspring.security.core.properties.SecurityProperties;
 import io.easyspring.security.social.properties.SocialProperties;

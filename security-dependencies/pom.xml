@@ -166,6 +166,8 @@
                 <artifactId>security-app</artifactId>
                 <version>${base.version}</version>
             </dependency>
+
+            <!--社交登录相关模块-->
             <!--spring social 的基础核心-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
@@ -182,6 +184,14 @@
             <dependency>
                 <groupId>io.easyspring.security</groupId>
                 <artifactId>spring-social-wechat</artifactId>
+                <version>${base.version}</version>
+            </dependency>
+
+            <!--权限控制相关模块-->
+            <!--spring authorize 权限控制核心模块-->
+            <dependency>
+                <groupId>io.easyspring.security</groupId>
+                <artifactId>security-authorize-core</artifactId>
                 <version>${base.version}</version>
             </dependency>
 
