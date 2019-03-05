@@ -2,6 +2,7 @@ package io.easyspring.security.server;
 
 import io.easyspring.security.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
 import io.easyspring.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import io.easyspring.security.core.authorize.AuthorizeConfigManager;
 import io.easyspring.security.core.properties.SecurityConstants;
 import io.easyspring.security.core.validate.code.ValidateCodeSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,12 @@ public class EasyResourceServerConfig extends ResourceServerConfigurerAdapter {
      */
     @Autowired
     private SpringSocialConfigurer easySpringSocialConfigurer;
+    /**
+     * 注入权限配置的管理器
+     */
+    @Autowired
+    private AuthorizeConfigManager authorizeConfigManager;
+
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -89,23 +96,10 @@ public class EasyResourceServerConfig extends ResourceServerConfigurerAdapter {
                 // 加入 openId 认证的配置
                 .apply(openIdAuthenticationSecurityConfig)
                     .and()
-                .authorizeRequests()
-                .antMatchers(
-                        // 忽略登录的地址
-                        SecurityConstants.SignIn.DEFAULT_AUTHENTICATION_URL,
-                        // 忽略手机验证码登录的地址
-                        SecurityConstants.SignIn.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE,
-                        // 忽略 openId 登录的地址
-                        SecurityConstants.Social.DEFAULT_LOGIN_PROCESSING_URL_OPENID,
-                        // 忽略验证码获取及验证的地址
-                        SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX+"/*",
-                        // TODO 需要抽取
-                        "/user/regist", "/social/signUp", "/oauth/token")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                    .and()
                 .csrf().disable();
+
+        // 配置权限控制信息
+        authorizeConfigManager.config(http.authorizeRequests());
     }
 
 }

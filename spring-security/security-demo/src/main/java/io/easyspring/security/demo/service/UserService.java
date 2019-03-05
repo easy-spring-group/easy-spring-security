@@ -99,7 +99,7 @@ public class UserService implements UserDetailsService, SocialUserDetailsService
                 true,
                 // 把权限字符串转换成权限集合, 设置到 user 中
                 // 注意: 在开启 OAuth 授权后, 被授权的用户必须有 ROLE_USER 的就是
-                AuthorityUtils.commaSeparatedStringToAuthorityList("admin, ROLE_USER"));
+                AuthorityUtils.commaSeparatedStringToAuthorityList("admin1, ROLE_USER"));
     }
 
 

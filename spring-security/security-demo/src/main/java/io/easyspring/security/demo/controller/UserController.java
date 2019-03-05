@@ -1,17 +1,15 @@
 package io.easyspring.security.demo.controller;
 
-import io.easyspring.security.app.social.AppSignUpUtils;
+import com.fasterxml.jackson.annotation.JsonView;
 import io.easyspring.security.core.properties.SecurityProperties;
 import io.easyspring.security.demo.dto.User;
 import io.easyspring.security.demo.dto.UserQueryCondition;
-import com.fasterxml.jackson.annotation.JsonView;
-import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +17,6 @@ import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,36 +38,14 @@ public class UserController {
     @Autowired
     private ProviderSignInUtils providerSignInUtils;
 
-    /**
-     * 注入 APP 登录的工具类
-     */
-    @Autowired
-    private AppSignUpUtils appSignUpUtils;
+//    /**
+//     * 注入 APP 登录的工具类
+//     */
+//    @Autowired
+//    private AppSignUpUtils appSignUpUtils;
 
     @Autowired
     private SecurityProperties securityProperties;
-
-    /**
-     * 注册的示例页面
-     *
-     * @author summer
-     * @date 2019-01-25 14:38
-     * @param user 用户对象
-     * @return void
-     * @version V1.0.0-RELEASE
-     */
-    @PostMapping("/regist")
-    public void regist(User user, HttpServletRequest request) {
-        //注册用户
-        //不管是注册用户还是绑定用户，都会拿到一个用户唯一标识。
-        String userId = user.getUsername();
-
-        /*
-         * APP 环境下, 社交登录执行注册的方法
-         */
-        // 执行注册的后处理信息
-        appSignUpUtils.doPostSignUp(new ServletWebRequest(request), userId);
-    }
 
 //    /**
 //     * 注册的示例页面
@@ -88,11 +63,33 @@ public class UserController {
 //        String userId = user.getUsername();
 //
 //        /*
-//         * 浏览器环境下的社交登录注册页面方法
+//         * APP 环境下, 社交登录执行注册的方法
 //         */
-//        // 这里的 userId 会设置成 UserConnection 的主键
-//         providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+//        // 执行注册的后处理信息
+//        appSignUpUtils.doPostSignUp(new ServletWebRequest(request), userId);
 //    }
+
+    /**
+     * 注册的示例页面
+     *
+     * @author summer
+     * @date 2019-01-25 14:38
+     * @param user 用户对象
+     * @return void
+     * @version V1.0.0-RELEASE
+     */
+    @PostMapping("/regist")
+    public void regist(User user, HttpServletRequest request) {
+        //注册用户
+        //不管是注册用户还是绑定用户，都会拿到一个用户唯一标识。
+        String userId = user.getUsername();
+
+        /*
+         * 浏览器环境下的社交登录注册页面方法
+         */
+        // 这里的 userId 会设置成 UserConnection 的主键
+         providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+    }
 
     /**
      * 根据查询条件查询用户集合的方法
@@ -211,31 +208,31 @@ public class UserController {
      * @return java.lang.Object
      * @version V1.0.0-RELEASE
      */
-//    @GetMapping("/me")
-//    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user, HttpServletRequest request) {
-//        log.info(String.valueOf(request.getSession().getMaxInactiveInterval()));
-//        return user;
-//    }
-
     @GetMapping("/me")
-    public Object getCurrentUser(Authentication user, HttpServletRequest request)
-            throws ExpiredJwtException, UnsupportedJwtException,
-            MalformedJwtException, SignatureException,
-            IllegalArgumentException, UnsupportedEncodingException {
-
-        String token = StringUtils.substringAfter(request.getHeader("Authorization"), "bearer ");
-
-        // 从 token 中解析出 jwt 方式存储的增强信息
-        Claims claims = Jwts.parser()
-                .setSigningKey(securityProperties.getOauth2().getJwtSigningKey().getBytes("UTF-8"))
-                .parseClaimsJws(token)
-                .getBody();
-
-        String company = (String) claims.get("company");
-
-        log.info("jwt token company: {}", company);
-
+    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user, HttpServletRequest request) {
+        log.info(String.valueOf(request.getSession().getMaxInactiveInterval()));
         return user;
     }
+
+//    @GetMapping("/me")
+//    public Object getCurrentUser(Authentication user, HttpServletRequest request)
+//            throws ExpiredJwtException, UnsupportedJwtException,
+//            MalformedJwtException, SignatureException,
+//            IllegalArgumentException, UnsupportedEncodingException {
+//
+//        String token = StringUtils.substringAfter(request.getHeader("Authorization"), "bearer ");
+//
+//        // 从 token 中解析出 jwt 方式存储的增强信息
+//        Claims claims = Jwts.parser()
+//                .setSigningKey(securityProperties.getOauth2().getJwtSigningKey().getBytes("UTF-8"))
+//                .parseClaimsJws(token)
+//                .getBody();
+//
+//        String company = (String) claims.get("company");
+//
+//        log.info("jwt token company: {}", company);
+//
+//        return user;
+//    }
 
 }
