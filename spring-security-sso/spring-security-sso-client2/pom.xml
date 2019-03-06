@@ -10,14 +10,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>security-sso-server</artifactId>
+    <artifactId>spring-security-sso-client2</artifactId>
 
     <!--打包方式-->
     <packaging>jar</packaging>
     <!--项目名称-->
-    <name>Spring Security Sso Server</name>
+    <name>Spring Security Sso Client2</name>
     <!--项目简介-->
-    <description>Spring Security Sso Server</description>
+    <description>Spring Security Sso Client2</description>
     <!--项目连接地址-->
     <url>https://www.easyspring.io/</url>
 
@@ -37,6 +37,10 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 

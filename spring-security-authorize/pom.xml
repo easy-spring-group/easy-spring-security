@@ -24,7 +24,7 @@
     <url>https://www.easyspring.io/</url>
 
     <modules>
-        <module>security-authorize-core</module>
+        <module>spring-security-authorize-core</module>
     </modules>
 
 </project>

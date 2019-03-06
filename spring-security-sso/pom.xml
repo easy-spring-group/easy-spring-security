@@ -24,9 +24,9 @@
     <url>https://www.easyspring.io/</url>
 
     <modules>
-        <module>security-sso-server</module>
-        <module>security-sso-client1</module>
-        <module>security-sso-client2</module>
+        <module>spring-security-sso-server</module>
+        <module>spring-security-sso-client1</module>
+        <module>spring-security-sso-client2</module>
     </modules>
 
 </project>

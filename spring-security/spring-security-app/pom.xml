@@ -3,28 +3,35 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <artifactId>spring-security-authorize</artifactId>
+        <artifactId>spring-security</artifactId>
         <groupId>io.easyspring.security</groupId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
 
-    <artifactId>security-authorize-core</artifactId>
-
+    <artifactId>spring-security-app</artifactId>
     <!--打包方式-->
     <packaging>jar</packaging>
+
     <!--项目名称-->
-    <name>Spring Security Authorize Core</name>
+    <name>Security App</name>
     <!--项目简介-->
-    <description>Spring Security Authorize Core</description>
-    <!--项目连接地址-->
-    <url>https://www.easyspring.io/</url>
+    <description>Security App</description>
 
     <dependencies>
+        <!--引入基础的 security 服务的包-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+
+        <!--引入 lombok 工具包-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

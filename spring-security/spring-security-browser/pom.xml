@@ -11,7 +11,7 @@
         <version>${base.version}</version>
     </parent>
 
-    <artifactId>security-browser</artifactId>
+    <artifactId>spring-security-browser</artifactId>
     <!--打包方式-->
     <packaging>jar</packaging>
 
@@ -25,7 +25,7 @@
         <!--引入基础的 security 服务的包-->
         <dependency>
             <groupId>io.easyspring.security</groupId>
-            <artifactId>security-core</artifactId>
+            <artifactId>spring-security-core</artifactId>
             <!--<version>${base.version}</version>-->
         </dependency>
         <!--引入集群环境下的 session 管理包-->

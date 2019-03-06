@@ -24,9 +24,9 @@
     <url>https://www.easyspring.io/</url>
 
     <modules>
-        <module>security-core</module>
-        <module>security-browser</module>
-        <module>security-app</module>
+        <module>spring-security-core</module>
+        <module>spring-security-browser</module>
+        <module>spring-security-app</module>
     </modules>
 
 </project>

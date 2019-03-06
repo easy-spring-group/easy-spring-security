@@ -12,7 +12,7 @@
         <relativePath>../../security-dependencies</relativePath>
     </parent>
 
-    <artifactId>security-demo</artifactId>
+    <artifactId>spring-security-demo</artifactId>
     <!--打包方式-->
     <packaging>jar</packaging>
 
@@ -24,11 +24,11 @@
     <dependencies>
         <dependency>
             <groupId>io.easyspring.security</groupId>
-            <artifactId>security-browser</artifactId>
+            <artifactId>spring-security-browser</artifactId>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>io.easyspring.security</groupId>-->
-            <!--<artifactId>security-app</artifactId>-->
+            <!--<artifactId>spring-security-app</artifactId>-->
         <!--</dependency>-->
 
         <!--引入通过 qq 登录的自定义 jar-->

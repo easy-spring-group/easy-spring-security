@@ -11,7 +11,7 @@
         <version>${base.version}</version>
     </parent>
 
-    <artifactId>security-core</artifactId>
+    <artifactId>spring-security-core</artifactId>
     <!--打包方式-->
     <packaging>jar</packaging>
 
@@ -30,7 +30,7 @@
         <!--引入权限配置的核心包-->
         <dependency>
             <groupId>io.easyspring.security</groupId>
-            <artifactId>security-authorize-core</artifactId>
+            <artifactId>spring-security-authorize-core</artifactId>
         </dependency>
 
         <!--spring web 基础包-->

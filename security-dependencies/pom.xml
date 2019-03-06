@@ -151,19 +151,19 @@
             <!--security 的核心模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
-                <artifactId>security-core</artifactId>
+                <artifactId>spring-security-core</artifactId>
                 <version>${base.version}</version>
             </dependency>
             <!--基于浏览器的 security 安全控制模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
-                <artifactId>security-browser</artifactId>
+                <artifactId>spring-security-browser</artifactId>
                 <version>${base.version}</version>
             </dependency>
             <!--基于 APP 的security 安全控制模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
-                <artifactId>security-app</artifactId>
+                <artifactId>spring-security-app</artifactId>
                 <version>${base.version}</version>
             </dependency>
 
@@ -191,7 +191,7 @@
             <!--spring authorize 权限控制核心模块-->
             <dependency>
                 <groupId>io.easyspring.security</groupId>
-                <artifactId>security-authorize-core</artifactId>
+                <artifactId>spring-security-authorize-core</artifactId>
                 <version>${base.version}</version>
             </dependency>
 
