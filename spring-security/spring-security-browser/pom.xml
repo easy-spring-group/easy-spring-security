@@ -26,22 +26,23 @@
         <dependency>
             <groupId>io.easyspring.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <!--<version>${base.version}</version>-->
         </dependency>
+
         <!--引入集群环境下的 session 管理包-->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-core</artifactId>
         </dependency>
+        <!--注入 Redis -->
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
         </dependency>
 
-        <!--加入 qq 的第三方登录配置-->
+        <!--注入 social security-->
         <dependency>
-            <groupId>io.easyspring.security</groupId>
-            <artifactId>spring-social-qq</artifactId>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-security</artifactId>
         </dependency>
 
         <!--引入工具 jar-->

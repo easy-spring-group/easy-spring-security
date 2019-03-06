@@ -2,9 +2,10 @@ package io.easyspring.security.core.authorize;
 
 
 import io.easyspring.security.authorize.AuthorizeConfigProvider;
-import io.easyspring.security.authorize.properties.SecurityAuthorizeProviderLoadOrderConstant;
+import io.easyspring.security.authorize.constant.SecurityAuthorizeProviderLoadOrderConstant;
 import io.easyspring.security.core.properties.SecurityConstants;
 import io.easyspring.security.core.properties.SecurityProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Order(SecurityAuthorizeProviderLoadOrderConstant.LOAD_ORDER_CORE)
+@Slf4j
 public class CoreAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     /**
@@ -46,7 +48,7 @@ public class CoreAuthorizeConfigProvider implements AuthorizeConfigProvider {
                 SecurityConstants.SignIn.DEFAULT_AUTHENTICATION_URL,
                 // 手机验证码登录的接口
                 SecurityConstants.SignIn.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE,
-                // 验证码接口,
+                // 验证码接口
                 SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
                 // 普通登录页面
                 // TODO: 2019-03-06 提取 Browser 配置
@@ -56,6 +58,23 @@ public class CoreAuthorizeConfigProvider implements AuthorizeConfigProvider {
                 // 退出登录成功后跳转的地址
                 securityProperties.getBrowser().getSignOut().getSignOutSuccessUrl())
                 .permitAll();
+
+        /*
+         * 拼装输出日志
+         */
+        String stringBuilder = SecurityConstants.SignIn.DEFAULT_AUTHENTICATION_URL +
+                ", " +
+                SecurityConstants.SignIn.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE +
+                ", " +
+                SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*" +
+                ", " +
+                securityProperties.getBrowser().getLoginPage() +
+                ", " +
+                securityProperties.getBrowser().getSession().getSessionInvalidUrl() +
+                ", " +
+                securityProperties.getBrowser().getSignOut().getSignOutSuccessUrl();
+        log.info("SocialAuthorizeConfigProvider ignoreAuthorizes: {}", stringBuilder);
     }
+
 
 }

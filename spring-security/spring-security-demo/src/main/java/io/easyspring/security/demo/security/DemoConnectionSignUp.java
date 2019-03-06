@@ -10,7 +10,7 @@ import org.springframework.social.connect.ConnectionSignUp;
  * @date 2019-01-25 15:47
  * @version V1.0.0-RELEASE
  */
-//@Component
+// @Component
 public class DemoConnectionSignUp implements ConnectionSignUp {
 
     /**

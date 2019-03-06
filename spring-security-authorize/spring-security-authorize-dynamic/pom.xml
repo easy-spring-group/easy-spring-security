@@ -10,27 +10,28 @@
         <version>${base.version}</version>
     </parent>
 
-    <artifactId>spring-security-authorize-core</artifactId>
+    <artifactId>spring-security-authorize-dynamic</artifactId>
 
     <!--打包方式-->
     <packaging>jar</packaging>
     <!--项目名称-->
-    <name>Spring Security Authorize Core</name>
+    <name>Spring Security Authorize Dynamic</name>
     <!--项目简介-->
-    <description>Spring Security Authorize Core</description>
+    <description>Spring Security Authorize Dynamic</description>
     <!--项目连接地址-->
     <url>https://www.easyspring.io/</url>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>spring-security-authorize-core</artifactId>
         </dependency>
 
+        <!--引入工具 jar-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
-
 </project>

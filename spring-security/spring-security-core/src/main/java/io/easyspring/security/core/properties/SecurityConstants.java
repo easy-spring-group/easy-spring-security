@@ -37,6 +37,10 @@ public interface SecurityConstants {
          * session 登录失效的跳转地址
          */
         String DEFAULT_SESSION_INVALID_URL = "/easy-session-invalid.html";
+        /**
+         * 默认的退出登录配置
+         */
+        String DEFAULT_SIGN_OUT_URL = "/signOut";
     }
 
     /**

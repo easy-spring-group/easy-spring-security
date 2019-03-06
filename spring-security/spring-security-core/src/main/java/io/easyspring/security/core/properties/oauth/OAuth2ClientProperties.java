@@ -40,6 +40,4 @@ public class OAuth2ClientProperties {
      * 允许的授权范围
      */
     private String[] scopes = {};
-
-
 }

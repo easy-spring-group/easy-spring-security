@@ -45,6 +45,8 @@ easy-spring:
       # loginPage: /demo-signIn.html
       # 登录时的返回方式
       sign-in-response-type: JSON
+      # 登录成功后跳转的地址, 此配置只有在 sign-in-response-type 是 html 的时候才生效
+      # sing-in-success-url:
       # 退出登录的配置
       sign-out:
         # result-type: JSON
@@ -128,6 +130,7 @@ easy-spring:
           - "localhost:8080"
         # 允许的授权范围
         scopes: ["all", "read", "write"]
+
     # 第三方登录的相关配置
     social:
       # qq 的配置
@@ -150,3 +153,15 @@ easy-spring:
       sign-up-url: /demo-signUp.html
       # 配置第三方登录拦截的请求地址前缀
       filter-processes-url: /qqLogin
+
+    # 权限的配置
+    authorize:
+      ignoreAuthorizeUrls[0]:
+        url: /user/2
+        method: GET
+      ignoreAuthorizeUrls[1]:
+        url: /user/3
+        method: GET
+      ignoreAuthorizeUrls[2]:
+        url: /user/me
+        method: GET

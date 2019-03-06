@@ -1,32 +1,26 @@
-package io.easyspring.security.social.authorize;
+package io.easyspring.security.browser.authorize;
 
 import io.easyspring.security.authorize.AuthorizeConfigProvider;
 import io.easyspring.security.authorize.constant.SecurityAuthorizeProviderLoadOrderConstant;
-import io.easyspring.security.social.properties.SocialProperties;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.stereotype.Component;
 
+
 /**
- * 社交登录的权限配置
+ * 浏览器的权限配置器
  *
  * @author summer
- * @date 2019-03-06 10:34
+ * @date 2019-03-06 16:59
  * @version V1.0.0-RELEASE
  */
 @Component
-@Order(SecurityAuthorizeProviderLoadOrderConstant.LOAD_ORDER_SOCIAL)
+@Order(SecurityAuthorizeProviderLoadOrderConstant.LOAD_ORDER_SERVER)
 @Slf4j
-public class SocialAuthorizeConfigProvider implements AuthorizeConfigProvider {
-
-    /**
-     * 注入社交登录的配置
-     */
-    @Autowired
-    private SocialProperties socialProperties;
+public class BrowserAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     /**
      * 配置忽略的权限校验接口
@@ -40,11 +34,21 @@ public class SocialAuthorizeConfigProvider implements AuthorizeConfigProvider {
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
         // 请求拦截时, 忽略一下路径
-        config.antMatchers(
-                // 授权完成后若没有用户信息, 所要跳转的页面
-                socialProperties.getSignUpUrl())
+        config.antMatchers(HttpMethod.GET,
+                "/**/*.js",
+                "/**/*.css",
+                "/**/*.ico",
+                "/**/*.jpg",
+                "/**/*.png",
+                "/**/*.gif")
                 .permitAll();
 
-        log.info("SocialAuthorizeConfigProvider ignoreAuthorizes: {}", socialProperties.getSignUpUrl());
+        log.info("SocialAuthorizeConfigProvider ignoreAuthorizes: {}",
+                "/**/*.js, " +
+                "/**/*.css, " +
+                "/**/*.ico, " +
+                "/**/*.jpg, " +
+                "/**/*.png, " +
+                "/**/*.gif");
     }
 }

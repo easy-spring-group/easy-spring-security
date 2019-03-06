@@ -24,7 +24,11 @@ public class BrowserProperties {
     /**
      * 退出登录时, 请求的地址
      */
-    private String signOutUrl = "/signOut";
+    private String signOutUrl = SecurityConstants.SignIn.DEFAULT_SIGN_OUT_URL;
+    /**
+     * 登录成功后跳转的页面
+     */
+    private String singInSuccessUrl;
     /**
      * 退出登录时的相关配置
      */

@@ -50,7 +50,7 @@ public class EasyConnectionStatusView extends AbstractView {
         Map<String, List<Connection<?>>> connections = (Map<String, List<Connection<?>>>) model.get("connectionMap");
 
         // 定义返回数据对象
-        Map<String, Boolean> result = new HashMap<>();
+        Map<String, Boolean> result = new HashMap<>(16);
         // 循环设置返回信息
         for (String key : connections.keySet()) {
             // key 是服务提供商的 id, 通过 key 获取服务提供商是否存在, 如果存在则为 true

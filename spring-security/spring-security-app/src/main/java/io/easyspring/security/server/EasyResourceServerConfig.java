@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.expression.OAuth2WebSecurityExpressionHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.social.security.SpringSocialConfigurer;
@@ -64,6 +66,12 @@ public class EasyResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private AuthorizeConfigManager authorizeConfigManager;
 
+    /**
+     * 注入安全表达式处理器, 用于处理动态权限
+     */
+    @Autowired
+    private OAuth2WebSecurityExpressionHandler expressionHandler;
+
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -100,6 +108,22 @@ public class EasyResourceServerConfig extends ResourceServerConfigurerAdapter {
 
         // 配置权限控制信息
         authorizeConfigManager.config(http.authorizeRequests());
+    }
+
+
+    /**
+     * 资源服务器的相关设置
+     *
+     * @param resources 资源服务的配置对象
+     * @return void
+     * @author summer
+     * @date 2019-03-06 23:25
+     * @version V1.0.0-RELEASE
+     */
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+        // 设置安全校验表达式的处理器
+        resources.expressionHandler(expressionHandler);
     }
 
 }

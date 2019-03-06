@@ -5,7 +5,6 @@ import io.easyspring.security.core.authentication.AbstractChannelSecurityConfig;
 import io.easyspring.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import io.easyspring.security.core.properties.SecurityProperties;
 import io.easyspring.security.core.validate.code.ValidateCodeSecurityConfig;
-import io.easyspring.security.social.properties.SocialProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,12 +34,7 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
      */
     @Autowired
     private SecurityProperties securityProperties;
-    /**
-     * 注入 social 的基础参数配置
-     * TODO 暂时引用, 使用 social 的相关配置, 后期需要去除
-     */
-    @Autowired
-    private SocialProperties socialProperties;
+
     /**
      * 注入数据源
      */
@@ -57,13 +51,6 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
      */
     @Autowired
     private LogoutSuccessHandler logoutSuccessHandler;
-
-
-//    /**
-//     * 注入表单验证的配置类
-//     */
-//    @Autowired
-//    private FormAuthenticationConfig formAuthenticationConfig;
 
     /**
      * session 过期的处理策略
@@ -186,8 +173,10 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         // 设置数据源
         tokenRepository.setDataSource(dataSource);
-        // 自动创建数据库
-		// tokenRepository.setCreateTableOnStartup(true);
+        /*
+         * 若需要自动创建数据库
+         * 可以通过 tokenRepository.setCreateTableOnStartup(true) 的方式来设置
+         */
 		// 返回设置好的存储实例
         return tokenRepository;
     }

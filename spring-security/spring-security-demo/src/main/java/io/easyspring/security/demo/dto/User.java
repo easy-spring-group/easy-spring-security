@@ -19,22 +19,45 @@ import java.util.Date;
 @Data
 public class User {
 
-    // 简单视图
+    /**
+     * 简单视图
+     *
+     * @author summer
+     * @date 2019-03-07 00:11
+     * @version V1.0.0-RELEASE
+     */
     public interface UserSimpleView {
     }
 
-    // 详细视图
+    /**
+     * 详细视图
+     *
+     * @author summer
+     * @date 2019-03-07 00:11
+     * @version V1.0.0-RELEASE
+     */
     public interface UserDetailView extends UserSimpleView {
     }
 
+    /**
+     * id
+     */
     private String id;
+    /**
+     * 用户名
+     */
     @JsonView(UserSimpleView.class)
     private String username;
+    /**
+     * 密码
+     */
     @NotBlank(message = "密码不能为空")
     @JsonView(UserDetailView.class)
     private String password;
-
-    @Past(message = "生日必须是过去时间")   // 必须是过去时间
+    /**
+     * 生日
+     */
+    @Past(message = "生日必须是过去时间")
     @JsonView(UserSimpleView.class)
     private Date birthday;
 }

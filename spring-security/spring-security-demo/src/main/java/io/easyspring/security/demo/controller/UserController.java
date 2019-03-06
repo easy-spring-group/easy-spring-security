@@ -41,14 +41,14 @@ public class UserController {
     @Autowired
     private ProviderSignInUtils providerSignInUtils;
 
+    @Autowired
+    private SecurityProperties securityProperties;
+
     /**
      * 注入 APP 登录的工具类
      */
     @Autowired
     private AppSignUpUtils appSignUpUtils;
-
-    @Autowired
-    private SecurityProperties securityProperties;
 
     /**
      * 注册的示例页面
@@ -71,7 +71,44 @@ public class UserController {
         // 执行注册的后处理信息
         appSignUpUtils.doPostSignUp(new ServletWebRequest(request), userId);
     }
+    @GetMapping("/me")
+    public Object getCurrentUser(Authentication user, HttpServletRequest request)
+            throws ExpiredJwtException, UnsupportedJwtException,
+            MalformedJwtException, SignatureException,
+            IllegalArgumentException, UnsupportedEncodingException {
 
+        String token = StringUtils.substringAfter(request.getHeader("Authorization"), "bearer ");
+
+        // 从 token 中解析出 jwt 方式存储的增强信息
+        Claims claims = Jwts.parser()
+                .setSigningKey(securityProperties.getOauth2().getJwtSigningKey().getBytes("UTF-8"))
+                .parseClaimsJws(token)
+                .getBody();
+
+        String company = (String) claims.get("company");
+
+        log.info("jwt token company: {}", company);
+
+        return user;
+    }
+
+//    /**
+//     * 获取当前在线用户
+//     *
+//     * 注意: 当存储器是 jwt 的时候, security 中的 AuthenticationPrincipal 就不再是一个对象了, 而是一个经过 jwt 增强的字符串
+//     *
+//     * @author summer
+//     * @date 2019-01-21 18:04
+//     * @param user 注入用户对象
+//     * @return java.lang.Object
+//     * @version V1.0.0-RELEASE
+//     */
+//    @GetMapping("/me")
+//    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user, HttpServletRequest request) {
+//        log.info(String.valueOf(request.getSession().getMaxInactiveInterval()));
+//        return user;
+//    }
+//
 //    /**
 //     * 注册的示例页面
 //     *
@@ -198,44 +235,6 @@ public class UserController {
     @DeleteMapping("/{id:\\d+}")
     public void delete(@PathVariable String id) {
         log.info("id: {}", id);
-    }
-
-//    /**
-//     * 获取当前在线用户
-//     *
-//     * 注意: 当存储器是 jwt 的时候, security 中的 AuthenticationPrincipal 就不再是一个对象了, 而是一个经过 jwt 增强的字符串
-//     *
-//     * @author summer
-//     * @date 2019-01-21 18:04
-//     * @param user 注入用户对象
-//     * @return java.lang.Object
-//     * @version V1.0.0-RELEASE
-//     */
-//    @GetMapping("/me")
-//    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user, HttpServletRequest request) {
-//        log.info(String.valueOf(request.getSession().getMaxInactiveInterval()));
-//        return user;
-//    }
-
-    @GetMapping("/me")
-    public Object getCurrentUser(Authentication user, HttpServletRequest request)
-            throws ExpiredJwtException, UnsupportedJwtException,
-            MalformedJwtException, SignatureException,
-            IllegalArgumentException, UnsupportedEncodingException {
-
-        String token = StringUtils.substringAfter(request.getHeader("Authorization"), "bearer ");
-
-        // 从 token 中解析出 jwt 方式存储的增强信息
-        Claims claims = Jwts.parser()
-                .setSigningKey(securityProperties.getOauth2().getJwtSigningKey().getBytes("UTF-8"))
-                .parseClaimsJws(token)
-                .getBody();
-
-        String company = (String) claims.get("company");
-
-        log.info("jwt token company: {}", company);
-
-        return user;
     }
 
 }

@@ -194,6 +194,12 @@
                 <artifactId>spring-security-authorize-core</artifactId>
                 <version>${base.version}</version>
             </dependency>
+            <!--spring authorize 权限控制动态控制模块-->
+            <dependency>
+                <groupId>io.easyspring.security</groupId>
+                <artifactId>spring-security-authorize-dynamic</artifactId>
+                <version>${base.version}</version>
+            </dependency>
 
 
             <!--<dependency>-->

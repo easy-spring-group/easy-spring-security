@@ -75,8 +75,7 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        // 这里需要设置其密码校验器为空
-//        security.passwordEncoder(NoOpPasswordEncoder.getInstance());
+        // 设置密码校验器
         security.passwordEncoder(new BCryptPasswordEncoder());
         // 获取签名的 key 时需要是已认证状态
         security.tokenKeyAccess("isAuthenticated()");

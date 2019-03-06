@@ -42,7 +42,13 @@
             <artifactId>spring-social-wechat</artifactId>
         </dependency>
 
-        <!--引入 jwt 的 jar-->
+        <!--权限校验的 jar-->
+        <dependency>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>spring-security-authorize-dynamic</artifactId>
+        </dependency>
+
+      <!--引入 jwt 的 jar-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>

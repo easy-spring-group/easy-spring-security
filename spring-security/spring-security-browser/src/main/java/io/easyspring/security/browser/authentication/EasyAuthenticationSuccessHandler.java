@@ -1,12 +1,15 @@
 package io.easyspring.security.browser.authentication;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.easyspring.security.core.properties.SecurityProperties;
 import io.easyspring.security.core.properties.SignInResponseType;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -38,6 +41,11 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
     private SecurityProperties securityProperties;
 
     /**
+     * 创建请求的缓存器
+     */
+    private RequestCache requestCache = new HttpSessionRequestCache();
+
+    /**
      * 登录成功后的处理逻辑
      *
      * @author summer
@@ -63,16 +71,16 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
 			// 发送到前端
 			response.getWriter().write(objectMapper.writeValueAsString(authentication));
 		} else {
-//			// 如果设置了 easy-spring.security.browser.singInSuccessUrl ，总是跳到设置的地址上
-//			// 如果没设置，则尝试跳转到登录之前访问的地址上，如果登录前访问地址为空，则跳到网站根路径上
-//			if (StringUtils.isNotBlank(securityProperties.getBrowser().getSingInSuccessUrl())) {
-//			    // 删除缓存中的请求信
-//				requestCache.removeRequest(request, response);
-//				// 设置使用默认的地址
-//				setAlwaysUseDefaultTargetUrl(true);
-//				// 设置登录成功后的地址
-//				setDefaultTargetUrl(securityProperties.getBrowser().getSingInSuccessUrl());
-//			}
+			// 如果设置了 easy-spring.security.browser.sing-in-success-url ，总是跳到设置的地址上
+			// 如果没设置，则尝试跳转到登录之前访问的地址上，如果登录前访问地址为空，则跳到网站根路径上
+			if (StringUtils.isNotBlank(securityProperties.getBrowser().getSingInSuccessUrl())) {
+			    // 删除缓存中的请求信
+				requestCache.removeRequest(request, response);
+				// 设置使用默认的地址
+				setAlwaysUseDefaultTargetUrl(true);
+				// 设置登录成功后的地址
+				setDefaultTargetUrl(securityProperties.getBrowser().getSingInSuccessUrl());
+			}
 
 			// 如果没有设置默认的登录成功后的跳转地址, 则直接使用父类的跳转方法
 			super.onAuthenticationSuccess(request, response, authentication);
