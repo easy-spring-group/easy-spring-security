@@ -17,7 +17,7 @@ public class DemoAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {
-        config.antMatchers("/user/me")
+        config.antMatchers("/user/2")
                 .hasAnyAuthority("admin");
 
         // config.anyRequest().access("@rbacService.hasPermission(request,authentication)");

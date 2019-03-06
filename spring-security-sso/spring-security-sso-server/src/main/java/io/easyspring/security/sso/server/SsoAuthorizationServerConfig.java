@@ -2,7 +2,7 @@ package io.easyspring.security.sso.server;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -76,7 +76,8 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         // 这里需要设置其密码校验器为空
-        security.passwordEncoder(NoOpPasswordEncoder.getInstance());
+//        security.passwordEncoder(NoOpPasswordEncoder.getInstance());
+        security.passwordEncoder(new BCryptPasswordEncoder());
         // 获取签名的 key 时需要是已认证状态
         security.tokenKeyAccess("isAuthenticated()");
     }

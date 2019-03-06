@@ -26,6 +26,12 @@
             <groupId>io.easyspring.security</groupId>
             <artifactId>spring-security-core</artifactId>
         </dependency>
+        <!--注入 social 的核心 jar-->
+        <!--TODO 此项目需要处理-->
+        <dependency>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>spring-social-core</artifactId>
+        </dependency>
 
         <!--引入 lombok 工具包-->
         <dependency>

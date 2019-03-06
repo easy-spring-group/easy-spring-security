@@ -21,11 +21,6 @@
     <description>Security Core</description>
 
     <dependencies>
-        <!--TODO 暂时引用, 使用 social 的相关配置, 后期需要去除-->
-        <dependency>
-            <groupId>io.easyspring.security</groupId>
-            <artifactId>spring-social-core</artifactId>
-        </dependency>
 
         <!--引入权限配置的核心包-->
         <dependency>
@@ -43,9 +38,17 @@
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-web</artifactId>
         </dependency>
+
+        <!--安全配置相关-->
+        <!--security 基础配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--OAuth 基础引用-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
 
         <!--引入 Redis 服务-->

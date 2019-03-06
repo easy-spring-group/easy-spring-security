@@ -1,6 +1,7 @@
 package io.easyspring.security.server;
 
 import io.easyspring.security.app.authentication.openid.OpenIdAuthenticationSecurityConfig;
+import io.easyspring.security.authorize.AuthorizeConfigManager;
 import io.easyspring.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import io.easyspring.security.core.properties.SecurityConstants;
 import io.easyspring.security.core.validate.code.ValidateCodeSecurityConfig;

@@ -2,9 +2,9 @@ package io.easyspring.security.core.authorize;
 
 
 import io.easyspring.security.authorize.AuthorizeConfigProvider;
+import io.easyspring.security.authorize.properties.SecurityAuthorizeProviderLoadOrderConstant;
 import io.easyspring.security.core.properties.SecurityConstants;
 import io.easyspring.security.core.properties.SecurityProperties;
-import io.easyspring.security.social.properties.SocialProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,20 +20,14 @@ import org.springframework.stereotype.Component;
  * @version V1.0.0-RELEASE
  */
 @Component
-@Order(Integer.MIN_VALUE)
-public class EasyAuthorizeConfigProvider implements AuthorizeConfigProvider {
+@Order(SecurityAuthorizeProviderLoadOrderConstant.LOAD_ORDER_CORE)
+public class CoreAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     /**
      * 注入 Security 的配置
      */
     @Autowired
     private SecurityProperties securityProperties;
-
-    /**
-     * 注入社交登录的配置
-     */
-    @Autowired
-    private SocialProperties socialProperties;
 
     /**
      * 配置忽略的权限校验接口
@@ -55,10 +49,8 @@ public class EasyAuthorizeConfigProvider implements AuthorizeConfigProvider {
                 // 验证码接口,
                 SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
                 // 普通登录页面
+                // TODO: 2019-03-06 提取 Browser 配置
                 securityProperties.getBrowser().getLoginPage(),
-                // 授权完成后若没有用户信息, 所要跳转的页面
-                // TODO: 2019-03-05 待处理
-                socialProperties.getSignUpUrl(),
                 // session 失效后跳转的地址
                 securityProperties.getBrowser().getSession().getSessionInvalidUrl(),
                 // 退出登录成功后跳转的地址
