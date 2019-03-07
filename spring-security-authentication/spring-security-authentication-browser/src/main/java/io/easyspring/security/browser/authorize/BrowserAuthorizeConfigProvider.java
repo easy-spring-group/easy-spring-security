@@ -2,7 +2,9 @@ package io.easyspring.security.browser.authorize;
 
 import io.easyspring.security.authorize.AuthorizeConfigProvider;
 import io.easyspring.security.authorize.constant.SecurityAuthorizeProviderLoadOrderConstant;
+import io.easyspring.security.core.properties.SecurityProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,6 +23,12 @@ import org.springframework.stereotype.Component;
 @Order(SecurityAuthorizeProviderLoadOrderConstant.LOAD_ORDER_SERVER)
 @Slf4j
 public class BrowserAuthorizeConfigProvider implements AuthorizeConfigProvider {
+
+    /**
+     * 注入 Security 的配置
+     */
+    @Autowired
+    private SecurityProperties securityProperties;
 
     /**
      * 配置忽略的权限校验接口

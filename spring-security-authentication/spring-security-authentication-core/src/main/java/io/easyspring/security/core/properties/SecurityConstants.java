@@ -113,6 +113,10 @@ public interface SecurityConstants {
          * deviceId 的有效时长
          */
         int DEFAULT_DEVICE_ID_EXPIRE = 300;
+        /**
+         * APP 完成了第三方授权后, 若后台数据库中没有对应的用户, 执行跳转的路径
+         */
+        String SIGN_UP_URL = "/social/signUp";
 
     }
 

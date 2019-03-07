@@ -3,6 +3,7 @@ package io.easyspring.security.core.validate.code;
 import io.easyspring.security.core.properties.SecurityConstants;
 import io.easyspring.security.core.properties.SecurityProperties;
 import io.easyspring.security.core.properties.code.enums.ValidateCodeRepositoryTypeEnum;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @version V1.0.0-RELEASE
  */
 @RestController
+@Slf4j
 public class ValidateCodeController {
 
     /**
@@ -90,6 +92,9 @@ public class ValidateCodeController {
         if (ValidateCodeRepositoryTypeEnum.REDIS.equals(repositoryType)) {
             // 生成新的 deviceId
             deviceId = RandomStringUtils.randomNumeric(20);
+
+            log.info("生成的 deviceId 是: {}", deviceId);
+
             // 设置到 request 中
             servletWebRequest.setAttribute(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID_KEY,
                     deviceId,

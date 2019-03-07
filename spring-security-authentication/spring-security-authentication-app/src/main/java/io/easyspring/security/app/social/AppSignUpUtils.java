@@ -63,6 +63,7 @@ public class AppSignUpUtils {
 
     /**
      * 用户注册完成后, 执行绑定的方法
+     * TODO 此处的 deviceId 可能需要处理
      *
      * @author summer
      * @date 2019-02-21 16:05

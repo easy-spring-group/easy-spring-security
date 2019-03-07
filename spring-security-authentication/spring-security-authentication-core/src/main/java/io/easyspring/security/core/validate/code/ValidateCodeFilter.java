@@ -123,7 +123,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
         try {
             // 获取验证码的处理器并执行验证码的验证
             validateCodeProcessorHolder.findValidateCodeProcessor(type)
-                    .validate(new ServletWebRequest(request, response));
+                    .validate(buildServletWebRequest(request, response));
 
             log.info("验证码校验通过");
         } catch (ValidateCodeException exception) {
@@ -167,5 +167,37 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
         // 返回需要校验的验证码类型
         return validateCodeType;
+    }
+
+    /**
+     * 封装 ServletWebRequest 的方法
+     *
+     * @param request 请求对象
+     * @param response 返回对象
+     * @return org.springframework.web.context.request.ServletWebRequest
+     * @author summer
+     * @date 2019-03-07 18:43
+     * @version V1.0.0-RELEASE
+     */
+    private ServletWebRequest buildServletWebRequest(HttpServletRequest request, HttpServletResponse response){
+        // 参数校验
+        if (request == null || response == null) {
+            return null;
+        }
+
+        // 从请求头中获取 deviceId
+        String deviceId = request.getHeader(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID_KEY);
+
+        /*
+         * 创建并封装 ServletWebRequest 对象
+         */
+        // 创建 ServletWebRequest 对象
+        ServletWebRequest servletWebRequest = new ServletWebRequest(request, response);
+        // 设置 deviceId 到 ServletWebRequest 中
+        servletWebRequest.setAttribute(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID_KEY,
+                deviceId,
+                SecurityConstants.Validate.DEFAULT_DEVICE_ID_EXPIRE);
+
+        return servletWebRequest;
     }
 }

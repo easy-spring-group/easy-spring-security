@@ -1,5 +1,6 @@
 package io.easyspring.security.app;
 
+import io.easyspring.security.core.properties.SecurityConstants;
 import io.easyspring.security.social.EasySpringSocialConfigurer;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeansException;
@@ -59,7 +60,7 @@ public class SpringSocialConfigurerPostProcessor implements BeanPostProcessor {
             EasySpringSocialConfigurer config = (EasySpringSocialConfigurer)bean;
             // 设置新的注册地址
             // TODO 地址需要提取
-            config.signupUrl("/social/signUp");
+            config.signupUrl(SecurityConstants.Social.SIGN_UP_URL);
             // 返回设置好的 配置
             return config;
         }

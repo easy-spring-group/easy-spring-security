@@ -8,6 +8,7 @@ import io.easyspring.security.core.validate.code.ValidateCodeException;
 import io.easyspring.security.core.validate.code.ValidateCodeRepository;
 import io.easyspring.security.core.validate.code.ValidateCodeType;
 import io.easyspring.security.core.validate.code.impl.AbstractValidateCodeProcessor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -27,6 +28,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 @ConditionalOnProperty(prefix = "easy-spring.security.code", name = "repository", havingValue = "REDIS")
+@Slf4j
 public class RedisValidateCodeRepository implements ValidateCodeRepository {
 
     /**
@@ -112,6 +114,9 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
         // 从请求中获取 deviceId
         String deviceId = (String) request.getAttribute(SecurityConstants.Validate.DEFAULT_HEADER_DEVICE_ID_KEY,
                 SecurityConstants.Validate.DEFAULT_DEVICE_ID_EXPIRE);
+
+        log.info("验证时获取到的 deviceId 是: {}", deviceId);
+
         // 对 deviceId 进行校验
         if (StringUtils.isBlank(deviceId)) {
             throw new ValidateCodeException("获取 deviceId 失败");

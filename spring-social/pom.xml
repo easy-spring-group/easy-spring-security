@@ -12,6 +12,8 @@
         <version>${base.version}</version>
     </parent>
 
+    <!--组别 id-->
+    <!--<groupId>io.easyspring.social</groupId>-->
     <artifactId>spring-social</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>

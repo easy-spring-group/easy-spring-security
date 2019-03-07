@@ -32,7 +32,7 @@ public class BrowserProperties {
     /**
      * 退出登录时的相关配置
      */
-    private SignOutProperties signOut;
+    private SignOutProperties signOut = new SignOutProperties();
 
     /**
      * 返回结果的形式, 默认为 Json

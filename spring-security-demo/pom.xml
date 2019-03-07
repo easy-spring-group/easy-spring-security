@@ -30,16 +30,16 @@
             <artifactId>spring-security-authentication-app</artifactId>
         </dependency>
 
-        <!--引入通过 qq 登录的自定义 jar-->
-        <dependency>
-            <groupId>io.easyspring.security</groupId>
-            <artifactId>spring-social-qq</artifactId>
-        </dependency>
-        <!--引入通过微信登录的自定义 jar-->
-        <dependency>
-            <groupId>io.easyspring.security</groupId>
-            <artifactId>spring-social-we-chat</artifactId>
-        </dependency>
+        <!--&lt;!&ndash;引入通过 qq 登录的自定义 jar&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>io.easyspring.security</groupId>-->
+            <!--<artifactId>spring-social-qq</artifactId>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;引入通过微信登录的自定义 jar&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>io.easyspring.security</groupId>-->
+            <!--<artifactId>spring-social-we-chat</artifactId>-->
+        <!--</dependency>-->
 
         <!--权限校验的 jar-->
         <dependency>
@@ -47,7 +47,7 @@
             <artifactId>spring-security-authorize-dynamic</artifactId>
         </dependency>
 
-      <!--引入 jwt 的 jar-->
+        <!--引入 jwt 的 jar-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>

@@ -50,7 +50,7 @@ public class AppSecurityController {
      * @return io.easyspring.security.social.support.SocialUserInfo
      * @version V1.0.0-RELEASE
      */
-    @GetMapping("/social/signUp")
+    @GetMapping(SecurityConstants.Social.SIGN_UP_URL)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public SocialUserInfo getSocialUserInfo(HttpServletRequest request, HttpServletResponse response) {
         /*

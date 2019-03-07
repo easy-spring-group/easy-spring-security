@@ -1,7 +1,7 @@
 package io.easyspring.security.core.validate.code.impl;
 
 import io.easyspring.security.core.validate.code.*;
-import io.easyspring.security.core.validate.code.*;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.ServletRequestBindingException;
@@ -17,6 +17,7 @@ import java.util.Map;
  * @date 2019-01-22 13:19
  * @version V1.0.0-RELEASE
  */
+@Slf4j
 public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> implements ValidateCodeProcessor {
 
     /**
@@ -148,6 +149,9 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     private void save(ServletWebRequest request, C validateCode) {
         // 创建验证码对象
         ValidateCode code = new ValidateCode(validateCode.getCode(), validateCode.getExpireTime());
+
+        log.info("生成的验证码是: {}", code);
+
         // 使用存储器, 存储验证码
         validateCodeRepository.save(request, code, getValidateCodeType(request));
     }
