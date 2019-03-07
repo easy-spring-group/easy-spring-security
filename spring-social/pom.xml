@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--父级项目-->
     <parent>
-        <artifactId>security-dependencies</artifactId>
         <groupId>io.easyspring.security</groupId>
+        <artifactId>easy-spring-security</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
-        <relativePath>../security-dependencies</relativePath>
     </parent>
 
     <artifactId>spring-social</artifactId>
@@ -26,6 +26,6 @@
     <modules>
         <module>spring-social-core</module>
         <module>spring-social-qq</module>
-        <module>spring-social-wechat</module>
+        <module>spring-social-we-chat</module>
     </modules>
 </project>

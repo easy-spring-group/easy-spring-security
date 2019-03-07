@@ -3,13 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <!--父级项目-->
     <parent>
-        <artifactId>security-dependencies</artifactId>
         <groupId>io.easyspring.security</groupId>
+        <artifactId>easy-spring-security</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
-        <relativePath>../../security-dependencies</relativePath>
     </parent>
 
     <artifactId>spring-security-demo</artifactId>
@@ -17,18 +16,18 @@
     <packaging>jar</packaging>
 
     <!--项目名称-->
-    <name>Security Demo</name>
+    <name>Spring Security Demo</name>
     <!--项目简介-->
-    <description>Security Demo</description>
+    <description>Spring Security Demo</description>
 
     <dependencies>
         <!--<dependency>-->
             <!--<groupId>io.easyspring.security</groupId>-->
-            <!--<artifactId>spring-security-browser</artifactId>-->
+            <!--<artifactId>spring-security-authentication-browser</artifactId>-->
         <!--</dependency>-->
         <dependency>
             <groupId>io.easyspring.security</groupId>
-            <artifactId>spring-security-app</artifactId>
+            <artifactId>spring-security-authentication-app</artifactId>
         </dependency>
 
         <!--引入通过 qq 登录的自定义 jar-->
@@ -39,7 +38,7 @@
         <!--引入通过微信登录的自定义 jar-->
         <dependency>
             <groupId>io.easyspring.security</groupId>
-            <artifactId>spring-social-wechat</artifactId>
+            <artifactId>spring-social-we-chat</artifactId>
         </dependency>
 
         <!--权限校验的 jar-->
@@ -54,7 +53,6 @@
             <artifactId>jjwt</artifactId>
             <version>0.7.0</version>
         </dependency>
-
 
         <!--引入工具 jar-->
         <dependency>

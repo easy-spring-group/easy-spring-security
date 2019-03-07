@@ -5,33 +5,40 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>spring-social</artifactId>
         <groupId>io.easyspring.security</groupId>
+        <artifactId>spring-security-authentication</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
 
-    <artifactId>spring-social-wechat</artifactId>
-
+    <artifactId>spring-security-authentication-app</artifactId>
     <!--打包方式-->
     <packaging>jar</packaging>
+
     <!--项目名称-->
-    <name>Spring Social WeChat</name>
+    <name>Spring Security Authentication App</name>
     <!--项目简介-->
-    <description>Spring Social WeChat</description>
-    <!--项目连接地址-->
-    <url>https://www.easyspring.io/</url>
+    <description>Spring Security Authentication App</description>
 
     <dependencies>
+        <!--引入基础的 security 服务的包-->
+        <dependency>
+            <groupId>io.easyspring.security</groupId>
+            <artifactId>spring-security-authentication-core</artifactId>
+        </dependency>
+        <!--注入 social 的核心 jar-->
+        <!--TODO 此项目需要处理-->
         <dependency>
             <groupId>io.easyspring.security</groupId>
             <artifactId>spring-social-core</artifactId>
         </dependency>
 
+        <!--引入 lombok 工具包-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>
+
 </project>

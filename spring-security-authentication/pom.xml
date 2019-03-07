@@ -4,29 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--父级项目-->
     <parent>
-        <artifactId>security-dependencies</artifactId>
         <groupId>io.easyspring.security</groupId>
+        <artifactId>easy-spring-security</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
-        <relativePath>../security-dependencies</relativePath>
     </parent>
 
-    <artifactId>spring-security</artifactId>
+    <artifactId>spring-security-authentication</artifactId>
     <!--打包方式-->
     <packaging>pom</packaging>
 
     <!--项目名称-->
-    <name>Spring Security</name>
+    <name>Spring Security Authentication</name>
     <!--项目简介-->
-    <description>Spring Security</description>
+    <description>Spring Security Authentication</description>
     <!--项目连接地址-->
     <url>https://www.easyspring.io/</url>
 
     <modules>
-        <module>spring-security-core</module>
-        <module>spring-security-browser</module>
-        <module>spring-security-app</module>
+        <module>spring-security-authentication-core</module>
+        <module>spring-security-authentication-browser</module>
+        <module>spring-security-authentication-app</module>
     </modules>
 
 </project>

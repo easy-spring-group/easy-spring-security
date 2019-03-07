@@ -5,20 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>spring-security</artifactId>
         <groupId>io.easyspring.security</groupId>
+        <artifactId>spring-security-authentication</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
 
-    <artifactId>spring-security-core</artifactId>
+    <artifactId>spring-security-authentication-core</artifactId>
     <!--打包方式-->
     <packaging>jar</packaging>
 
     <!--项目名称-->
-    <name>Security Core</name>
+    <name>Spring Security Authentication Core</name>
     <!--项目简介-->
-    <description>Security Core</description>
+    <description>Spring Security Authentication Core</description>
 
     <dependencies>
 

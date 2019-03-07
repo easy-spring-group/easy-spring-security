@@ -5,40 +5,51 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>spring-security</artifactId>
         <groupId>io.easyspring.security</groupId>
+        <artifactId>spring-security-authentication</artifactId>
         <!--suppress MavenPropertyInParent -->
         <version>${base.version}</version>
     </parent>
 
-    <artifactId>spring-security-app</artifactId>
+    <artifactId>spring-security-authentication-browser</artifactId>
     <!--打包方式-->
     <packaging>jar</packaging>
 
     <!--项目名称-->
-    <name>Security App</name>
+    <name>Spring Security Authentication Browser</name>
     <!--项目简介-->
-    <description>Security App</description>
+    <description>Spring Security Authentication Browser</description>
+
 
     <dependencies>
         <!--引入基础的 security 服务的包-->
         <dependency>
             <groupId>io.easyspring.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-        </dependency>
-        <!--注入 social 的核心 jar-->
-        <!--TODO 此项目需要处理-->
-        <dependency>
-            <groupId>io.easyspring.security</groupId>
-            <artifactId>spring-social-core</artifactId>
+            <artifactId>spring-security-authentication-core</artifactId>
         </dependency>
 
-        <!--引入 lombok 工具包-->
+        <!--引入集群环境下的 session 管理包-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-core</artifactId>
+        </dependency>
+        <!--注入 Redis -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
+        <!--注入 social security-->
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-security</artifactId>
+        </dependency>
+
+        <!--引入工具 jar-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>
-
 </project>
