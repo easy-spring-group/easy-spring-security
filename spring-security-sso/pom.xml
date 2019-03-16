@@ -8,8 +8,8 @@
     <parent>
         <groupId>io.easyspring.security</groupId>
         <artifactId>easy-spring-security</artifactId>
-        <!--suppress MavenPropertyInParent -->
-        <version>${base.version}</version>
+        <version>1.0.1-RELEASE</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <artifactId>spring-security-sso</artifactId>
@@ -29,4 +29,16 @@
         <module>spring-security-sso-client2</module>
     </modules>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

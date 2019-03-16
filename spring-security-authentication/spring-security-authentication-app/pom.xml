@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>io.easyspring.security</groupId>
         <artifactId>spring-security-authentication</artifactId>
-        <!--suppress MavenPropertyInParent -->
-        <version>${base.version}</version>
+        <groupId>io.easyspring.security</groupId>
+        <version>1.0.1-RELEASE</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <artifactId>spring-security-authentication-app</artifactId>

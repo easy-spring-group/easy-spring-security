@@ -6,10 +6,10 @@
 
     <!--父级项目-->
     <parent>
-        <groupId>io.easyspring.security</groupId>
         <artifactId>easy-spring-security</artifactId>
-        <!--suppress MavenPropertyInParent -->
-        <version>${base.version}</version>
+        <groupId>io.easyspring.security</groupId>
+        <version>1.0.1-RELEASE</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <artifactId>spring-security-authentication</artifactId>

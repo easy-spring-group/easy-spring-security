@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>spring-social</artifactId>
         <groupId>io.easyspring.security</groupId>
-        <!--suppress MavenPropertyInParent -->
-        <version>${base.version}</version>
+        <artifactId>spring-social</artifactId>
+        <version>1.0.1-RELEASE</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <artifactId>spring-social-core</artifactId>

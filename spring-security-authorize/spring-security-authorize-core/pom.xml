@@ -6,8 +6,8 @@
     <parent>
         <artifactId>spring-security-authorize</artifactId>
         <groupId>io.easyspring.security</groupId>
-        <!--suppress MavenPropertyInParent -->
-        <version>${base.version}</version>
+        <version>1.0.1-RELEASE</version>
+        <relativePath>../</relativePath>
     </parent>
 
     <artifactId>spring-security-authorize-core</artifactId>
