@@ -12,8 +12,8 @@ import java.io.IOException;
  * 图片验证码处理器
  *
  * @author summer
- * @date 2019-01-17 13:46
  * @version V1.0.0-RELEASE
+ * DateTime 2019-01-17 13:46
  */
 @Component("imageValidateCodeProcessor")
 public class ImageCodeProcessor extends AbstractValidateCodeProcessor<ImageCode> {
@@ -21,13 +21,12 @@ public class ImageCodeProcessor extends AbstractValidateCodeProcessor<ImageCode>
     /**
      * 发送图形验证码，将其写到响应中
      *
-     * @author summer
-     * @date 2019-01-17 13:45
+     * Author summer
+     * DateTime 2019-01-17 13:45
      * @param request servlet 请求信息
      * @param imageCode 图片验证码
      * @throws IOException io 流异常
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	protected void send(ServletWebRequest request, ImageCode imageCode) throws IOException {

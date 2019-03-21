@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
  * 表单登录的配置
  *
  * @author summer
- * @date 2019-01-22 14:42
+ * DateTime 2019-01-22 14:42
  * @version V1.0.0-RELEASE
  */
 public class AbstractChannelSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -30,11 +30,10 @@ public class AbstractChannelSecurityConfig extends WebSecurityConfigurerAdapter 
     /**
      * 表单登录的配置方法
      *
-     * @author summer
-     * @date 2019-01-22 14:54
+     * Author summer
+     * DateTime 2019-01-22 14:54
      * @param http 请求信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected void applyPasswordAuthenticationConfig(HttpSecurity http) throws Exception {
         http.formLogin()

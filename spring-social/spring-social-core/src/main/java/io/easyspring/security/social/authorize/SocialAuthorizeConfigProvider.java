@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * 社交登录的权限配置
  *
  * @author summer
- * @date 2019-03-06 10:34
+ * DateTime 2019-03-06 10:34
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -32,10 +32,9 @@ public class SocialAuthorizeConfigProvider implements AuthorizeConfigProvider {
      * 配置忽略的权限校验接口
      *
      * @param config 权限校验配置对象
-     * @return void
-     * @author summer
-     * @date 2019-03-05 16:17
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-05 16:17
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {

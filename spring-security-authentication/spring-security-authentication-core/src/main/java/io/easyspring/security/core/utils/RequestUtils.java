@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
  * request 请求的工具类
  *
  * @author summer
- * @date 2019-02-19 14:40
+ * DateTime 2019-02-19 14:40
  * @version V1.0.0-RELEASE
  */
 public class RequestUtils {
@@ -33,11 +33,11 @@ public class RequestUtils {
     /**
      * 校验当前请求是否是 ajax 请求
      *
-     * @author summer
-     * @date 2019-01-07 17:34
+     * Author summer
+     * DateTime 2019-01-07 17:34
      * @param request 请求对象
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static boolean isHtml(HttpServletRequest request){
         // 传入参数校验
@@ -54,11 +54,11 @@ public class RequestUtils {
     /**
      * OAuth2 认证时, 从请求头中解析 client 信息的解析方法
      *
-     * @author summer
-     * @date 2019-02-20 17:53
+     * Author summer
+     * DateTime 2019-02-20 17:53
      * @param request 请求信息
      * @return java.lang.String[]
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static String[] oAuth2ClientResolver(HttpServletRequest request) throws UnsupportedEncodingException {
         /*

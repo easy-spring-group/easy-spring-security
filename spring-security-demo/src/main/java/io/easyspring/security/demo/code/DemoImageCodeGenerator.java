@@ -9,7 +9,7 @@ import org.springframework.web.context.request.ServletWebRequest;
  * 自定义的图片生成器, 用于覆盖原有的图片生成器
  *
  * @author summer
- * @date 2019-01-21 19:31
+ * DateTime 2019-01-21 19:31
  * @version V1.0.0-RELEASE
  */
 // @Component("imageCodeGenerator")
@@ -19,11 +19,11 @@ public class DemoImageCodeGenerator implements ValidateCodeGenerator {
     /**
      * 实现图片生成的方法
      *
-     * @author summer
-     * @date 2019-01-21 19:31
+     * Author summer
+     * DateTime 2019-01-21 19:31
      * @param request Servlet 请求对象
      * @return io.easyspring.security.code.image.ImageCode
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public ImageCode generate(ServletWebRequest request) {

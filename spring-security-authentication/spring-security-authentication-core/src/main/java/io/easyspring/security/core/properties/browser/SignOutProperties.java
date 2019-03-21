@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * 退出登录的配置
  *
  * @author summer
- * @date 2019-02-19 12:54
+ * DateTime 2019-02-19 12:54
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

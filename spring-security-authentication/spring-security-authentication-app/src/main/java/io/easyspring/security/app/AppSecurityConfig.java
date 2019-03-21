@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.provider.expression.OAuth2WebSecurity
  * APP 安全的配置类
  *
  * @author summer
- * @date 2019-03-06 23:21
+ * DateTime 2019-03-06 23:21
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -21,9 +21,9 @@ public class AppSecurityConfig {
      *
      * @param applicationContext 系统配置
      * @return org.springframework.security.oauth2.provider.expression.OAuth2WebSecurityExpressionHandler
-     * @author summer
-     * @date 2019-03-06 23:22
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-06 23:22
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public OAuth2WebSecurityExpressionHandler oAuth2WebSecurityExpressionHandler(ApplicationContext applicationContext) {

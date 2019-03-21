@@ -4,7 +4,7 @@ package io.easyspring.security.authorize.constant;
  * 权限校验的 Provider 加载顺序的配置常量
  *
  * @author summer
- * @date 2019-03-06 10:09
+ * DateTime 2019-03-06 10:09
  * @version V1.0.0-RELEASE
  */
 public interface SecurityAuthorizeProviderLoadOrderConstant {

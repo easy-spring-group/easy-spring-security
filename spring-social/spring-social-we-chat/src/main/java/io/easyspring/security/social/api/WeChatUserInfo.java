@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
  * 微信用户详情对象
  *
  * @author summer
- * @date 2019-01-25 16:15
+ * DateTime 2019-01-25 16:15
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

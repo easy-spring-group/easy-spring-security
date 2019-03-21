@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * 实现这个接口后 Spring 容器中所有的后处理器的 Bean 在初始化之前和初始化之后都会进入重写的方法
  *
  * @author summer
- * @date 2019-02-21 16:36
+ * DateTime 2019-02-21 16:36
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -28,12 +28,12 @@ public class SpringSocialConfigurerPostProcessor implements BeanPostProcessor {
      * @see org.springframework.beans.factory.config.BeanPostProcessor#postProcessBeforeInitialization(
      * java.lang.Object, java.lang.String)
      *
-     * @author summer
-     * @date 2019-02-21 16:37
+     * Author summer
+     * DateTime 2019-02-21 16:37
      * @param bean 需要初始化的 Bean
      * @param beanName bean 的名称
      * @return java.lang.Object
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -45,12 +45,12 @@ public class SpringSocialConfigurerPostProcessor implements BeanPostProcessor {
      * @see org.springframework.beans.factory.config.BeanPostProcessor#postProcessAfterInitialization(
      * java.lang.Object, java.lang.String)
      *
-     * @author summer
-     * @date 2019-02-21 16:50
+     * Author summer
+     * DateTime 2019-02-21 16:50
      * @param bean 需要初始化的 Bean
      * @param beanName bean 的名称
      * @return java.lang.Object
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {

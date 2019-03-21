@@ -6,7 +6,7 @@ import io.easyspring.security.core.properties.SecurityConstants;
  * 校验码类型
  *
  * @author summer
- * @date 2019-01-17 14:49
+ * DateTime 2019-01-17 14:49
  * @version V1.0.0-RELEASE
  */
 public enum ValidateCodeType {
@@ -33,10 +33,10 @@ public enum ValidateCodeType {
 	/**
 	 * 校验时从请求中获取的参数的名字(名字是约定好的 -- 可配置)
 	 *
-	 * @author summer
-	 * @date 2019-01-17 14:46
+	 * Author summer
+	 * DateTime 2019-01-17 14:46
 	 * @return java.lang.String
-	 * @version V1.0.0-RELEASE
+	 * Version V1.0.0-RELEASE
 	 */
 	public abstract String getParamNameOnValidate();
 

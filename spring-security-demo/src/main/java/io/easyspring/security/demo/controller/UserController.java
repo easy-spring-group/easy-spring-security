@@ -27,7 +27,7 @@ import java.util.List;
  * 用户的前端控制器
  *
  * @author summer
- * @date 2019-01-21 14:00
+ * DateTime 2019-01-21 14:00
  * @version V1.0.0-RELEASE
  */
 @RestController
@@ -53,11 +53,10 @@ public class UserController {
     /**
      * 注册的示例页面
      *
-     * @author summer
-     * @date 2019-01-25 14:38
+     * Author summer
+     * DateTime 2019-01-25 14:38
      * @param user 用户对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @PostMapping("/regist")
     public void regist(User user, HttpServletRequest request) {
@@ -97,11 +96,11 @@ public class UserController {
 //     *
 //     * 注意: 当存储器是 jwt 的时候, security 中的 AuthenticationPrincipal 就不再是一个对象了, 而是一个经过 jwt 增强的字符串
 //     *
-//     * @author summer
-//     * @date 2019-01-21 18:04
+//     * Author summer
+//     * DateTime 2019-01-21 18:04
 //     * @param user 注入用户对象
 //     * @return java.lang.Object
-//     * @version V1.0.0-RELEASE
+//     * Version V1.0.0-RELEASE
 //     */
 //    @GetMapping("/me")
 //    public Object getCurrentUser(@AuthenticationPrincipal UserDetails user, HttpServletRequest request) {
@@ -112,11 +111,10 @@ public class UserController {
 //    /**
 //     * 注册的示例页面
 //     *
-//     * @author summer
-//     * @date 2019-01-25 14:38
+//     * Author summer
+//     * DateTime 2019-01-25 14:38
 //     * @param user 用户对象
-//     * @return void
-//     * @version V1.0.0-RELEASE
+//     * Version V1.0.0-RELEASE
 //     */
 //    @PostMapping("/regist")
 //    public void regist(User user, HttpServletRequest request) {
@@ -134,11 +132,11 @@ public class UserController {
     /**
      * 根据查询条件查询用户集合的方法
      *
-     * @author summer
-     * @date 2019-01-21 13:52
+     * Author summer
+     * DateTime 2019-01-21 13:52
      * @param condition 查询条件
      * @return java.util.List<io.easyspring.security.demo.dto.User>
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @GetMapping
     @JsonView(User.UserSimpleView.class)
@@ -159,11 +157,11 @@ public class UserController {
     /**
      * 获取用户详情
      *
-     * @author summer
-     * @date 2019-01-21 13:53
+     * Author summer
+     * DateTime 2019-01-21 13:53
      * @param id 用户 id
      * @return io.easyspring.security.demo.dto.User
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @GetMapping("/{id:\\d+}")
     @JsonView(User.UserDetailView.class)
@@ -180,12 +178,12 @@ public class UserController {
     /**
      * 创建用户的方法
      *
-     * @author summer
-     * @date 2019-01-21 13:54
+     * Author summer
+     * DateTime 2019-01-21 13:54
      * @param user 用户对象
      * @param errors 校验时如果出现异常, 用于封装异常信息的对象
      * @return io.easyspring.security.demo.dto.User
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @PostMapping
     public User create(@Valid @RequestBody User user, BindingResult errors) {
@@ -207,12 +205,12 @@ public class UserController {
     /**
      * 修改用户的方法
      *
-     * @author summer
-     * @date 2019-01-21 13:58
+     * Author summer
+     * DateTime 2019-01-21 13:58
      * @param id 用户 id
      * @param user 想要修改的用户对象
      * @return io.easyspring.security.demo.dto.User
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @PutMapping("/{id:\\d+}")
     public User update(@PathVariable() String id, @RequestBody User user) {
@@ -226,11 +224,10 @@ public class UserController {
     /**
      * 删除用户的方法
      *
-     * @author summer
-     * @date 2019-01-21 13:59
+     * Author summer
+     * DateTime 2019-01-21 13:59
      * @param id 想要删除的用户的 id
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @DeleteMapping("/{id:\\d+}")
     public void delete(@PathVariable String id) {

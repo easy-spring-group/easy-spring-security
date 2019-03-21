@@ -18,7 +18,7 @@ import java.io.IOException;
  * session 失效后的抽象处理类
  *
  * @author summer
- * @date 2019-02-18 20:45
+ * DateTime 2019-02-18 20:45
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -46,10 +46,10 @@ public class AbstractSessionStrategy {
     /**
      * 构造方法
      *
-     * @author summer
-     * @date 2019-02-18 18:58
+     * Author summer
+     * DateTime 2019-02-18 18:58
      * @param invalidSessionUrl session 过期后处理的地址
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public AbstractSessionStrategy(String invalidSessionUrl) {
         // 断言这是一个地址, 否则, 抛出异常信息
@@ -65,12 +65,11 @@ public class AbstractSessionStrategy {
      * @see org.springframework.security.web.session.InvalidSessionStrategy#onInvalidSessionDetected(
      * javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
      *
-     * @author summer
-     * @date 2019-02-18 20:34
+     * Author summer
+     * DateTime 2019-02-18 20:34
      * @param request 请求信息
      * @param response 返回信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected void onSessionInvalid(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 如果需要创建信息的 session
@@ -106,11 +105,11 @@ public class AbstractSessionStrategy {
     /**
      * 封装 session 过期的返回信息
      *
-     * @author summer
-     * @date 2019-02-19 10:30
+     * Author summer
+     * DateTime 2019-02-19 10:30
      * @param request 请求信息
      * @return java.lang.Object
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected Object buildResponseContent(HttpServletRequest request) {
         String message = "session已失效";
@@ -124,10 +123,10 @@ public class AbstractSessionStrategy {
     /**
      * 判断是否是并发引起的 session 失效问题
      *
-     * @author summer
-     * @date 2019-02-19 10:23
+     * Author summer
+     * DateTime 2019-02-19 10:23
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected boolean isConcurrency() {
         return false;

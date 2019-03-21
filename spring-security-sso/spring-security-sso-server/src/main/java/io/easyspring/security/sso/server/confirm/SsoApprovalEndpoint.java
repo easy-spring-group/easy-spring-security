@@ -15,7 +15,7 @@ import java.util.Map;
  * 为了去除确定认证的操作, 我们在这里覆盖其原有的逻辑, 实现自动点击操作
  *
  * @author summer
- * @date 2019-02-23 19:57
+ * DateTime 2019-02-23 19:57
  * @version V1.0.0-RELEASE
  */
 @RestController
@@ -25,12 +25,12 @@ public class SsoApprovalEndpoint {
     /**
      * 覆盖认证确认的返回接口
      *
-     * @author summer
-     * @date 2019-02-23 19:59
+     * Author summer
+     * DateTime 2019-02-23 19:59
      * @param model 返回的数据模型
      * @param request 请求对象
      * @return org.springframework.web.servlet.ModelAndView
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @RequestMapping("/oauth/confirm_access")
     public ModelAndView getAccessConfirmation(Map<String, Object> model, HttpServletRequest request) throws Exception {

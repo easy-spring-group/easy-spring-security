@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * 社交登录认证的过滤器
  *
  * @author summer
- * @date 2019-02-21 09:57
+ * DateTime 2019-02-21 09:57
  * @version V1.0.0-RELEASE
  */
 @EqualsAndHashCode(callSuper = true)
@@ -40,9 +40,9 @@ public class OpenIdAuthenticationFilter extends AbstractAuthenticationProcessing
     /**
      * 空参构造
      *
-     * @author summer
-     * @date 2019-02-21 09:59
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-02-21 09:59
+     * Version V1.0.0-RELEASE
      */
     public OpenIdAuthenticationFilter() {
         // 通过父级方法, 设置请求地址匹配器, 同时设置请求方法
@@ -55,12 +55,12 @@ public class OpenIdAuthenticationFilter extends AbstractAuthenticationProcessing
     /**
      * 重写预授权的方法
      *
-     * @author summer
-     * @date 2019-02-21 10:01
+     * Author summer
+     * DateTime 2019-02-21 10:01
      * @param request 请求信息
      * @param response 返回信息
      * @return org.springframework.security.core.Authentication
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -106,11 +106,11 @@ public class OpenIdAuthenticationFilter extends AbstractAuthenticationProcessing
     /**
      * 从请求中获取 openId
      *
-     * @author summer
-     * @date 2019-02-21 10:02
+     * Author summer
+     * DateTime 2019-02-21 10:02
      * @param request 请求信息
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected String obtainOpenId(HttpServletRequest request) {
         return request.getParameter(openIdParameter);
@@ -120,11 +120,11 @@ public class OpenIdAuthenticationFilter extends AbstractAuthenticationProcessing
     /**
      * 从请求中获取提供商 id
      *
-     * @author summer
-     * @date 2019-02-21 10:03
+     * Author summer
+     * DateTime 2019-02-21 10:03
      * @param request 请求信息
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected String obtainProviderId(HttpServletRequest request) {
         return request.getParameter(providerIdParameter);
@@ -133,12 +133,11 @@ public class OpenIdAuthenticationFilter extends AbstractAuthenticationProcessing
     /**
      * 设置认证的详细属性信息
      *
-     * @author summer
-     * @date 2019-02-21 10:07
+     * Author summer
+     * DateTime 2019-02-21 10:07
      * @param request 请求信息
      * @param authRequest 认证信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected void setDetails(HttpServletRequest request, OpenIdAuthenticationToken authRequest) {
         authRequest.setDetails(authenticationDetailsSource.buildDetails(request));

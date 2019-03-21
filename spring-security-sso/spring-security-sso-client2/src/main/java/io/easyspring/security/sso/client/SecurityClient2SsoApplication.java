@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 模拟客户端 的主启动类
  *
  * @author summer
- * @date 2019-02-23 20:03
+ * DateTime 2019-02-23 20:03
  * @version V1.0.0-RELEASE
  */
 @SpringBootApplication
@@ -23,11 +23,11 @@ public class SecurityClient2SsoApplication {
     /**
      * 获取当前在线用户
      *
-     * @author summer
-     * @date 2019-02-23 20:04
+     * Author summer
+     * DateTime 2019-02-23 20:04
      * @param user 在线用户的认证信息
      * @return org.springframework.security.core.Authentication
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @GetMapping("/user")
     public Authentication user(Authentication user) {
@@ -37,11 +37,10 @@ public class SecurityClient2SsoApplication {
     /**
      * 主启动类
      *
-     * @author summer
-     * @date 2019-02-23 20:20
+     * Author summer
+     * DateTime 2019-02-23 20:20
      * @param args 启动参数
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public static void main(String[] args) {
         SpringApplication.run(SecurityClient2SsoApplication.class, args);

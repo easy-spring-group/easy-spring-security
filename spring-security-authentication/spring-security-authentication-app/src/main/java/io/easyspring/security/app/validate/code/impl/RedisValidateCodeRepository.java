@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * 当配置了存储器为 Redis 的时候生效
  *
  * @author summer
- * @date 2019-01-23 14:54
+ * DateTime 2019-01-23 14:54
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -45,13 +45,12 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
     /**
      * 保存验证码的方法
      *
-     * @author summer
-     * @date 2019-01-23 15:01
+     * Author summer
+     * DateTime 2019-01-23 15:01
      * @param request 请求及返回信息
      * @param code 验证码
      * @param validateCodeType 验证码类型
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void save(ServletWebRequest request, ValidateCode code, ValidateCodeType validateCodeType) {
@@ -65,12 +64,12 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
     /**
      * 获取验证码的方法
      *
-     * @author summer
-     * @date 2019-01-23 15:12
+     * Author summer
+     * DateTime 2019-01-23 15:12
      * @param request 请求信息
      * @param validateCodeType 验证码类型
      * @return io.easyspring.security.core.validate.code.ValidateCode
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public ValidateCode get(ServletWebRequest request, ValidateCodeType validateCodeType) {
@@ -83,12 +82,11 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
     /**
      * 删除验证码的方法
      *
-     * @author summer
-     * @date 2019-01-23 15:13
+     * Author summer
+     * DateTime 2019-01-23 15:13
      * @param request 请求信息
      * @param validateCodeType 验证码类型
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void remove(ServletWebRequest request, ValidateCodeType validateCodeType) {
@@ -102,12 +100,12 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
      * 构建验证码放入 redis 时的 key; 在保存的时候也使用该 key
      * {@link AbstractValidateCodeProcessor}
      *
-     * @author summer
-     * @date 2019-01-23 15:14
+     * Author summer
+     * DateTime 2019-01-23 15:14
      * @param request 请求信息
      * @param validateCodeType 验证码类型
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private String buildKey(ServletWebRequest request, ValidateCodeType validateCodeType) {
 

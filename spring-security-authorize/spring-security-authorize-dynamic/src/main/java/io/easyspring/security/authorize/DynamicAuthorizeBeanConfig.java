@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * 动态权限校验的 bean 配置
  *
  * @author summer
- * @date 2019-03-06 15:25
+ * DateTime 2019-03-06 15:25
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -28,9 +28,9 @@ public class DynamicAuthorizeBeanConfig {
      * 动态权限校验的 bean
      *
      * @return io.easyspring.security.authorize.dynamic.DynamicAuthorizePermissionService
-     * @author summer
-     * @date 2019-03-06 15:29
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-06 15:29
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(DynamicAuthorizePermissionService.class)

@@ -25,7 +25,7 @@ import java.io.IOException;
  * 浏览器 security 接口
  *
  * @author summer
- * @date 2019-01-22 20:37
+ * DateTime 2019-01-22 20:37
  * @version V1.0.0-RELEASE
  */
 @RestController
@@ -50,13 +50,13 @@ public class BrowserSecurityController {
     /**
      * 当需要身份认证时，跳转到这里
      *
-     * @author summer
-     * @date 2019-01-21 16:54
+     * Author summer
+     * DateTime 2019-01-21 16:54
      * @param request 请求对象
      * @param response 返回对象
-     * @annotation @ResponseStatus 设置当前请求返回时返回的状态码
+     * Annotation @ResponseStatus 设置当前请求返回时返回的状态码
      * @return io.easyspring.security.browser.support.SimpleResponse
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @RequestMapping(SecurityConstants.SignIn.DEFAULT_AUTHENTICATION_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)

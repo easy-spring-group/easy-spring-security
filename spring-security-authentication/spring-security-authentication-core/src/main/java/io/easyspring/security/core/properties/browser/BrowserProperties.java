@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  * 浏览器环境配置项
  *
  * @author summer
- * @date 2019-01-16 20:34
+ * DateTime 2019-01-16 20:34
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

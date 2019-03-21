@@ -20,7 +20,7 @@ import java.io.IOException;
  * 浏览器环境下登录失败的处理器
  *
  * @author summer
- * @date 2019-01-21 17:16
+ * DateTime 2019-01-21 17:16
  * @version V1.0.0-RELEASE
  */
 @Component("easyAuthenticationFailureHandler")
@@ -43,13 +43,12 @@ public class EasyAuthenticationFailureHandler extends SimpleUrlAuthenticationFai
     /**
      * 复写登录失败的处理逻辑
      *
-     * @author summer
-     * @date 2019-01-17 11:58
+     * Author summer
+     * DateTime 2019-01-17 11:58
      * @param request 请求信息
      * @param response 返回信息
      * @param exception 异常
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,

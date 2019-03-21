@@ -22,7 +22,7 @@ import org.springframework.web.servlet.View;
  * 微信登录的配置类
  *
  * @author summer
- * @date 2019-01-25 16:28
+ * DateTime 2019-01-25 16:28
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -39,12 +39,11 @@ public class WeChatAutoConfiguration extends SocialConfigurerAdapter {
      * 用来允许应用添加需要支持的社交网络对应的连接工厂的实现。
      * 添加微信的转换器的工厂 到转换器工厂的配置中
      *
-     * @author summer
-     * @date 2019-01-24 15:17
+     * Author summer
+     * DateTime 2019-01-24 15:17
      * @param configurer 转换器工厂的配置类
      * @param environment 环境信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void addConnectionFactories(ConnectionFactoryConfigurer configurer,
@@ -55,10 +54,10 @@ public class WeChatAutoConfiguration extends SocialConfigurerAdapter {
     /**
      * 创建连接工厂的方法
      *
-     * @author summer
-     * @date 2019-01-25 17:02
+     * Author summer
+     * DateTime 2019-01-25 17:02
      * @return org.springframework.social.connect.ConnectionFactory<?>
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public ConnectionFactory<?> createConnectionFactory() {
         WeChatProperties weChatConfig = socialProperties.getWeChat();
@@ -73,11 +72,11 @@ public class WeChatAutoConfiguration extends SocialConfigurerAdapter {
      *
      * 这里需要返回 null，否则会返回内存的 ConnectionRepository
      *
-     * @author summer
-     * @date 2019-01-24 15:28
+     * Author summer
+     * DateTime 2019-01-24 15:28
      * @param connectionFactoryLocator 存储器的加载器
      * @return org.springframework.social.connect.UsersConnectionRepository
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
@@ -90,10 +89,10 @@ public class WeChatAutoConfiguration extends SocialConfigurerAdapter {
      * 用户可以通过注入 wechatConnectedView 的 bean 来替换掉默认的视图
      * TODO 此处 bean 的名字后期需要调整
      *
-     * @author summer
-     * @date 2019-01-28 15:43
+     * Author summer
+     * DateTime 2019-01-28 15:43
      * @return org.springframework.web.servlet.View
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean({"connect/weixinConnect", "connect/weixinConnected"})
     @ConditionalOnMissingBean(name = "weixinConnectedView")

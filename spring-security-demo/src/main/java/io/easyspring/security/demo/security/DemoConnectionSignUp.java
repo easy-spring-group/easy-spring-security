@@ -7,7 +7,7 @@ import org.springframework.social.connect.ConnectionSignUp;
  * 通过第三方自动注册的实现
  *
  * @author summer
- * @date 2019-01-25 15:47
+ * DateTime 2019-01-25 15:47
  * @version V1.0.0-RELEASE
  */
 // @Component
@@ -16,11 +16,11 @@ public class DemoConnectionSignUp implements ConnectionSignUp {
     /**
      * 没有对应的用户时自动创建用户的方法
      *
-     * @author summer
-     * @date 2019-01-25 15:48
+     * Author summer
+     * DateTime 2019-01-25 15:48
      * @param connection social 返回的信息
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public String execute(Connection<?> connection) {

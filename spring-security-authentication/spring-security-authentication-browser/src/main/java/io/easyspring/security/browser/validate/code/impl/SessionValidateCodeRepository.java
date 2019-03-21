@@ -13,7 +13,7 @@ import org.springframework.web.context.request.ServletWebRequest;
  * 当没有其存取器存在的时候, 使用该存取器
  *
  * @author summer
- * @date 2019-01-23 15:24
+ * DateTime 2019-01-23 15:24
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -31,13 +31,12 @@ public class SessionValidateCodeRepository implements ValidateCodeRepository {
     /**
      * 保存验证码的方法
      *
-     * @author summer
-     * @date 2019-01-17 14:14
+     * Author summer
+     * DateTime 2019-01-17 14:14
      * @param request Servlet 请求信息
      * @param code 抽象的验证码对象
      * @param validateCodeType 验证码类型
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public void save(ServletWebRequest request, ValidateCode code, ValidateCodeType validateCodeType) {
@@ -47,12 +46,12 @@ public class SessionValidateCodeRepository implements ValidateCodeRepository {
     /**
      * 构建验证码放入 session 时的 key
      *
-     * @author summer
-     * @date 2019-01-22 21:39
+     * Author summer
+     * DateTime 2019-01-22 21:39
      * @param request 请求及响应信息
      * @param validateCodeType 验证码类型
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	private String getSessionKey(ServletWebRequest request, ValidateCodeType validateCodeType) {
 		return SESSION_KEY_PREFIX + validateCodeType.toString().toUpperCase();
@@ -61,12 +60,12 @@ public class SessionValidateCodeRepository implements ValidateCodeRepository {
     /**
      * 获取验证码的方法
      *
-     * @author summer
-     * @date 2019-01-17 14:15
+     * Author summer
+     * DateTime 2019-01-17 14:15
      * @param request Servlet 请求对象
      * @param validateCodeType 验证码类型
      * @return io.easyspring.security.core.validate.code.ValidateCode
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public ValidateCode get(ServletWebRequest request, ValidateCodeType validateCodeType) {
@@ -77,12 +76,11 @@ public class SessionValidateCodeRepository implements ValidateCodeRepository {
     /**
      * 删除缓存中验证码的方法
      *
-     * @author summer
-     * @date 2019-01-17 14:33
+     * Author summer
+     * DateTime 2019-01-17 14:33
      * @param request Servlet 请求对象
      * @param codeType 验证码类型
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public void remove(ServletWebRequest request, ValidateCodeType codeType) {

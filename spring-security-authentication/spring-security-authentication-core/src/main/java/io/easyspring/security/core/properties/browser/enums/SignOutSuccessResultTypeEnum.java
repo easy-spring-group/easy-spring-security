@@ -4,7 +4,7 @@ package io.easyspring.security.core.properties.browser.enums;
  * 退出登录成功后返回类型的枚举类
  *
  * @author summer
- * @date 2019-02-19 14:21
+ * DateTime 2019-02-19 14:21
  * @version V1.0.0-RELEASE
  */
 public enum SignOutSuccessResultTypeEnum {

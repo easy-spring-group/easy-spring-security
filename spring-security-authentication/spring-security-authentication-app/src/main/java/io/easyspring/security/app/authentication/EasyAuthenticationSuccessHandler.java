@@ -22,7 +22,7 @@ import java.io.IOException;
  * APP 环境下登录成功的处理器
  *
  * @author summer
- * @date 2019-02-19 17:23
+ * DateTime 2019-02-19 17:23
  * @version V1.0.0-RELEASE
  */
 @Component("easyAuthenticationSuccessHandler")
@@ -50,13 +50,12 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
     /**
      * 登录成功后的处理逻辑
      *
-     * @author summer
-     * @date 2019-02-19 17:23
+     * Author summer
+     * DateTime 2019-02-19 17:23
      * @param request 请求信息
      * @param response 返回信息
      * @param authentication 登录的用户信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request,
@@ -87,11 +86,11 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
     /**
      * OAuth2Request 的生成器
      *
-     * @author summer
-     * @date 2019-02-20 18:00
+     * Author summer
+     * DateTime 2019-02-20 18:00
      * @param tokens client 信息
      * @return org.springframework.security.oauth2.provider.OAuth2Request
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private OAuth2Request oAuth2RequestGenerator(String[] tokens) {
         // 对 client 信息进行校验

@@ -10,7 +10,7 @@ import java.io.Serializable;
  * social 基础的配置文件内容
  *
  * @author summer
- * @date 2019-01-24 15:00
+ * DateTime 2019-01-24 15:00
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

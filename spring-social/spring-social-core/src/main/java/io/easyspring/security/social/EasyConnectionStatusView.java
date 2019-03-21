@@ -18,8 +18,8 @@ import java.util.Map;
  * 继承 spring 抽象的视图类
  *
  * @author summer
- * @date 2019-01-25 19:09
- * @annotation @Component("connect/status") 组件的名字要和 spring social 实现中视图的名字一致
+ * DateTime 2019-01-25 19:09
+ * Annotation @Component("connect/status") 组件的名字要和 spring social 实现中视图的名字一致
  * @version V1.0.0-RELEASE
  */
 @Component("connect/status")
@@ -34,13 +34,12 @@ public class EasyConnectionStatusView extends AbstractView {
     /**
      * 重写视图渲染的方法
      *
-     * @author summer
-     * @date 2019-01-25 19:12
+     * Author summer
+     * DateTime 2019-01-25 19:12
      * @param model 模型数据
      * @param request 请求信息
      * @param response 返回信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,

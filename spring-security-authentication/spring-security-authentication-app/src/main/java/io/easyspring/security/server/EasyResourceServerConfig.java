@@ -20,8 +20,8 @@ import org.springframework.social.security.SpringSocialConfigurer;
  * 开启资源服务器的配置
  *
  * @author summer
- * @date 2019-02-19 18:00
- * @annotation @EnableResourceServer 资源服务器的配置项
+ * DateTime 2019-02-19 18:00
+ * Annotation @EnableResourceServer 资源服务器的配置项
  * 当开启了此项配置后, SpringSecurity 就会自动实现资源服务器过滤器链的配置
  *
  * @version V1.0.0-RELEASE
@@ -115,10 +115,9 @@ public class EasyResourceServerConfig extends ResourceServerConfigurerAdapter {
      * 资源服务器的相关设置
      *
      * @param resources 资源服务的配置对象
-     * @return void
-     * @author summer
-     * @date 2019-03-06 23:25
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-06 23:25
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

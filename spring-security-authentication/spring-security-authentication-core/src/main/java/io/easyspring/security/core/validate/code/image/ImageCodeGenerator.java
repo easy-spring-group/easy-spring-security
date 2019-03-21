@@ -15,8 +15,8 @@ import java.util.Random;
  * 默认的图片验证码生成器
  *
  * @author summer
- * @date 2019-01-16 23:48
  * @version V1.0.0-RELEASE
+ * DateTime 2019-01-16 23:48
  */
 @NoArgsConstructor
 @Data
@@ -35,11 +35,11 @@ public class ImageCodeGenerator implements ValidateCodeGenerator {
     /**
      * 生成方法
      *
-     * @author summer
-     * @date 2019-01-16 23:49
+     * Author summer
+     * DateTime 2019-01-16 23:49
      * @param request 请求对象
      * @return io.easyspring.security.code.image.ImageCode
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public ImageCode generate(ServletWebRequest request) {
@@ -87,12 +87,12 @@ public class ImageCodeGenerator implements ValidateCodeGenerator {
     /**
      * 生成随机背景条纹
      *
-     * @author summer
-     * @date 2019-01-21 18:10
+     * Author summer
+     * DateTime 2019-01-21 18:10
      * @param fc 前景色
      * @param bc 后景色
      * @return java.awt.Color
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	private Color getRandColor(int fc, int bc) {
 		Random random = new Random();

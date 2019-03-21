@@ -11,7 +11,7 @@ import java.util.List;
  * 默认的权限控制操作接口
  *
  * @author summer
- * @date 2019-03-05 16:23
+ * DateTime 2019-03-05 16:23
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -28,10 +28,9 @@ public class EasyAuthorizeConfigManager implements AuthorizeConfigManager {
      * 把所有的权限控制器, 都加上对应的配置
      *
      * @param config 配置信息
-     * @return void
-     * @author summer
-     * @date 2019-03-05 16:25
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-05 16:25
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {

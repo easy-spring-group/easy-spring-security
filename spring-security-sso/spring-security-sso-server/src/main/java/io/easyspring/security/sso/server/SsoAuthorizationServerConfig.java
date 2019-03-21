@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
  * 认证服务器的配置
  *
  * @author summer
- * @date 2019-02-23 11:10
+ * DateTime 2019-02-23 11:10
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -26,11 +26,10 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     /**
      * 客户端的配置
      *
-     * @author summer
-     * @date 2019-02-23 11:11
+     * Author summer
+     * DateTime 2019-02-23 11:11
      * @param clients 客户对象集合
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -51,11 +50,10 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     /**
      * 配置 token 的存储器
      *
-     * @author summer
-     * @date 2019-02-23 11:11
+     * Author summer
+     * DateTime 2019-02-23 11:11
      * @param endpoints 验证起点对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
@@ -67,11 +65,10 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     /**
      * 获取 jwt token 秘签的配置
      *
-     * @author summer
-     * @date 2019-02-23 11:12
+     * Author summer
+     * DateTime 2019-02-23 11:12
      * @param security 权限校验的 Security 配置对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -84,10 +81,10 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     /**
      * jwt 存储器的配置
      *
-     * @author summer
-     * @date 2019-02-23 11:13
+     * Author summer
+     * DateTime 2019-02-23 11:13
      * @return org.springframework.security.oauth2.provider.token.TokenStore
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public TokenStore jwtTokenStore() {
@@ -97,10 +94,10 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     /**
      * token 的转换器
      *
-     * @author summer
-     * @date 2019-02-23 11:13
+     * Author summer
+     * DateTime 2019-02-23 11:13
      * @return org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter(){

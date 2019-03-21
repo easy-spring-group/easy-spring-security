@@ -4,8 +4,8 @@ package io.easyspring.security.core.properties.code.enums;
  * 验证码存储器的类型
  *
  * @author summer
- * @date 2019-02-20 18:37
  * @version V1.0.0-RELEASE
+ * DateTime 2019-02-20 18:37
  */
 public enum ValidateCodeRepositoryTypeEnum {
     /**

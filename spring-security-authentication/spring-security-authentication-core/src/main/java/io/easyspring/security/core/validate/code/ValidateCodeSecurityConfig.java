@@ -13,7 +13,7 @@ import javax.servlet.Filter;
  * 校验码相关安全配置
  *
  * @author summer
- * @date 2019-01-17 18:00
+ * DateTime 2019-01-17 18:00
  * @version V1.0.0-RELEASE
  */
 @Component("validateCodeSecurityConfig")
@@ -28,11 +28,10 @@ public class ValidateCodeSecurityConfig extends SecurityConfigurerAdapter<Defaul
     /**
      * 重写父级的配置方法, 把自己的过滤器加入到过滤器链中
      *
-     * @author summer
-     * @date 2019-01-17 18:00
+     * Author summer
+     * DateTime 2019-01-17 18:00
      * @param http Security 的 http 请求
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public void configure(HttpSecurity http) throws Exception {

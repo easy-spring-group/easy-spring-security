@@ -21,7 +21,7 @@ import java.io.IOException;
  * 浏览器环境下登录成功的处理器
  *
  * @author summer
- * @date 2019-01-17 12:02
+ * DateTime 2019-01-17 12:02
  * @version V1.0.0-RELEASE
  */
 @Component("easyAuthenticationSuccessHandler")
@@ -48,13 +48,12 @@ public class EasyAuthenticationSuccessHandler extends SavedRequestAwareAuthentic
     /**
      * 登录成功后的处理逻辑
      *
-     * @author summer
-     * @date 2019-01-17 12:05
+     * Author summer
+     * DateTime 2019-01-17 12:05
      * @param request 请求信息
      * @param response 返回信息
      * @param authentication 登录的用户信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request,

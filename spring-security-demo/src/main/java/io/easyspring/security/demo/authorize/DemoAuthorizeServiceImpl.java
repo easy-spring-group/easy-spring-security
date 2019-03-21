@@ -14,7 +14,7 @@ import java.util.Set;
  * 权限校验器
  *
  * @author summer
- * @date 2019-03-06 15:03
+ * DateTime 2019-03-06 15:03
  * @version V1.0.0-RELEASE
  */
 @Component("demoAuthorizeServiceImpl")
@@ -26,9 +26,9 @@ public class DemoAuthorizeServiceImpl implements DynamicAuthorizeService {
      *
      * @param username 用户名
      * @return java.util.Set<io.easyspring.security.authorize.support.AuthorizePermission>
-     * @author summer
-     * @date 2019-03-06 19:16
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-06 19:16
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Set<AuthorizePermission> getAuthorizePermission(String username) {

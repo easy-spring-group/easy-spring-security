@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
  * 查询条件对象
  * @author : zhuqiang
  * @version : V1.0
- * @date : 2018/8/1 23:19
+ * DateTime : 2018/8/1 23:19
  */
 @NoArgsConstructor
 @Data

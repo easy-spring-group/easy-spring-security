@@ -26,7 +26,7 @@ import java.util.List;
  * 验证码的过滤器
  *
  * @author summer
- * @date 2019-01-17 15:37
+ * DateTime 2019-01-17 15:37
  * @version V1.0.0-RELEASE
  */
 @Component("validateCodeFilter")
@@ -62,10 +62,9 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
      * 初始化要拦截的 url 配置信息
      * 在父级的 bean 初始化完成后, 进行设置的动作
      *
-     * @author summer
-     * @date 2019-01-17 15:41
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-01-17 15:41
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void afterPropertiesSet() throws ServletException {
@@ -96,13 +95,12 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
      *
      * 重写 {@link org.springframework.web.filter.OncePerRequestFilter} 的过滤器,
      *
-     * @author summer
-     * @date 2019-01-17 15:51
+     * Author summer
+     * DateTime 2019-01-17 15:51
      * @param request 请求信息
      * @param response 返回信息
      * @param chain 拦截器链
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -140,11 +138,11 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
     /**
      * 获取校验码的类型，如果当前请求不需要校验，则返回 null
      *
-     * @author summer
-     * @date 2019-01-17 16:01
+     * Author summer
+     * DateTime 2019-01-17 16:01
      * @param request 请求信息
      * @return io.easyspring.security.code.ValidateCodeType
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private ValidateCodeType getValidateCodeType(HttpServletRequest request) {
         // 定义需要校验的类型
@@ -175,9 +173,9 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
      * @param request 请求对象
      * @param response 返回对象
      * @return org.springframework.web.context.request.ServletWebRequest
-     * @author summer
-     * @date 2019-03-07 18:43
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-07 18:43
+     * Version V1.0.0-RELEASE
      */
     private ServletWebRequest buildServletWebRequest(HttpServletRequest request, HttpServletResponse response){
         // 参数校验

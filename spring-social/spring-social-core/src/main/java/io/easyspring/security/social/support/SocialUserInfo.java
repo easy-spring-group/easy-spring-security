@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
  * Spring social 的用户详情
  *
  * @author summer
- * @date 2019-01-25 15:16
+ * DateTime 2019-01-25 15:16
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

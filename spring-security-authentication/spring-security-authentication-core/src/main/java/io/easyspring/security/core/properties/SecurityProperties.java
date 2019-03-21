@@ -11,8 +11,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * Security 的配置类
  *
  * @author summer
- * @date 2019-01-21 16:36
  * @version V1.0.0-RELEASE
+ * DateTime 2019-01-21 16:36
  */
 @NoArgsConstructor
 @Data

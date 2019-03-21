@@ -16,7 +16,7 @@ import java.io.IOException;
  * 退出登录成功后的处理器
  *
  * @author summer
- * @date 2019-02-19 13:10
+ * DateTime 2019-02-19 13:10
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -39,11 +39,11 @@ public class EasySignOutSuccessHandler implements LogoutSuccessHandler {
     /**
      * 退出登录成功后的处理器 构造方法
      *
-     * @author summer
-     * @date 2019-02-19 13:10
+     * Author summer
+     * DateTime 2019-02-19 13:10
      * @param signOutSuccessUrl 退出登录成功后的跳转地址
      * @param resultType 退出成功后返回的数据类型
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public EasySignOutSuccessHandler(String signOutSuccessUrl, SignOutSuccessResultTypeEnum resultType) {
         this.signOutSuccessUrl = signOutSuccessUrl;
@@ -57,13 +57,12 @@ public class EasySignOutSuccessHandler implements LogoutSuccessHandler {
      * javax.servlet.http.HttpServletResponse,
      * org.springframework.security.core.Authentication)
      *
-     * @author summer
-     * @date 2019-02-19 13:11
+     * Author summer
+     * DateTime 2019-02-19 13:11
      * @param request 请求对象
      * @param response 返回对象
      * @param authentication 权限信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void onLogoutSuccess(HttpServletRequest request,

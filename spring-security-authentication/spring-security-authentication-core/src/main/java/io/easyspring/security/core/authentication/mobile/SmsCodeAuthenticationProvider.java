@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * 由于短信验证码的验证在过滤器里已完成，这里直接读取用户信息即可。
  *
  * @author summer
- * @date 2019-01-22 13:04
+ * DateTime 2019-01-22 13:04
  * @version V1.0.0-RELEASE
  */
 @Data
@@ -24,11 +24,11 @@ public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
     /**
      * Provider 调用的匹配器
      *
-     * @author summer
-     * @date 2019-01-22 13:53
+     * Author summer
+     * DateTime 2019-01-22 13:53
      * @param authentication 需要校验的验证类型
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public boolean supports(Class<?> authentication) {
@@ -43,11 +43,11 @@ public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
     /**
      * 获取用户信息的方法
      *
-     * @author summer
-     * @date 2019-01-22 13:57
+     * Author summer
+     * DateTime 2019-01-22 13:57
      * @param authentication 登录信息存储器
      * @return org.springframework.security.core.userdetails.UserDetails
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

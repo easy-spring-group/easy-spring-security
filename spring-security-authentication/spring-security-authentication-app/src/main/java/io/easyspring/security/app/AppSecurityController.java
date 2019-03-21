@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * APP 社交登录的控制器
  *
  * @author summer
- * @date 2019-02-21 16:58
+ * DateTime 2019-02-21 16:58
  * @version V1.0.0-RELEASE
  */
 @RestController
@@ -44,11 +44,11 @@ public class AppSecurityController {
      * 若服务提供商通过了认证, 但是本地却没有注册, 则会直接跳到此路径下
      * 此方法直接返回用户详情信息, 同时生成 deviceId 并放到 header 中
      *
-     * @author summer
-     * @date 2019-02-21 17:01
+     * Author summer
+     * DateTime 2019-02-21 17:01
      * @param request 请求信息
      * @return io.easyspring.security.social.support.SocialUserInfo
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @GetMapping(SecurityConstants.Social.SIGN_UP_URL)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
@@ -83,11 +83,11 @@ public class AppSecurityController {
      * 对 servletWebRequest 进行处理,
      * 生成 deviceId 并设置到 servletWebRequest
      *
-     * @author summer
-     * @date 2019-02-20 19:28
+     * Author summer
+     * DateTime 2019-02-20 19:28
      * @param servletWebRequest 请求和返回信息
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private String buildServletWebRequest(ServletWebRequest servletWebRequest) {
         // 定义 deviceId

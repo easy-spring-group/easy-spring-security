@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * APP 登录的服务类
  *
  * @author summer
- * @date 2019-02-21 15:12
+ * DateTime 2019-02-21 15:12
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -45,12 +45,11 @@ public class AppSignUpUtils {
     /**
      * 存储社交登录的认证信息
      *
-     * @author summer
-     * @date 2019-02-21 15:26
+     * Author summer
+     * DateTime 2019-02-21 15:26
      * @param request 请求对象
      * @param connectionData 用户社交登录后, 获取到的认证信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public void saveConnectionData(WebRequest request, ConnectionData connectionData) {
         /*
@@ -65,12 +64,11 @@ public class AppSignUpUtils {
      * 用户注册完成后, 执行绑定的方法
      * TODO 此处的 deviceId 可能需要处理
      *
-     * @author summer
-     * @date 2019-02-21 16:05
+     * Author summer
+     * DateTime 2019-02-21 16:05
      * @param request 请求信息
      * @param userId 用户的 id (openId)
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public void doPostSignUp(WebRequest request, String userId) {
         // 从 Redis 中获取用户的认证信息
@@ -103,11 +101,11 @@ public class AppSignUpUtils {
     /**
      * 获取用于存储 社交登录认证信息 的 key
      *
-     * @author summer
-     * @date 2019-02-21 15:34
+     * Author summer
+     * DateTime 2019-02-21 15:34
      * @param request 请求信息
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private String getKey(WebRequest request) {
         // 从请求中获取 deviceId

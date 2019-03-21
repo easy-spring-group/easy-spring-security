@@ -20,7 +20,7 @@ import java.util.Set;
  * 动态权限校验的实现类
  *
  * @author summer
- * @date 2019-03-06 14:09
+ * DateTime 2019-03-06 14:09
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor
@@ -44,9 +44,9 @@ public class DynamicAuthorizePermissionServiceImpl implements DynamicAuthorizePe
      * @param request 请求对象
      * @param authentication 权限对象
      * @return boolean
-     * @author summer
-     * @date 2019-03-06 16:34
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-06 16:34
+     * Version V1.0.0-RELEASE
      */
     @Override
     public boolean hasPermission(HttpServletRequest request, Authentication authentication) {
@@ -96,9 +96,9 @@ public class DynamicAuthorizePermissionServiceImpl implements DynamicAuthorizePe
      * @param request 请求对象
      * @param authorizePermissionSet 权限的 set 集合
      * @return boolean
-     * @author summer
-     * @date 2019-03-06 23:38
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-06 23:38
+     * Version V1.0.0-RELEASE
      */
     private boolean hasPermission(HttpServletRequest request, Set<AuthorizePermission> authorizePermissionSet) {
         // 参数校验, 如果传入的参数为空, 则直接返回 false

@@ -14,7 +14,7 @@ import java.util.List;
  * 微信 API 的实现类
  *
  * @author summer
- * @date 2019-01-25 17:35
+ * DateTime 2019-01-25 17:35
  * @version V1.0.0-RELEASE
  */
 public class WeChatImpl extends AbstractOAuth2ApiBinding implements WeChat{
@@ -35,10 +35,10 @@ public class WeChatImpl extends AbstractOAuth2ApiBinding implements WeChat{
     /**
      * 微信 API 实现的构造方法
      *
-     * @author summer
-     * @date 2019-01-25 16:20
+     * Author summer
+     * DateTime 2019-01-25 16:20
      * @param accessToken 认证过程中的验证信息
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public WeChatImpl(String accessToken) {
         super(accessToken, TokenStrategy.ACCESS_TOKEN_PARAMETER);
@@ -48,10 +48,10 @@ public class WeChatImpl extends AbstractOAuth2ApiBinding implements WeChat{
      * 默认注册的 StringHttpMessageConverter 字符集为 ISO-8859-1，
      * 而微信返回的是 UTF-8 的，所以覆盖了原来的方法。
      *
-     * @author summer
-     * @date 2019-01-25 16:22
+     * Author summer
+     * DateTime 2019-01-25 16:22
      * @return java.util.List<org.springframework.http.converter.HttpMessageConverter<?>>
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected List<HttpMessageConverter<?>> getMessageConverters() {
@@ -69,11 +69,11 @@ public class WeChatImpl extends AbstractOAuth2ApiBinding implements WeChat{
      * 获取微信用户信息
      * 在微信中, 不需要用 accessToken 换取 openId, 减少了一个步骤, 我们此处要做一些处理
      *
-     * @author summer
-     * @date 2019-01-25 16:24
+     * Author summer
+     * DateTime 2019-01-25 16:24
      * @param openId 用户识别码
      * @return io.easyspring.security.social.api.WeChatUserInfo
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public WeChatUserInfo getUserInfo(String openId) {

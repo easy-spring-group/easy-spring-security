@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * TODO 此实现之后需要提取到 具体的使用者中
  *
  * @author summer
- * @date 2019-02-20 20:33
+ * DateTime 2019-02-20 20:33
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -28,11 +28,10 @@ public class AppSocialAuthenticationFilterPostProcessor implements SocialAuthent
      * @see SocialAuthenticationFilterPostProcessor#process(
      * org.springframework.social.security.SocialAuthenticationFilter)
      *
-     * @author summer
-     * @date 2019-02-20 20:34
+     * Author summer
+     * DateTime 2019-02-20 20:34
      * @param socialAuthenticationFilter 社交登录的过滤器
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void process(SocialAuthenticationFilter socialAuthenticationFilter) {

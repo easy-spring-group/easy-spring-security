@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * 模块默认的配置。
  *
  * @author summer
- * @date 2019-01-17 15:33
+ * DateTime 2019-01-17 15:33
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -29,14 +29,14 @@ public class ValidateCodeBeanConfig {
     /**
      * 图片验证码图片生成器
      *
-     * @author summer
-     * @date 2019-01-17 15:35
-     * @annotation @ConditionalOnMissingBean(name = "imageCodeGenerator")
+     * Author summer
+     * DateTime 2019-01-17 15:35
+     * Annotation @ConditionalOnMissingBean(name = "imageCodeGenerator")
      * 当容器中有名字为 imageCodeGenerator 的实现时, 使用新加入的,
      * 当容器中没有新加入的 imageCodeGenerator 实现时, 使用当前的
      *
      * @return io.easyspring.security.code.ValidateCodeGenerator
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Bean
 	@ConditionalOnMissingBean(name = "imageValidateCodeGenerator")
@@ -46,6 +46,14 @@ public class ValidateCodeBeanConfig {
 		return codeGenerator;
 	}
 	
+    /**
+     * 短信发送器的 Bean
+     *
+     * @return io.easyspring.security.core.validate.code.sms.SmsCodeSender
+     * Author summer
+     * Version V1.0.0-RELEASE
+     * DateTime 2019-03-21 13:17
+     */
 	@Bean
 	@ConditionalOnMissingBean(SmsCodeSender.class)
 	public SmsCodeSender smsCodeSender() {

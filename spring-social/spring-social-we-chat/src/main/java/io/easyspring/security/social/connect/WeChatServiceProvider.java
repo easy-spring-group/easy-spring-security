@@ -8,7 +8,7 @@ import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
  * 微信 Service 的管理器
  *
  * @author summer
- * @date 2019-01-25 17:17
+ * DateTime 2019-01-25 17:17
  * @version V1.0.0-RELEASE
  */
 public class WeChatServiceProvider extends AbstractOAuth2ServiceProvider<WeChat> {
@@ -24,11 +24,11 @@ public class WeChatServiceProvider extends AbstractOAuth2ServiceProvider<WeChat>
     /**
      * 构造方法
      *
-     * @author summer
-     * @date 2019-01-25 17:18
+     * Author summer
+     * DateTime 2019-01-25 17:18
      * @param appId 项目 id
      * @param appSecret 项目密码
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public WeChatServiceProvider(String appId, String appSecret) {
         super(new WeChatOAuth2Template(appId, appSecret, URL_AUTHORIZE,URL_ACCESS_TOKEN));
@@ -37,11 +37,11 @@ public class WeChatServiceProvider extends AbstractOAuth2ServiceProvider<WeChat>
     /**
      * 重写父类中获取 API 对象的方法
      *
-     * @author summer
-     * @date 2019-01-25 17:19
+     * Author summer
+     * DateTime 2019-01-25 17:19
      * @param accessToken accessToken
      * @return io.easyspring.security.social.api.WeChat
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public WeChat getApi(String accessToken) {

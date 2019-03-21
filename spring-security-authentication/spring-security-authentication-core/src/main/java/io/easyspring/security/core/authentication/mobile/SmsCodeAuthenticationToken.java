@@ -10,7 +10,7 @@ import java.util.Collection;
  * 登录成功之前存储的是登录的手机号, 登录成功之后存储的是认证成功后的信息
  *
  * @author summer
- * @date 2019-01-22 13:02
+ * DateTime 2019-01-22 13:02
  * @version V1.0.0-RELEASE
  */
 public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
@@ -25,10 +25,10 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 构造方法, 用于存储验证信息
      *
-     * @author summer
-     * @date 2019-01-22 16:08
+     * Author summer
+     * DateTime 2019-01-22 16:08
      * @param mobile 手机号
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public SmsCodeAuthenticationToken(String mobile) {
         // 调用父类的构造方法
@@ -42,11 +42,11 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 认证后的构造方法
      *
-     * @author summer
-     * @date 2019-01-22 16:11
+     * Author summer
+     * DateTime 2019-01-22 16:11
      * @param principal 认证依据
      * @param authorities 授予的权限信息
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public SmsCodeAuthenticationToken(Object principal,
                                       Collection<? extends GrantedAuthority> authorities) {

@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
  * 默认的权限控制实现
  *
  * @author summer
- * @date 2019-03-05 16:19
  * @version V1.0.0-RELEASE
+ * DateTime 2019-03-05 16:19
  */
 @Component
 @Order(SecurityAuthorizeProviderLoadOrderConstant.LOAD_ORDER_CORE)
@@ -35,10 +35,9 @@ public class CoreAuthorizeConfigProvider implements AuthorizeConfigProvider {
      * 配置忽略的权限校验接口
      *
      * @param config 权限校验配置对象
-     * @return void
-     * @author summer
-     * @date 2019-03-05 16:17
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-05 16:17
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {

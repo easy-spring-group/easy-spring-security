@@ -4,7 +4,7 @@ package io.easyspring.security.app.properties;
  * Redis 的 key 前缀的常量类
  *
  * @author summer
- * @date 2019-02-21 15:41
+ * DateTime 2019-02-21 15:41
  * @version V1.0.0-RELEASE
  */
 public interface RedisKeyPrefixConstants {

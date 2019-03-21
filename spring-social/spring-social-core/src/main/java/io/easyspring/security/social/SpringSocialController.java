@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * Spring Social 的处理器
  *
  * @author summer
- * @date 2019-01-25 15:19
+ * DateTime 2019-01-25 15:19
  * @version V1.0.0-RELEASE
  */
 @RestController
@@ -31,11 +31,11 @@ public class SpringSocialController {
     /**
      * 获取经过授权后的 social 返回信息
      *
-     * @author summer
-     * @date 2019-01-25 15:26
+     * Author summer
+     * DateTime 2019-01-25 15:26
      * @param request 请求信息
      * @return io.easyspring.security.social.support.SocialUserInfo
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @GetMapping("/social/user")
     public SocialUserInfo getSocialUserInfo(HttpServletRequest request){

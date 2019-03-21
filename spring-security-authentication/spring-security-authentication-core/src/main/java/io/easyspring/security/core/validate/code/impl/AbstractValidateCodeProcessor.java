@@ -14,8 +14,8 @@ import java.util.Map;
  * 抽象的验证码处理器
  *
  * @author summer
- * @date 2019-01-22 13:19
  * @version V1.0.0-RELEASE
+ * DateTime 2019-01-22 13:19
  */
 @Slf4j
 public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> implements ValidateCodeProcessor {
@@ -39,12 +39,11 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     /**
      * 抽象的创建验证码的方法
      *
-     * @author summer
-     * @date 2019-01-17 13:41
+     * Author summer
+     * DateTime 2019-01-17 13:41
      * @param request servlet 请求信息
      * @throws Exception 验证码发送过程中可能出现的异常
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void create(ServletWebRequest request) throws Exception {
@@ -59,11 +58,10 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     /**
      * 验证码的校验器
      *
-     * @author summer
-     * @date 2019-01-17 14:03
+     * Author summer
+     * DateTime 2019-01-17 14:03
      * @param request servlet 的请求信息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -112,11 +110,11 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     /**
      * 生成校验码的抽象实现
      *
-     * @author summer
-     * @date 2019-01-22 13:21
+     * Author summer
+     * DateTime 2019-01-22 13:21
      * @param request 请求和相应信息
      * @return C
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @SuppressWarnings("unchecked")
     private C generate(ServletWebRequest request) {
@@ -139,12 +137,11 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     /**
      * 验证码的保存方法
      *
-     * @author summer
-     * @date 2019-01-22 13:32
+     * Author summer
+     * DateTime 2019-01-22 13:32
      * @param request 请求及响应信息
      * @param validateCode 验证码对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private void save(ServletWebRequest request, C validateCode) {
         // 创建验证码对象
@@ -159,13 +156,12 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
     /**
      * 发送验证码的方法
      *
-     * @author summer
-     * @date 2019-01-17 13:45
+     * Author summer
+     * DateTime 2019-01-17 13:45
      * @param request servlet 请求信息
      * @param validateCode 验证码
      * @throws Exception 发送过程中出现的异常
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected abstract void send(ServletWebRequest request, C validateCode) throws Exception;
 
@@ -173,11 +169,11 @@ public abstract class AbstractValidateCodeProcessor<C extends ValidateCode> impl
      * 根据请求的 url 获取校验码的类型
      * 请求时会传入时什么类型(图片/短信)的验证码
      *
-     * @author summer
-     * @date 2019-01-17 14:05
+     * Author summer
+     * DateTime 2019-01-17 14:05
      * @param request Servlet 请求信息
      * @return io.easyspring.security.code.ValidateCodeType
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private ValidateCodeType getValidateCodeType(ServletWebRequest request) {
         /*

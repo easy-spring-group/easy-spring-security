@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * SSO Security 的配置类
  *
  * @author summer
- * @date 2019-02-23 09:51
+ * DateTime 2019-02-23 09:51
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -29,10 +29,10 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * 密码加密器
      *
-     * @author summer
-     * @date 2019-02-23 09:52
+     * Author summer
+     * DateTime 2019-02-23 09:52
      * @return org.springframework.security.crypto.password.PasswordEncoder
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public PasswordEncoder passwordEncoder()	{
@@ -42,11 +42,10 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * 权限校验管理器的配置
      *
-     * @author summer
-     * @date 2019-02-23 09:56
+     * Author summer
+     * DateTime 2019-02-23 09:56
      * @param auth 管理器对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -57,11 +56,10 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * http 的安全配置
      *
-     * @author summer
-     * @date 2019-02-23 09:53
+     * Author summer
+     * DateTime 2019-02-23 09:53
      * @param http 需要配置的 http 安全对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {

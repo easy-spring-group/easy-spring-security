@@ -29,10 +29,10 @@ import java.util.List;
  * 实现认证服务器的配置类
  *
  * @author summer
- * @annotation @EnableAuthorizationServer 是开启认证服务器的注解,
+ * Annotation @EnableAuthorizationServer 是开启认证服务器的注解,
  * 当配置了此项后, SpringSecurity 就会开启 4 种授权模式的实现
  *
- * @date 2019-02-19 17:56
+ * DateTime 2019-02-19 17:56
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -47,10 +47,10 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
     /**
      * 构造方法, 用于设置 authenticationManager
      *
-     * @author summer
-     * @date 2019-02-22 12:17
+     * Author summer
+     * DateTime 2019-02-22 12:17
      * @param authenticationConfiguration 权限认证配置器
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public EasyAuthorizationServerConfig(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
@@ -87,11 +87,10 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
     /**
      * 设置 OAuth2 的入口信息
      *
-     * @author summer
-     * @date 2019-02-22 11:27
+     * Author summer
+     * DateTime 2019-02-22 11:27
      * @param endpoints 权限校验入口点
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
@@ -128,11 +127,10 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
     /**
      * 配置支持的认证服务信息
      *
-     * @author summer
-     * @date 2019-02-20 18:17
+     * Author summer
+     * DateTime 2019-02-20 18:17
      * @param clients clientDetails 配置器
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -171,11 +169,10 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
     /**
      * 设置 client 认证时的加密器
      *
-     * @author summer
-     * @date 2019-02-22 14:31
+     * Author summer
+     * DateTime 2019-02-22 14:31
      * @param security 加密的配置项
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {

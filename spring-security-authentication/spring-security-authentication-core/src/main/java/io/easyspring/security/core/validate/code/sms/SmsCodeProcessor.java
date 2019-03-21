@@ -13,7 +13,7 @@ import org.springframework.web.context.request.ServletWebRequest;
  * 短信验证码处理器(实现抽象的验证码处理器, 并重写发送验证码的方法)
  *
  * @author summer
- * @date 2019-01-17 13:32
+ * DateTime 2019-01-17 13:32
  * @version V1.0.0-RELEASE
  */
 @Component("smsValidateCodeProcessor")
@@ -28,12 +28,11 @@ public class SmsCodeProcessor extends AbstractValidateCodeProcessor<ValidateCode
     /**
      * 发送短信的方法
      *
-     * @author summer
-     * @date 2019-01-17 13:35
+     * Author summer
+     * DateTime 2019-01-17 13:35
      * @param request 请求信息
      * @param validateCode 验证码对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	protected void send(ServletWebRequest request, ValidateCode validateCode)

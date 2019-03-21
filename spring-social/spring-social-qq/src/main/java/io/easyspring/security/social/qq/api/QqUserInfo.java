@@ -11,7 +11,7 @@ import java.io.Serializable;
  * qq 用户详情对象
  *
  * @author summer
- * @date 2019-01-24 12:16
+ * DateTime 2019-01-24 12:16
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

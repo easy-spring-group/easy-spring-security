@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * 社交登录校验的配置类
  *
  * @author summer
- * @date 2019-02-21 11:29
+ * DateTime 2019-02-21 11:29
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -47,11 +47,10 @@ public class OpenIdAuthenticationSecurityConfig
     /**
      * 重写配置类
      *
-     * @author summer
-     * @date 2019-02-21 11:31
+     * Author summer
+     * DateTime 2019-02-21 11:31
      * @param http security 的请求对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void configure(HttpSecurity http) throws Exception {

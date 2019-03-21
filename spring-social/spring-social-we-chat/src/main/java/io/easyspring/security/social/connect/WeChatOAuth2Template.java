@@ -18,7 +18,7 @@ import java.util.Map;
  * 授权信息处理的模型
  *
  * @author summer
- * @date 2019-01-25 17:21
+ * DateTime 2019-01-25 17:21
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -45,13 +45,13 @@ public class WeChatOAuth2Template extends OAuth2Template {
     /**
      * 处理模板的构造方法
      *
-     * @author summer
-     * @date 2019-01-25 17:23
+     * Author summer
+     * DateTime 2019-01-25 17:23
      * @param clientId 项目注册后的 id
      * @param clientSecret 授权项目的密码
      * @param authorizeUrl 授权地址
      * @param accessTokenUrl 获取 accessToken 的地址
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public WeChatOAuth2Template(String clientId, String clientSecret, String authorizeUrl, String accessTokenUrl) {
         // 先调用父类的构造方法
@@ -69,13 +69,13 @@ public class WeChatOAuth2Template extends OAuth2Template {
     /**
      * 授权访问的参数封装
      *
-     * @author summer
-     * @date 2019-01-25 17:26
+     * Author summer
+     * DateTime 2019-01-25 17:26
      * @param authorizationCode 授权码
      * @param redirectUri 回调地址
      * @param parameters 请求中需要的参数信息
      * @return org.springframework.social.oauth2.AccessGrant
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public AccessGrant exchangeForAccess(String authorizationCode, String redirectUri,
@@ -95,12 +95,12 @@ public class WeChatOAuth2Template extends OAuth2Template {
      * 刷新 token 的方法
      * 需要重新封装参数
      *
-     * @author summer
-     * @date 2019-01-25 17:27
+     * Author summer
+     * DateTime 2019-01-25 17:27
      * @param refreshToken refreshToken
      * @param additionalParameters 额外的参数
      * @return org.springframework.social.oauth2.AccessGrant
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public AccessGrant refreshAccess(String refreshToken, MultiValueMap<String, String> additionalParameters) {
@@ -118,11 +118,11 @@ public class WeChatOAuth2Template extends OAuth2Template {
      * 获取 accessToken 的方法
      * 需要重新封装参数
      *
-     * @author summer
-     * @date 2019-01-25 17:27
+     * Author summer
+     * DateTime 2019-01-25 17:27
      * @param accessTokenRequestUrl 获取 accessToken 的地址
      * @return org.springframework.social.oauth2.AccessGrant
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @SuppressWarnings("unchecked")
     private AccessGrant getAccessToken(StringBuilder accessTokenRequestUrl) {
@@ -162,11 +162,11 @@ public class WeChatOAuth2Template extends OAuth2Template {
     /**
      * 构建获取授权码的请求。也就是引导用户跳转到微信的地址。
      *
-     * @author summer
-     * @date 2019-01-25 17:28
+     * Author summer
+     * DateTime 2019-01-25 17:28
      * @param parameters OAuth2 认证的参数
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public String buildAuthenticateUrl(OAuth2Parameters parameters) {
@@ -178,11 +178,11 @@ public class WeChatOAuth2Template extends OAuth2Template {
     /**
      * 构建获取授权的地址
      *
-     * @author summer
-     * @date 2019-01-25 17:28
+     * Author summer
+     * DateTime 2019-01-25 17:28
      * @param parameters
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public String buildAuthorizeUrl(OAuth2Parameters parameters) {
@@ -192,10 +192,10 @@ public class WeChatOAuth2Template extends OAuth2Template {
     /**
      * 微信返回的 contentType 是 html/text，添加相应的 HttpMessageConverter 来处理。
      *
-     * @author summer
-     * @date 2019-01-25 17:29
+     * Author summer
+     * DateTime 2019-01-25 17:29
      * @return org.springframework.web.client.RestTemplate
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected RestTemplate createRestTemplate() {

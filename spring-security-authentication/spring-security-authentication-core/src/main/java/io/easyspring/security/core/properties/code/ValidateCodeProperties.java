@@ -12,8 +12,8 @@ import java.util.List;
  * 验证码配置
  *
  * @author summer
- * @date 2019-01-16 20:53
  * @version V1.0.0-RELEASE
+ * DateTime 2019-01-16 20:53
  */
 @NoArgsConstructor
 @Data

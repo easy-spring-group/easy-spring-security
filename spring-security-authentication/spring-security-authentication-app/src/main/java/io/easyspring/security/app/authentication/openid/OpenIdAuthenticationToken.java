@@ -9,7 +9,7 @@ import java.util.Collection;
  * OpenId 权限校验的 token
  *
  * @author summer
- * @date 2019-02-21 09:37
+ * DateTime 2019-02-21 09:37
  * @version V1.0.0-RELEASE
  */
 public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
@@ -29,11 +29,11 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
      * 认证之前的构造方法 openId
      * 执行认证之前传入 openId, 这样可以
      *
-     * @author summer
-     * @date 2019-02-21 09:42
+     * Author summer
+     * DateTime 2019-02-21 09:42
      * @param openId 认证信息 id
      * @param providerId 认证供应商 id
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public OpenIdAuthenticationToken(String openId, String providerId) {
         super(null);
@@ -45,11 +45,11 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 认证完成之后的构造方法
      *
-     * @author summer
-     * @date 2019-02-21 09:47
+     * Author summer
+     * DateTime 2019-02-21 09:47
      * @param principal 认证后的用户信息
      * @param authorities 认证用户的权限信息
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public OpenIdAuthenticationToken(Object principal,
                                      Collection<? extends GrantedAuthority> authorities) {
@@ -64,10 +64,10 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 获取证书的方法
      *
-     * @author summer
-     * @date 2019-02-21 09:52
+     * Author summer
+     * DateTime 2019-02-21 09:52
      * @return java.lang.Object
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Object getCredentials() {
@@ -77,10 +77,9 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 清除证书的方法
      *
-     * @author summer
-     * @date 2019-02-21 09:53
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-02-21 09:53
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void eraseCredentials() {
@@ -90,10 +89,10 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 获取用户主要认证信息的方法
      *
-     * @author summer
-     * @date 2019-02-21 09:53
+     * Author summer
+     * DateTime 2019-02-21 09:53
      * @return java.lang.Object
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Object getPrincipal() {
@@ -103,10 +102,10 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 获取认证提供商 id 的方法
      *
-     * @author summer
-     * @date 2019-02-21 09:53
+     * Author summer
+     * DateTime 2019-02-21 09:53
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public String getProviderId() {
         return providerId;
@@ -116,11 +115,10 @@ public class OpenIdAuthenticationToken extends AbstractAuthenticationToken {
      * 设置认证状态的方法,
      * 注意: 当前类中的重写方法不能直接设置认证状态为 true
      *
-     * @author summer
-     * @date 2019-02-21 09:54
+     * Author summer
+     * DateTime 2019-02-21 09:54
      * @param isAuthenticated 是否已认证
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {

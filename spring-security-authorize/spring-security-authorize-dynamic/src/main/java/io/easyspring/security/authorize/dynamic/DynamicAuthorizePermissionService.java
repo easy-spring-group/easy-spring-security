@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
  * 动态校验的 service
  *
  * @author summer
- * @date 2019-03-06 14:09
+ * DateTime 2019-03-06 14:09
  * @version V1.0.0-RELEASE
  */
 public interface DynamicAuthorizePermissionService {
@@ -19,9 +19,9 @@ public interface DynamicAuthorizePermissionService {
      * @param request 请求对象
      * @param authentication 权限信息
      * @return boolean
-     * @author summer
-     * @date 2019-03-06 14:14
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-06 14:14
+     * Version V1.0.0-RELEASE
      */
     boolean hasPermission(HttpServletRequest request,
                           Authentication authentication);

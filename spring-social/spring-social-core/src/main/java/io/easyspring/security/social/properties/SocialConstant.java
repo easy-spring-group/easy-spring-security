@@ -4,7 +4,7 @@ package io.easyspring.security.social.properties;
  * social 的常量类
  *
  * @author summer
- * @date 2019-01-24 15:05
+ * DateTime 2019-01-24 15:05
  * @version V1.0.0-RELEASE
  */
 public interface SocialConstant {

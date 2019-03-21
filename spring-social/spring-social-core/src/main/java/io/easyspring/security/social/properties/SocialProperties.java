@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * social 的配置参数类
  *
  * @author summer
- * @date 2019-01-24 15:09
+ * DateTime 2019-01-24 15:09
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

@@ -6,8 +6,8 @@ import lombok.Data;
  * 短信验证码的配置
  *
  * @author summer
- * @date 2019-01-22 11:08
  * @version V1.0.0-RELEASE
+ * DateTime 2019-01-22 11:08
  */
 @Data
 public class SmsCodeProperties {

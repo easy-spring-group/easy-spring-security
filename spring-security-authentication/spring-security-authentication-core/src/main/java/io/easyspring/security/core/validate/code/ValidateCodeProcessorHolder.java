@@ -9,7 +9,7 @@ import java.util.Map;
  * 校验码处理器管理器
  *
  * @author summer
- * @date 2019-01-17 15:08
+ * DateTime 2019-01-17 15:08
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -24,11 +24,11 @@ public class ValidateCodeProcessorHolder {
     /**
      * 根据验证码枚举类型获取验证码
      *
-     * @author summer
-     * @date 2019-01-17 15:10
+     * Author summer
+     * DateTime 2019-01-17 15:10
      * @param type 验证码类型枚举
      * @return io.easyspring.security.code.ValidateCodeProcessor
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	public ValidateCodeProcessor findValidateCodeProcessor(ValidateCodeType type) {
 		return findValidateCodeProcessor(type.toString().toLowerCase());
@@ -37,11 +37,11 @@ public class ValidateCodeProcessorHolder {
     /**
      * 根据验证码类型字符串获取验证码
      *
-     * @author summer
-     * @date 2019-01-17 15:11
+     * Author summer
+     * DateTime 2019-01-17 15:11
      * @param type 验证码类型
      * @return io.easyspring.security.code.ValidateCodeProcessor
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	public ValidateCodeProcessor findValidateCodeProcessor(String type) {
 	    // 拼装出验证码处理器的名字

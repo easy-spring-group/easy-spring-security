@@ -18,7 +18,7 @@ import java.util.List;
  * 动态权限的控制器实现
  *
  * @author summer
- * @date 2019-03-06 17:22
+ * DateTime 2019-03-06 17:22
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -36,10 +36,9 @@ public class DynamicAuthorizeConfigProvider implements AuthorizeConfigProvider {
      * 配置动态权限忽略校验的接口
      *
      * @param config 权限校验配置对象
-     * @return void
-     * @author summer
-     * @date 2019-03-06 17:23
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-06 17:23
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {

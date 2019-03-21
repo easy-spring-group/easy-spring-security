@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * 验证码生成器的控制器
  *
  * @author summer
- * @date 2019-01-21 18:17
+ * DateTime 2019-01-21 18:17
  * @version V1.0.0-RELEASE
  */
 @RestController
@@ -39,13 +39,12 @@ public class ValidateCodeController {
     /**
      * 创建验证码，根据验证码类型不同，调用不同的 {@link ValidateCodeProcessor} 接口实现
      *
-     * @author summer
-     * @date 2019-01-17 13:38
+     * Author summer
+     * DateTime 2019-01-17 13:38
      * @param request 请求对象
      * @param response 返回对象
      * @param type 验证码的类型(根据不同的验证码类型, 创建不同的验证码处理器)
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @GetMapping(SecurityConstants.Validate.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/{type}")
     public String createCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type)
@@ -77,11 +76,11 @@ public class ValidateCodeController {
      * 对 servletWebRequest 进行处理,
      * 如果存储器是 Redis, 则生成 deviceId 并设置到 servletWebRequest
      *
-     * @author summer
-     * @date 2019-02-20 19:28
+     * Author summer
+     * DateTime 2019-02-20 19:28
      * @param servletWebRequest 请求和返回信息
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private String buildServletWebRequest(ServletWebRequest servletWebRequest) {
         // 定义 deviceId

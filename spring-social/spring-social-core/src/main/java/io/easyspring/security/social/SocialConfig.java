@@ -26,10 +26,10 @@ import javax.sql.DataSource;
  * 社交登录配置的配置器
  *
  * @author summer
- * @date 2019-01-24 14:27
- * @annotation @Configuration 表明这是一个配置类
- * @annotation @EnableSocial 开启 social 的使用
- * @annotation @EnableConfigurationProperties 激活配置文件(可以从 yml 中获取配置的方法)
+ * DateTime 2019-01-24 14:27
+ * Annotation @Configuration 表明这是一个配置类
+ * Annotation @EnableSocial 开启 social 的使用
+ * Annotation @EnableConfigurationProperties 激活配置文件(可以从 yml 中获取配置的方法)
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -62,12 +62,12 @@ public class SocialConfig extends SocialConfigurerAdapter {
     /**
      * 获取社交登录存储的存储器
      * 
-     * @author summer
-     * @date 2019-01-24 14:27
+     * Author summer
+     * DateTime 2019-01-24 14:27
      * @param connectionFactoryLocator connectionFactory 的查找器
      *                                 在系统中可能有多个 connectionFactory, qq 需要, 微信也会需要, 所以需要查找器进行查找
      * @return org.springframework.social.connect.UsersConnectionRepository
-     * @version V1.0.0-RELEASE 
+     * Version V1.0.0-RELEASE
      */
     @Override
     public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
@@ -97,10 +97,10 @@ public class SocialConfig extends SocialConfigurerAdapter {
     /**
      * Social 的配置器, 用于添加自定义的 social 过滤器到过滤器链上
      *
-     * @author summer
-     * @date 2019-01-24 15:25
+     * Author summer
+     * DateTime 2019-01-24 15:25
      * @return org.springframework.social.security.SpringSocialConfigurer
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public SpringSocialConfigurer easySpringSocialConfigurer() {
@@ -119,10 +119,10 @@ public class SocialConfig extends SocialConfigurerAdapter {
     /**
      * 配置身份验证时, 用户 id 的来源
      *
-     * @author summer
-     * @date 2019-01-24 16:06
+     * Author summer
+     * DateTime 2019-01-24 16:06
      * @return org.springframework.social.UserIdSource
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public UserIdSource getUserIdSource() {
@@ -134,11 +134,11 @@ public class SocialConfig extends SocialConfigurerAdapter {
      * 1. 注册过程中拿到 spring social 的信息
      * 2. 注册完成后, 如何把业务系统的 id 传递给 spring social
      *
-     * @author summer
-     * @date 2019-01-25 15:12
+     * Author summer
+     * DateTime 2019-01-25 15:12
      * @param connectionFactoryLocator 连接工厂的调度器, 用于选择连接工厂
      * @return org.springframework.social.connect.web.ProviderSignInUtils
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public ProviderSignInUtils providerSignInUtils(ConnectionFactoryLocator connectionFactoryLocator) {
@@ -152,12 +152,12 @@ public class SocialConfig extends SocialConfigurerAdapter {
      * 必须要添加一个处理器
      * 后补：这个是提供查询社交账户信息服务，绑定服务，等
      *
-     * @author summer
-     * @date 2019-01-25 19:33
+     * Author summer
+     * DateTime 2019-01-25 19:33
      * @param connectionFactoryLocator 连接工厂加载器
      * @param connectionRepository 连接存储器
      * @return org.springframework.social.connect.web.ConnectController
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public ConnectController connectController(

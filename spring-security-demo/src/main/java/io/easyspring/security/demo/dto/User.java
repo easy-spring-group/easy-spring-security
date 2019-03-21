@@ -12,7 +12,7 @@ import java.util.Date;
  * 用户的 dto 对象
  *
  * @author summer
- * @date 2019-01-21 13:47
+ * DateTime 2019-01-21 13:47
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor
@@ -22,9 +22,9 @@ public class User {
     /**
      * 简单视图
      *
-     * @author summer
-     * @date 2019-03-07 00:11
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-07 00:11
+     * Version V1.0.0-RELEASE
      */
     public interface UserSimpleView {
     }
@@ -32,9 +32,9 @@ public class User {
     /**
      * 详细视图
      *
-     * @author summer
-     * @date 2019-03-07 00:11
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-07 00:11
+     * Version V1.0.0-RELEASE
      */
     public interface UserDetailView extends UserSimpleView {
     }

@@ -16,7 +16,7 @@ import org.springframework.security.web.session.SessionInformationExpiredStrateg
  * 浏览器的 bean 配置
  *
  * @author summer
- * @date 2019-02-18 18:49
+ * DateTime 2019-02-18 18:49
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -32,10 +32,10 @@ public class BrowserSecurityBeanConfig {
      * session 失效的 bean 的配置
      * 可以通过重写 InvalidSessionStrategy 来覆盖当前处理逻辑
      *
-     * @author summer
-     * @date 2019-02-18 20:54
+     * Author summer
+     * DateTime 2019-02-18 20:54
      * @return org.springframework.security.web.session.InvalidSessionStrategy
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(InvalidSessionStrategy.class)
@@ -47,10 +47,10 @@ public class BrowserSecurityBeanConfig {
      * session 过期的 bean 的配置
      * 可以通过重写 SessionInformationExpiredStrategy 来覆盖当前处理逻辑
      *
-     * @author summer
-     * @date 2019-02-18 20:55
+     * Author summer
+     * DateTime 2019-02-18 20:55
      * @return org.springframework.security.web.session.SessionInformationExpiredStrategy
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(SessionInformationExpiredStrategy.class)
@@ -61,10 +61,10 @@ public class BrowserSecurityBeanConfig {
     /**
      * 退出登录成功后的处理器 配置
      *
-     * @author summer
-     * @date 2019-02-19 13:07
+     * Author summer
+     * DateTime 2019-02-19 13:07
      * @return org.springframework.security.web.authentication.logout.LogoutSuccessHandler
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(LogoutSuccessHandler.class)

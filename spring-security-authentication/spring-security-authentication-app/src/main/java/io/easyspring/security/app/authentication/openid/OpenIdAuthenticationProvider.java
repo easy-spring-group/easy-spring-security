@@ -18,7 +18,7 @@ import java.util.Set;
  * 根据 Filter 中配置的 manager 中设置 token 类型去找一个校验器
  *
  * @author summer
- * @date 2019-02-21 11:06
+ * DateTime 2019-02-21 11:06
  * @version V1.0.0-RELEASE
  */
 @Data
@@ -42,11 +42,11 @@ public class OpenIdAuthenticationProvider implements AuthenticationProvider {
      * @see org.springframework.security.authentication.AuthenticationProvider#authenticate(
      * org.springframework.security.core.Authentication)
      *
-     * @author summer
-     * @date 2019-02-21 11:09
+     * Author summer
+     * DateTime 2019-02-21 11:09
      * @param authentication 认证信息
      * @return org.springframework.security.core.Authentication
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -101,11 +101,11 @@ public class OpenIdAuthenticationProvider implements AuthenticationProvider {
      * AuthenticationManager 就是通过这个匹配器去查找对应的 provider 进行具体的校验
      * @see org.springframework.security.authentication.AuthenticationProvider#supports(java.lang.Class)
      *
-     * @author summer
-     * @date 2019-02-21 11:26
+     * Author summer
+     * DateTime 2019-02-21 11:26
      * @param authentication 权限校验的类
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public boolean supports(Class<?> authentication) {

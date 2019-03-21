@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 验证码拦截的请求信息
  *
  * @author summer
- * @date 2019-01-23 13:27
  * @version V1.0.0-RELEASE
+ * DateTime 2019-01-23 13:27
  */
 @NoArgsConstructor
 @AllArgsConstructor

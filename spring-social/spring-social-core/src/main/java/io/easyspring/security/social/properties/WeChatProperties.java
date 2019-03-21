@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * 微信的参数配置类
  *
  * @author summer
- * @date 2019-01-24 15:08
+ * DateTime 2019-01-24 15:08
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

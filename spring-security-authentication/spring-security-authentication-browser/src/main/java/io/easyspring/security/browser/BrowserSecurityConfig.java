@@ -23,7 +23,7 @@ import javax.sql.DataSource;
  * 浏览器安全的配置类
  *
  * @author summer
- * @date 2019-01-21 14:40
+ * DateTime 2019-01-21 14:40
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -89,11 +89,10 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
     /**
      * 重写父级的 security 配置, 使用自己的安全验证方案
      *
-     * @author summer
-     * @date 2019-01-21 14:41
+     * Author summer
+     * DateTime 2019-01-21 14:41
      * @param http 安全请求对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -162,10 +161,10 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
     /**
      * 设置记住我功能的数据源
      *
-     * @author summer
-     * @date 2019-01-21 20:45
+     * Author summer
+     * DateTime 2019-01-21 20:45
      * @return org.springframework.security.web.authentication.rememberme.PersistentTokenRepository
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {

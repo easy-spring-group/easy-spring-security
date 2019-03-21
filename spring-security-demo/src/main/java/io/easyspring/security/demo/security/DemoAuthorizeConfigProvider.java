@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 调用者实现的权限校验器
  *
  * @author summer
- * @date 2019-03-06 16:37
+ * DateTime 2019-03-06 16:37
  * @version V1.0.0-RELEASE
  */
 @Component
@@ -22,10 +22,9 @@ public class DemoAuthorizeConfigProvider implements AuthorizeConfigProvider {
      * 调用者执行权限校验的配置方法
      *
      * @param config 校验配置器
-     * @return void
-     * @author summer
-     * @date 2019-03-06 16:38
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-03-06 16:38
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config) {

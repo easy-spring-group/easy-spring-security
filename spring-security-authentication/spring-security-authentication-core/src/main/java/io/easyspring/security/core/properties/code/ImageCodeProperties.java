@@ -7,8 +7,8 @@ import lombok.EqualsAndHashCode;
  * 图片验证码配置项
  *
  * @author summer
- * @date 2019-01-16 20:53
  * @version V1.0.0-RELEASE
+ * DateTime 2019-01-16 20:53
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

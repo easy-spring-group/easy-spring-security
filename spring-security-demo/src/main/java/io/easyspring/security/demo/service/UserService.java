@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * 用户的 service
  *
  * @author summer
- * @date 2019-01-21 16:17
+ * DateTime 2019-01-21 16:17
  * @version V1.0.0-RELEASE
  */
 @Service
@@ -34,11 +34,11 @@ public class UserService implements UserDetailsService, SocialUserDetailsService
      * 当我们自己实现 UserDetailsService 并注入到 spring 后, security 在登录的时候就会调用此方法获取用户
      * 此处可以扩展自己的用户校验逻辑
      *
-     * @author summer
-     * @date 2019-01-21 16:17
+     * Author summer
+     * DateTime 2019-01-21 16:17
      * @param username 用户名
      * @return org.springframework.security.core.userdetails.UserDetails
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -51,11 +51,11 @@ public class UserService implements UserDetailsService, SocialUserDetailsService
     /**
      * 根据 social 的 id 获取用户详情的方法
      *
-     * @author summer
-     * @date 2019-01-24 14:44
+     * Author summer
+     * DateTime 2019-01-24 14:44
      * @param socialUserId social 的 id
      * @return org.springframework.social.security.SocialUserDetails
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public SocialUserDetails loadUserByUserId(String socialUserId) throws UsernameNotFoundException {
@@ -68,11 +68,11 @@ public class UserService implements UserDetailsService, SocialUserDetailsService
     /**
      * 根据 social 的用户 id 获取用户详情的方法
      *
-     * @author summer
-     * @date 2019-01-24 14:48
+     * Author summer
+     * DateTime 2019-01-24 14:48
      * @param userId social 中存储的用户 id(可以是用户名等唯一标识)
      * @return org.springframework.social.security.SocialUserDetails
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     private SocialUserDetails buildUser(String userId) {
         // 根据用户名查找用户信息

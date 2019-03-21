@@ -6,7 +6,7 @@ import lombok.Data;
  * OAuth2 认证, 支持的客户端的配置信息
  *
  * @author summer
- * @date 2019-02-22 11:34
+ * DateTime 2019-02-22 11:34
  * @version V1.0.0-RELEASE
  */
 @Data

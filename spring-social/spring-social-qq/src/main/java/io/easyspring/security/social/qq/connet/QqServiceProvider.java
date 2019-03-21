@@ -8,7 +8,7 @@ import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
  * Qq Service 的管理器
  *
  * @author summer
- * @date 2019-01-24 12:54
+ * DateTime 2019-01-24 12:54
  * @version V1.0.0-RELEASE
  */
 public class QqServiceProvider extends AbstractOAuth2ServiceProvider<Qq> {
@@ -31,11 +31,11 @@ public class QqServiceProvider extends AbstractOAuth2ServiceProvider<Qq> {
     /**
      * 构造方法
      *
-     * @author summer
-     * @date 2019-01-24 12:59
+     * Author summer
+     * DateTime 2019-01-24 12:59
      * @param appId 项目 id
      * @param appSecret 项目密码
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public QqServiceProvider(String appId, String appSecret) {
         /*
@@ -51,11 +51,11 @@ public class QqServiceProvider extends AbstractOAuth2ServiceProvider<Qq> {
     /**
      * 重写父类中获取 API 对象的方法
      *
-     * @author summer
-     * @date 2019-01-24 12:56
+     * Author summer
+     * DateTime 2019-01-24 12:56
      * @param accessToken accessToken
      * @return io.easyspring.security.social.qq.api.Qq
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Qq getApi(String accessToken) {

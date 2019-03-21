@@ -15,7 +15,7 @@ import java.io.IOException;
  * 实现 qq API 接口
  *
  * @author summer
- * @date 2019-01-24 12:25
+ * DateTime 2019-01-24 12:25
  * @version V1.0.0-RELEASE
  */
 @Slf4j
@@ -47,11 +47,11 @@ public class QqImpl extends AbstractOAuth2ApiBinding implements Qq {
     /**
      * QQ API 实现的构造方法
      *
-     * @author summer
-     * @date 2019-01-24 12:34
+     * Author summer
+     * DateTime 2019-01-24 12:34
      * @param accessToken 认证过程中的验证信息
      * @param appId 项目 id
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public QqImpl(String accessToken, String appId) {
         // 调用父类的构造方法, 设置 access_token 的传递方式为参数传递
@@ -73,10 +73,10 @@ public class QqImpl extends AbstractOAuth2ApiBinding implements Qq {
      * 获取用户详情的方法
      * {@link Qq#getUserInfo()}
      *
-     * @author summer
-     * @date 2019-01-24 12:39
+     * Author summer
+     * DateTime 2019-01-24 12:39
      * @return io.easyspring.security.social.qq.api.QQUserInfo
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public QqUserInfo getUserInfo() {

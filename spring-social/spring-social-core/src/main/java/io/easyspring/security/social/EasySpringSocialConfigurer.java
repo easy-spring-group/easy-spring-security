@@ -9,7 +9,7 @@ import org.springframework.social.security.SpringSocialConfigurer;
  * 安全校验的配置类
  *
  * @author summer
- * @date 2019-01-24 16:39
+ * DateTime 2019-01-24 16:39
  * @version V1.0.0-RELEASE
  */
 @EqualsAndHashCode(callSuper = true)
@@ -28,10 +28,10 @@ public class EasySpringSocialConfigurer extends SpringSocialConfigurer {
     /**
      * 全参构造方法
      *
-     * @author summer
-     * @date 2019-01-24 16:40
+     * Author summer
+     * DateTime 2019-01-24 16:40
      * @param filterProcessesUrl 社交登录时过滤的地址
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public EasySpringSocialConfigurer(String filterProcessesUrl) {
         this.filterProcessesUrl = filterProcessesUrl;
@@ -40,11 +40,11 @@ public class EasySpringSocialConfigurer extends SpringSocialConfigurer {
     /**
      * 重写父级的过滤器拦截地址配置, 改成自己的过滤器地址
      *
-     * @author summer
-     * @date 2019-01-24 16:43
+     * Author summer
+     * DateTime 2019-01-24 16:43
      * @param object 要放到过滤器链上的 filter
      * @return T
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @SuppressWarnings("unchecked")
     @Override

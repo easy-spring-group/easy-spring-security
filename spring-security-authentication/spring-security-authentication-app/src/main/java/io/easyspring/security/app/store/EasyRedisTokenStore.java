@@ -20,7 +20,7 @@ import java.util.*;
  * 此类待优化,
  *
  * @author summer
- * @date 2019-02-22 13:32
+ * DateTime 2019-02-22 13:32
  * @version V1.0.0-RELEASE
  */
 public class EasyRedisTokenStore implements TokenStore {

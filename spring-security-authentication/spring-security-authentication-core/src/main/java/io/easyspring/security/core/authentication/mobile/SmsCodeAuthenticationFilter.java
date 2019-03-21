@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * 继承抽象的权限校验的拦截器, 并实现相应的校验方法
  *
  * @author summer
- * @date 2019-01-22 12:43
+ * DateTime 2019-01-22 12:43
  * @version V1.0.0-RELEASE
  */
 public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
@@ -36,9 +36,9 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
      * 设定拦截的接口和请求方式
      * 当设定好拦截的接口和请求方式以后, 客户端向此接口发送请求的时候, 就会被此过滤器拦截到
      *
-     * @author summer
-     * @date 2019-01-22 12:45
-     * @version V1.0.0-RELEASE
+     * Author summer
+     * DateTime 2019-01-22 12:45
+     * Version V1.0.0-RELEASE
      */
     public SmsCodeAuthenticationFilter() {
         super(new AntPathRequestMatcher(SecurityConstants.SignIn.DEFAULT_SIGN_IN_PROCESSING_URL_MOBILE,
@@ -48,12 +48,12 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
     /**
      * 重写尝试登录的方法
      *
-     * @author summer
-     * @date 2019-01-22 12:47
+     * Author summer
+     * DateTime 2019-01-22 12:47
      * @param request 请求信息
      * @param response 返回信息
      * @return org.springframework.security.core.Authentication
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -84,11 +84,11 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
     /**
      * 获取手机号
      *
-     * @author summer
-     * @date 2019-01-22 16:03
+     * Author summer
+     * DateTime 2019-01-22 16:03
      * @param request 请求信息
      * @return java.lang.String
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected String obtainMobile(HttpServletRequest request) {
         // 根据参数名, 从 request 请求中获取手机号
@@ -99,12 +99,11 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
      * 设置身份验证后 detail 信息的方法
      * 以便子类可以配置放入身份验证请求的 details 属性中的内容。
      *
-     * @author summer
-     * @date 2019-01-22 16:17
+     * Author summer
+     * DateTime 2019-01-22 16:17
      * @param request 请求信息
      * @param authRequest 验证后信息的对象
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     protected void setDetails(HttpServletRequest request, SmsCodeAuthenticationToken authRequest) {
         authRequest.setDetails(authenticationDetailsSource.buildDetails(request));

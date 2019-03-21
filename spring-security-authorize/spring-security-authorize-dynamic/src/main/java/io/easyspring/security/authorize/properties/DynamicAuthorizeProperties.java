@@ -11,7 +11,7 @@ import java.util.List;
  * 动态权限的相关参数配置
  *
  * @author summer
- * @date 2019-03-06 17:15
+ * DateTime 2019-03-06 17:15
  * @version V1.0.0-RELEASE
  */
 @NoArgsConstructor

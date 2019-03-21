@@ -11,7 +11,7 @@ import java.io.IOException;
  * 自定义 session 的过期策略
  *
  * @author summer
- * @date 2019-02-18 20:30
+ * DateTime 2019-02-18 20:30
  * @version V1.0.0-RELEASE
  */
 public class EasyExpiredSessionStrategy
@@ -21,10 +21,10 @@ public class EasyExpiredSessionStrategy
     /**
      * 构造方法
      *
-     * @author summer
-     * @date 2019-02-18 20:37
+     * Author summer
+     * DateTime 2019-02-18 20:37
      * @param invalidSessionUrl 超时后跳转的地址
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     public EasyExpiredSessionStrategy(String invalidSessionUrl) {
         super(invalidSessionUrl);
@@ -35,11 +35,10 @@ public class EasyExpiredSessionStrategy
      * @see org.springframework.security.web.session.SessionInformationExpiredStrategy#onExpiredSessionDetected(
      * org.springframework.security.web.session.SessionInformationExpiredEvent)
      *
-     * @author summer
-     * @date 2019-02-18 20:31
+     * Author summer
+     * DateTime 2019-02-18 20:31
      * @param event session 回话过期事件
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void onExpiredSessionDetected(SessionInformationExpiredEvent event) throws IOException, ServletException {
@@ -50,10 +49,10 @@ public class EasyExpiredSessionStrategy
      * 判断是否是并发引起的 session 失效问题
      * @see AbstractSessionStrategy#isConcurrency()
      *
-     * @author summer
-     * @date 2019-02-19 10:23
+     * Author summer
+     * DateTime 2019-02-19 10:23
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     protected boolean isConcurrency() {

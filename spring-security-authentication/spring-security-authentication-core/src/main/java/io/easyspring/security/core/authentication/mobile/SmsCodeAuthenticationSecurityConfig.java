@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 
 /**
  * 短信登录配置
- * 
- * @author zhailiang
  *
+ * @author summer
+ * @version V1.0.0-RELEASE
+ * DateTime 2019-03-21 14:22
  */
 @Component
 public class SmsCodeAuthenticationSecurityConfig extends
         SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
-
     /**
      * 自定义的登录成功处理器
      */
@@ -41,11 +41,10 @@ public class SmsCodeAuthenticationSecurityConfig extends
     /**
      * 配置短信验证码的登录拦截
      *
-     * @author summer
-     * @date 2019-01-22 15:01
+     * Author summer
+     * DateTime 2019-01-22 15:01
      * @param http 请求信
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
 	@Override
 	public void configure(HttpSecurity http) throws Exception {

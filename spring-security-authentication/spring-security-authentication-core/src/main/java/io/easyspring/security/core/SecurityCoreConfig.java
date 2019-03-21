@@ -11,11 +11,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * security 核心的配置文件
  *
- * @annotaion @Configuration 表明这是一个配置类
- * @annotaion @EnableConfigurationProperties 此配置文件激活的配置类
+ * Annotation @Configuration 表明这是一个配置类
+ * Annotation @EnableConfigurationProperties 此配置文件激活的配置类
  *
  * @author summer
- * @date 2019-01-21 16:34
+ * DateTime 2019-01-21 16:34
  * @version V1.0.0-RELEASE
  */
 @Configuration
@@ -25,10 +25,10 @@ public class SecurityCoreConfig {
     /**
      * 配置 security 的加密器
      *
-     * @author summer
-     * @date 2019-01-21 16:20
+     * Author summer
+     * DateTime 2019-01-21 16:20
      * @return org.springframework.security.crypto.password.PasswordEncoder
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Bean
     @ConditionalOnMissingBean(PasswordEncoder.class)

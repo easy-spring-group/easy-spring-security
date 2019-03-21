@@ -11,7 +11,7 @@ import org.springframework.social.connect.UserProfile;
  * ApiAdapter 抽象的 API 适配器, 泛型是要适配的 API 对象
  *
  * @author summer
- * @date 2019-01-24 14:09
+ * DateTime 2019-01-24 14:09
  * @version V1.0.0-RELEASE
  */
 public class QqAdapter implements ApiAdapter<Qq> {
@@ -19,11 +19,11 @@ public class QqAdapter implements ApiAdapter<Qq> {
     /**
      * 测试连接是否正常的方法
      *
-     * @author summer
-     * @date 2019-01-24 14:10
+     * Author summer
+     * DateTime 2019-01-24 14:10
      * @param api 想要适配的 API
      * @return boolean
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public boolean test(Qq api) {
@@ -33,12 +33,11 @@ public class QqAdapter implements ApiAdapter<Qq> {
     /**
      * 在 connection 数据和 API 数据之间做适配
      *
-     * @author summer
-     * @date 2019-01-24 14:12
+     * Author summer
+     * DateTime 2019-01-24 14:12
      * @param api 需要适配的 API 数据
      * @param values 输出的 social 标准的数据
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void setConnectionValues(Qq api, ConnectionValues values) {
@@ -62,11 +61,11 @@ public class QqAdapter implements ApiAdapter<Qq> {
      * 跟 {@link QqAdapter#setConnectionValues} 的方法类似
      * TODO 后期实现绑定和解绑的时候再实现
      *
-     * @author summer
-     * @date 2019-01-24 14:20
+     * Author summer
+     * DateTime 2019-01-24 14:20
      * @param api 需要适配的 API 数据
      * @return org.springframework.social.connect.UserProfile
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public UserProfile fetchUserProfile(Qq api) {
@@ -77,12 +76,11 @@ public class QqAdapter implements ApiAdapter<Qq> {
      * 更新个人信息的方法
      * 例如: 微博中有时间线和个人主页的状态的概念, 此处不做处理
      *
-     * @author summer
-     * @date 2019-01-24 14:22
+     * Author summer
+     * DateTime 2019-01-24 14:22
      * @param api API 数据
      * @param message 发送的消息
-     * @return void
-     * @version V1.0.0-RELEASE
+     * Version V1.0.0-RELEASE
      */
     @Override
     public void updateStatus(Qq api, String message) {

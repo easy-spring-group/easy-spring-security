@@ -4,8 +4,8 @@ package io.easyspring.security.core.properties;
  * 安全配置的常量
  *
  * @author summer
- * @date 2019-01-22 14:37
  * @version V1.0.0-RELEASE
+ * DateTime 2019-01-22 14:37
  */
 public interface SecurityConstants {
 
@@ -13,8 +13,8 @@ public interface SecurityConstants {
      * 登录相关的常量配置
      *
      * @author summer
-     * @date 2019-01-23 14:33
      * @version V1.0.0-RELEASE
+     * DateTime 2019-01-23 14:33
      */
     interface SignIn {
         /**
@@ -47,8 +47,8 @@ public interface SecurityConstants {
      * 验证码相关的常量
      *
      * @author summer
-     * @date 2019-01-23 14:30
      * @version V1.0.0-RELEASE
+     * DateTime 2019-01-23 14:30
      */
     interface Validate {
         /**
@@ -89,8 +89,8 @@ public interface SecurityConstants {
      * 社交登录的常量配置
      *
      * @author summer
-     * @date 2019-02-20 20:42
      * @version V1.0.0-RELEASE
+     * DateTime 2019-02-20 20:42
      */
     interface Social {
         /**
@@ -124,8 +124,8 @@ public interface SecurityConstants {
      * 安全校验的错误码常量
      *
      * @author summer
-     * @date 2019-01-23 14:29
      * @version V1.0.0-RELEASE
+     * DateTime 2019-01-23 14:29
      */
     interface ErrorCode {
         Integer NO_AUTHENTICATION = 6000;
