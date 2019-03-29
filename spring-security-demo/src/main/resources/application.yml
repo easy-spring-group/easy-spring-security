@@ -91,8 +91,8 @@ easy-spring:
 
     # oauth2 认证的配置
     oauth2:
-      # token 存储器
-      # token-store: redis
+      # token 存储器, 如果设置的不是 Redis 或者没有设置时, 使用 jwt 的方式
+      token-store: redis
       # 加密签名
       jwt-signing-key: test-key
       # 允许的认证客户

@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.easyspring.security</groupId>
         <artifactId>spring-social</artifactId>
-        <version>1.1.0-SNAPSHOT</version>
+        <version>1.1.1-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
@@ -57,6 +57,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!--spring-social 的相关 jar, 用于集成第三方登录的操作-->

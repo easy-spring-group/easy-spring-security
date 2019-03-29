@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * 验证码的基类
@@ -19,7 +18,7 @@ import java.time.LocalDateTime;
 @Data
 public class ValidateCode implements Serializable {
 
-    private static final long serialVersionUID = 3000761826038431060L;
+    private static final long serialVersionUID = -8105303005032580209L;
 
     /**
      * 验证码
@@ -28,7 +27,7 @@ public class ValidateCode implements Serializable {
     /**
      * 过期时间(有效期至)
      */
-    private LocalDateTime expireTime;
+    private Long expireTime;
 
     /**
      * 根据有效时长的构造方法
@@ -41,7 +40,7 @@ public class ValidateCode implements Serializable {
      */
     public ValidateCode(String code, int expire){
         this.code = code;
-        this.expireTime = LocalDateTime.now().plusSeconds(expire);
+        this.expireTime = System.currentTimeMillis() + (expire * 1000L);
     }
 
     /**
@@ -52,8 +51,8 @@ public class ValidateCode implements Serializable {
      * @return boolean
      * Version V1.0.0-RELEASE
      */
-    public boolean isExpired() {
-        return LocalDateTime.now().isAfter(expireTime);
+    public boolean checkIsExpired() {
+        return System.currentTimeMillis() > expireTime;
     }
 
 }

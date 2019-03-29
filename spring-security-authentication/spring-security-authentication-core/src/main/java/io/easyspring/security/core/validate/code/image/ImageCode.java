@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.awt.image.BufferedImage;
-import java.time.LocalDateTime;
 
 /**
  * 图片验证码
@@ -41,21 +40,6 @@ public class ImageCode extends ValidateCode {
      */
     public ImageCode(BufferedImage image, String code, int expire){
         super(code, expire);
-        this.image = image;
-    }
-
-    /**
-     * 全参构造
-     *
-     * Author summer
-     * DateTime 2019-01-22 11:18
-     * @param image 验证码图片
-     * @param code 验证码
-     * @param expireTime 过期实现
-     * Version V1.0.0-RELEASE
-     */
-    public ImageCode(BufferedImage image, String code, LocalDateTime expireTime) {
-        super(code, expireTime);
         this.image = image;
     }
 }
