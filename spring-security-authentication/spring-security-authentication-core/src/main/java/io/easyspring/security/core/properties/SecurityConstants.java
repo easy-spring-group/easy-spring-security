@@ -70,7 +70,7 @@ public interface SecurityConstants {
         /**
          * 发送短信验证码时设定的模板的参数名称
          */
-        String PARAMETER_NAME_TEMPLATE = "template";
+        String PARAMETER_NAME_TEMPLATE = "templateCode";
         /**
          * 验证码的有效时长(单位是秒)
          */
