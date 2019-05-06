@@ -94,7 +94,7 @@ public class AppSecurityController {
         String deviceId = "";
 
         // 生成新的 deviceId
-        deviceId = RandomStringUtils.randomAlphabetic(20);
+        deviceId = RandomStringUtils.randomNumeric(20);
         // 设置到 servletWebRequest 中
         servletWebRequest.setAttribute(SecurityConstants.Social.DEFAULT_HEADER_DEVICE_ID_KEY,
                 deviceId,
