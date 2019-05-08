@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -161,6 +161,7 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
                         .scopes(client.getScopes());
             }
 
+            // 日志输出
             log.info("OAuth2 的授权信息: {}", Arrays.toString(clientsInCustom));
         }
     }
@@ -178,6 +179,6 @@ public class EasyAuthorizationServerConfig extends AuthorizationServerConfigurer
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         // 这里使用什么密码需要 根据上面配置 client 信息里面的密码类型决定
         // 目前上面配置的是无加密的密码
-        security.passwordEncoder(new BCryptPasswordEncoder());
+        security.passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 }

@@ -90,7 +90,7 @@ public class ValidateCodeController {
         // 如果验证码的存储类型为 Redis
         if (ValidateCodeRepositoryTypeEnum.REDIS.equals(repositoryType)) {
             // 生成新的 deviceId
-            deviceId = RandomStringUtils.randomNumeric(20);
+            deviceId = RandomStringUtils.randomAlphabetic(20);
 
             log.info("生成的 deviceId 是: {}", deviceId);
 
